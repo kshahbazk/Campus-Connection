@@ -4,7 +4,8 @@
  app = express();
 bodyParser = require('body-parser');
 // Global app configuration section
-//app.use('cloud/views');  // Specify the folder to find templates
+app.use('cloud/controllers');
+app.use('cloud/views');  // Specify the folder to find templates
 app.set('view engine', 'ejs');    // Set the template engine
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -18,6 +19,14 @@ app.get('/hello', function(req, res) {
 app.get('/profile', function(req, res) {
     res.render('profile', { message: 'Congrats, you just set up your app!' });
 });
+app.get('/login', function(req, res)
+{
+    res.render('logIn.ejs', {})
+})
+app.get('/Registration', function(req, res)
+{
+    res.render('Registration.ejs', {})
+})
 
 // // Example reading from the request query string of an HTTP get request.
 // app.get('/test', function(req, res) {
