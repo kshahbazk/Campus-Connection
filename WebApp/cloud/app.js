@@ -4,13 +4,14 @@
  app = express();
 bodyParser = require('body-parser');
 // Global app configuration section
-app.use('cloud/controllers');
-app.use('cloud/views');  // Specify the folder to find templates
+  // Specify the folder to find templates
 app.set('view engine', 'ejs');    // Set the template engine
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
-}));    // Middleware for reading request body
+}));// Middleware for reading request body
+app.use(express.static(__dirname + '/controllers'));
+app.use(express.static(__dirname + '/views'));
 // This is an example of hooking up a request handler with a specific request
 // path and HTTP verb using the Express routing API.
 app.get('/hello', function(req, res) {
@@ -21,11 +22,11 @@ app.get('/profile', function(req, res) {
 });
 app.get('/login', function(req, res)
 {
-    res.render('logIn.ejs', {})
+    res.render('logIn', {})
 })
 app.get('/Registration', function(req, res)
 {
-    res.render('Registration.ejs', {})
+    res.render('Registration', {})
 })
 
 // // Example reading from the request query string of an HTTP get request.

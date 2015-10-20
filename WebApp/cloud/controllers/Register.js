@@ -1,13 +1,16 @@
 /**
  * Created by johnfranklin on 10/15/15.
  */
-angular.module('myApp').controller('Register', function(){
-    this.a
+angular.module('MyApp').controller('Register', function(){
     //Modified from Parse's example
+    this.username = "";
+    this.password1 = "";
+    this.password2 = "";
 
     this.createAccount = function() {
         if (this.password1 != this.password2) {
             //Send message saying the passwords don't match. implement later.
+            alert("Passwords don't match");
             return;
         }
 
@@ -30,7 +33,8 @@ angular.module('myApp').controller('Register', function(){
                 alert("Error: " + error.code + " " + error.message);
             }
         });
-        window.location.href = "/login#accepted"
+        console.log(user);
+        //window.location.href = "/login#accepted"
     }
 
 
