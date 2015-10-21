@@ -1,17 +1,17 @@
 
 // These two lines are required to initialize Express in Cloud Code.
- express = require('express');
- app = express();
-bodyParser = require('body-parser');
+express = require('express');
+app = express();
+//bodyParser = require('body-parser');
 // Global app configuration section
   // Specify the folder to find templates
+app.set('views', 'cloud/views');
 app.set('view engine', 'ejs');    // Set the template engine
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
+app.use(express.json());
+app.use(express.urlencoded({
     extended: true
 }));// Middleware for reading request body
-app.use(express.static(__dirname + '/controllers'));
-app.use(express.static(__dirname + '/views'));
+//app.use(express.static('public/controllers')); // this will make the project work when not deployed from parse
 // This is an example of hooking up a request handler with a specific request
 // path and HTTP verb using the Express routing API.
 app.get('/hello', function(req, res) {
@@ -24,7 +24,7 @@ app.get('/login', function(req, res)
 {
     res.render('logIn', {})
 })
-app.get('/Registration', function(req, res)
+app.get('/registration', function(req, res)
 {
     res.render('Registration', {})
 })
