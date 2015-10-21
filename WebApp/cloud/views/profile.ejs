@@ -1,0 +1,102 @@
+<!-- Refactor out the header and stick it in another file in the future. no need to have a million copies of this bar in each page.-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="tester.css">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+</head>
+<header>
+    <nav class="navbar navbar-inverse" role="navigation">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">CampusConnect</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Inbox <span class="sr-only">(current)</span></a></li>
+                    <li><a href="http://google.com">Sell</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Buy <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">One more separated link</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form class="navbar-form navbar-left" role="search">
+                    <div class="form-group">
+                        <input type="text" class="Form-Control" placeholder="Search">
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </form>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">Account</a></li>
+                    <li><a href="#">Help</a></li>
+                </ul>
+
+
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+</header>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-xsm-2 col-md-6">
+            <div class="thumbnail">
+                <img src="http://40.media.tumblr.com/1c19e7322e3c113145a427df1ee121cd/tumblr_nv99a51tJS1u5ilzwo1_1280.jpg" height = 500 width = 300 alt="...">
+
+                <div class="caption">
+                    <h3>John Franklin</h3>
+                    <p><a href="mailto:johnfranklin42@gmail.com">Email</a></p>
+                    <p><a href="http://www.example.com">Message Me</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xsm-2 col-md-6 ratingscontainer">
+            <%var mockratings = [{rating:5, description:"Great!"},{rating:3, description:"dress fit well despite being big boned"},{rating:2, description:"PRETTY GOOD"},{rating:4, description:"Ruler of Spaghettiland approves"},{rating:3, description:"INCOMPLETE. CAKE LACKED HUMAN SOUL"},{rating:5, description:"5/5 stars would suplex boulder again"},{rating:5, description:"Me and him really went places together 5/5"}]%>
+
+            <% var total = 0.0;
+            console.log(mockratings);
+            for(var i = 0; i < mockratings.length; i++){
+                total += mockratings[i].rating;
+            }
+            total /= mockratings.length; %>
+            <h2>Average Rating: <%=parseFloat(total).toFixed(2)%>/5</h2>
+            <%
+            for(var i = 0; i < mockratings.length; i++){%>
+            <div class="row panel panel-default">
+                <div class="col-md-2"><h2><%= mockratings[i].rating %>/5</h2></div>
+                <div class="col-md-10"><h3><%= mockratings[i].description %></h3></div>
+            </div><%}%>
+
+        </div>
+    </div>
+</div>
+</body>
