@@ -2,31 +2,32 @@
 // These two lines are required to initialize Express in Cloud Code.
 express = require('express');
 app = express();
-bodyParser = require('body-parser');
+try {//Try catch block here makes behavior on server and locally the same! no more commenting and uncommenting.
+    app.use(express.json())
+    app.use(express.urlencoded({extended: true}))
+}
+catch(e)//Only used locally. no impact to performance this way
+{
+    bodyParser = require('body-parser');
+    app.use(express.static('public'));
+    app.use(bodyParser.json());
+    app.use(bodyParser.urlencoded({extended: true}))
+}
+
 // Global app configuration section
   // Specify the folder to find templates
 app.set('views', 'cloud/views');
 app.set('view engine', 'ejs');    // Set the template engine
-app.use(
-    bodyParser
-    //express
-        .json());//swap comments for parse deploy
-app.use(
-    bodyParser
-    //express
-        .urlencoded({extended: true}));// Middleware for reading request body
-app.use(express.static('public')); // this will make the project work when not deployed from parse. comment before deploying
-// This is an example of hooking up a request handler with a specific request
-// path and HTTP verb using the Express routing API.
+
+//make sure to include these routes before the call with /*; it will lock out the other routes.
+//you don't need any special format for the ejs. it all goes through because local as an object has everything put into the brackets.
+app.get('/registration', function(req, res) {
+    res.render('index.ejs', { data: 'Congrats, you just set up your app!2'});
+});
 app.get('/*', function(req, res) {
-    res.render('index.ejs', {data:{}});
+    res.render('index.ejs');
 });
-app.get('/hello', function(req, res) {
-  res.render('index.ejs', { message: 'Congrats, you just set up your app!' });
-});//ns if this works. need to test
-app.get('/profile', function(req, res) {
-    res.render('index.ejs', { message: 'Congrats, you just set up your app!' });
-});
+
 
 // // Example reading from the request query string of an HTTP get request.
 // app.get('/test', function(req, res) {
