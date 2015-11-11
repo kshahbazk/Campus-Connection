@@ -1,0 +1,44 @@
+<!-- Refactor out the header and stick it in another file in the future. no need to have a million copies of this bar in each page.-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="tester.css">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-xsm-2 col-md-6">
+            <div class="thumbnail">
+                <img src="http://40.media.tumblr.com/1c19e7322e3c113145a427df1ee121cd/tumblr_nv99a51tJS1u5ilzwo1_1280.jpg" height = 500 width = 300 alt="...">
+
+                <div class="caption">
+                    <h3>John Franklin</h3>
+                    <p><a href="mailto:johnfranklin42@gmail.com">Email</a></p>
+                    <p><a href="http://www.example.com">Message Me</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xsm-2 col-md-6 ratingscontainer">
+
+            <h2>Average Rating: {{total | number : 2}}/5</h2>
+            <div class="row panel panel-default" ng-repeat="r in ratings">
+                <div class="col-md-2"><h2>{{r.rating}}/5</h2></div>
+                <div class="col-md-10"><h3>{{ r.description }}</h3></div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
