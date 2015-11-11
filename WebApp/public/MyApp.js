@@ -18,13 +18,18 @@ var app = angular.module('MyApp',["ui.router"])
             templateUrl: 'components/profile/profile.ejs',
             controller: 'profile'
 
+        }).state('product', {
+            url: '/product',
+            templateUrl: 'components/product/ProductPage.ejs',
+            controller: 'product'
+
         })
         .state('login', {
             url: '/login',
             templateUrl: 'components/login/logIn.ejs'
         })
         .state('registration', {
-            url: '/Registration',
+            url: '/registration',
             templateUrl: 'components/register/Registration.ejs',
             controller: 'Register'
         })

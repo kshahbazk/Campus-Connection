@@ -45,7 +45,7 @@
             Call serverInfo() and include serverInfo in the dependencies at the top of the controller to access in javascript files
             Can't be done elsewhere as this is the only page generated dynamically.
             */
-            return <%= data ? JSON.stringify(data) : "{}"%>;//works. define what you want to transfer as data in
+            return <%- locals ? JSON.stringify(locals) : "{}"%>;//works. define what you want to transfer as data in
         })
     </script>
     <script src="components/register/Register.js"></script>
