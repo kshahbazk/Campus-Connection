@@ -1,7 +1,7 @@
 /**
  * Created by johnfranklin on 10/15/15.
  */
-angular.module('MyApp').controller('Register', function(){
+angular.module('MyApp').controller('LogIn', function(){
     //Modified from Parse's example
     this.username = "";
     this.password1 = "";
@@ -13,7 +13,7 @@ angular.module('MyApp').controller('Register', function(){
             alert("Passwords don't match");
             return;
         }
-
+        console.log(this);
         var user = new Parse.User();
         user.set("username", this.username);
         user.set("password", this.password1);
@@ -22,7 +22,7 @@ angular.module('MyApp').controller('Register', function(){
         user.set("LastName", this.lName);
         //user.email Notification? figure this out after we get connected.
 
-// other fields can be set just like with Parse.Object
+        // other fields can be set just like with Parse.Object
 
         user.signUp(null, {
             success: function (user) {

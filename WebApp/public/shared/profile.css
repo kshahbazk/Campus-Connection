@@ -1,9 +1,9 @@
-ratingscontainer > div:nth-child(even) {
+.ratingscontainer > div:nth-child(even) {
     background-color: lightgray;
 }
 span.stars, span.stars span {
     display: block;
-    background: url(../stars.png) 0 -16px repeat-x;
+    background: url(../../cloud/stars.png) 0 -16px repeat-x;
     width: 80px;
     height: 16px;
 }
