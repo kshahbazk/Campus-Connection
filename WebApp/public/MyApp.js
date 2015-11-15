@@ -9,10 +9,6 @@ var app = angular.module('MyApp',["ui.router"])
     $stateProvider
 
         // HOME STATES AND NESTED VIEWS ========================================
-        .state({name: 'hello',
-            url: '/hello',
-            templateUrl: 'hello.ejs'
-        })
         .state('profile', {
             url: '/profile',
             templateUrl: 'components/profile/profile.ejs',
