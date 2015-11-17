@@ -7,12 +7,12 @@
 <div class="container">
     <div class="row">
         <div class="col-xsm-2 col-md-4">
-            <form class="form-signin" ng-controller="LogIn as log"  ng-submit="log.logIn()">
+            <form class="form-signin" ng-submit="logIn()">
                 <h2 class="form-signin-heading"><FONT COLOR="white">One23</FONT></h2>
                 <label for="inputEmail" class="sr-only" >Username</label>
-                <input type="text" id="inputEmail" class="form-control" ng-model="log.username" placeholder="Username" required>
+                <input type="text" id="inputEmail" class="form-control" ng-model="username" placeholder="Username" required>
                 <label for="inputPassword1" class="sr-only" >Password</label>
-                <input type="password" id="inputPassword1" class="form-control" ng-model="log.password" placeholder="Password" required>
+                <input type="password" id="inputPassword1" class="form-control" ng-model="password" placeholder="Password" required>
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
             </form>
         </div>
@@ -31,4 +31,3 @@
 
 
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
