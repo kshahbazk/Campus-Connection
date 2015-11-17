@@ -10,7 +10,7 @@ var app = angular.module('MyApp',["ui.router"])
         //There has to be some way to automatically generate these, outside of the title.
         // HOME STATES AND NESTED VIEWS ========================================
         .state('profile', {
-            url: '/profile',
+            url: '/profile?_id',
             templateUrl: 'components/profile/profile.ejs',
             controller: 'profile',
             title: 'User Profiles'

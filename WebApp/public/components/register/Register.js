@@ -3,7 +3,7 @@
  */
 angular.module('MyApp').controller('Register', function($scope){
     //Modified from Parse's example
-    //OK, I've finally figured out how this works. $scope refers to the scope for the function, while this is the scope for the function currently.
+    //OK, I've finally figured out how this works. $scope refers to the scope for the function, while this is the scope for the function currently...?
     var University = Parse.Object.extend("University")
     console.log("BREATHING");
     console.log(University);

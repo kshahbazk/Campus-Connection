@@ -1,25 +1,67 @@
-<body>
 <div class="container">
     <div class="row">
         <div class="col-xsm-2 col-md-6">
+            <button ng-cloak type="button" ng-click="editProfile()" class="btn btn-md btn-primary btn-block" ng-show="isCurrentUser">Edit Profile</button>
             <div class="thumbnail">
                 <img src="http://40.media.tumblr.com/1c19e7322e3c113145a427df1ee121cd/tumblr_nv99a51tJS1u5ilzwo1_1280.jpg" height = 500 width = 300 alt="...">
 
                 <div class="caption">
-                    <h3>John Franklin</h3>
-                    <p><a href="mailto:johnfranklin42@gmail.com">Email</a></p>
+                    <h3>{{user.attributes.universityPointer.attributes.name}}</h3>
+                    <h3>{{user.attributes.FirstName}} {{user.attributes.LastName}}</h3>
+                    <p><a href="mailto:{{user.attributes.email}}">Email</a></p>
                     <p><a href="http://www.example.com">Message Me</a></p>
                 </div>
             </div>
         </div>
-        <div class="col-xsm-2 col-md-6 ratingscontainer">
+        <div aria-hidden="true" aria-labelledby="myLargeModalLabel" class="modal fade bs-example-modal-lg" role="dialog" tabindex="-1">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="form-group" style="width: 50%; margin: 0 auto;">
+                        <form class="form-login ng-pristine ng-valid job-form center-block" ng-Submit="submit()" role="form">
+                            <h2 class="form-signin-heading">Review them!</h2>
 
-            <h2>Average Rating: {{total | number : 2}}/5</h2>
-            <div class="row panel panel-default" ng-repeat="r in ratings">
-                <div class="col-md-2"><h2>{{r.rating}}/5</h2></div>
-                <div class="col-md-10"><h3>{{ r.description }}</h3></div>
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    Rating(1-5)
+                                </div>
+                                <input class="form-control" ng-model="rev.attributes.rating" type="number" min="1" max="5" required>
+                            </div>
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    Title:
+                                </div>
+                                <input class="form-control" placeholder="Who and What" ng-model="rev.attributes.name" type="text" required>
+                            </div>
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    Review:
+                                </div>
+                                <textarea class="form-control" placeholder="" ng-model="rev.attributes.review" type="text" required></textarea>
+                            </div>
+                            <button class="btn btn-success btn-lg btn-block" type="submit">Submit</button>
+                        </form>
+                    </div>
+                </div>
             </div>
+        </div>
+        <div ng-cloak class="col-xsm-2 col-md-6 ratingscontainer">
+            <button ng-show="loaded && !isCurrentUser" class="btn btn-success btn-md btn-block" data-target=".bs-example-modal-lg" data-toggle="modal" type="button" ng-click="loadReview(blank)">
+                Leave Review
+            </button>
+            <h2 ng-show="loaded && !noreviews">Average Rating: {{total | number : 2}}/5</h2>
+            <h2 ng-show="loaded && noreviews">No Reviews! A blank slate.</h2>
+            <div class="row panel panel-default" ng-repeat="r in ratings">
+                <div class="col-md-3"><h2>{{r.attributes.userPointer.attributes.FirstName}} {{r.attributes.userPointer.attributes.LastName}}</h2></div>
+                <div class="col-md-2"><h2>{{r.attributes.rating}}/5</h2></div>
+                <div class="col-md-7" ng-show="r.attributes.userPointer.attributes.objectId != currentUser.attributes.objectId" ><h3>{{r.attributes.review}} </h3></div>
+                <div class="col-md-4" ng-show="r.attributes.userPointer.attributes.objectId == currentUser.attributes.objectId" ><h3>{{r.attributes.review}} </h3></div>
+                <div class="col-md-3" ng-show="r.attributes.userPointer.attributes.objectId == currentUser.attributes.objectId" ><button class="btn btn-success btn-md" data-target=".bs-example-modal-lg" ng-click="loadReview(r)" data-toggle="modal" type="button" >
+                            Edit Review
+                        </button></div>
+
+
+            </div>
+
         </div>
     </div>
 </div>
-</body>
