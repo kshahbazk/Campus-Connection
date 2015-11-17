@@ -22,10 +22,11 @@ var app = angular.module('MyApp',["ui.router"])
         })
         .state('login', {
             url: '/login',
-            templateUrl: 'components/login/logIn.ejs'
+            templateUrl: 'components/login/logIn.ejs',
+            controller: 'LogIn'
         })
-        .state('registration', {
-            url: '/registration',
+        .state('register', {
+            url: '/register',
             templateUrl: 'components/register/Registration.ejs',
             controller: 'Register'
         })
