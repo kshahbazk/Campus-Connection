@@ -8,7 +8,6 @@ angular.module('MyApp').controller('Register', function($scope){
     console.log("BREATHING");
     console.log(University);
     var query = new Parse.Query(University)
-    console.log(query);
 
     try{
     query.find({
