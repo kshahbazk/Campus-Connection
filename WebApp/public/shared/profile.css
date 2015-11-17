@@ -1,5 +1,5 @@
-.ratingscontainer > div:nth-child(even) {
-    background-color: lightgray;
+.ratingscontainer > div.panel-default:nth-child(even) {
+    background-color: #F5F5F5;
 }
 span.stars, span.stars span {
     display: block;
