@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="MyApp">
 <head>
+    <!--
+    index.ejs is the file that loads all other pages in this single page application.
+    We don't need a separate view folder for views in here, as this is really the only one that needs to be over here.
+    If you really want to pass something through to the angular through ejs and dynamic scripting, you'll need to refresh the page.
+    -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -47,13 +52,16 @@
          Call serverInfo() and include serverInfo in the dependencies at the top of the controller to access in javascript files
          Can't be done elsewhere as this is the only page generated dynamically.
          */
-        return <%- locals ? JSON.stringify(locals) : "{}"%>;//works. define what you want to transfer as data in
+        return <%- locals ? JSON.stringify(locals) : "{}"%>;//works. define what you want to transfer as data in those
     })
 </script>
 <script src="components/register/Register.js"></script>
 <script src="components/profile/profile.js"></script>
 <script src="components/login/login.js"></script>
-<script src="components/product/productController.js"></script>
+<script src="components/createAd/createAd.js"></script>
+<script src="components/viewAd/viewAd.js"></script>
+<script src="components/home/home.js"></script>\
+
 <script src="shared/headers/header.js"></script>
 </body>
 </html>
