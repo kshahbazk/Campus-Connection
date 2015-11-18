@@ -24,6 +24,7 @@ app.set('view engine', 'ejs');    // Set the template engine
 app.get('/register', function(req, res) {
     res.render('index.ejs', { data: 'Congrats, you just set up your app!2'});
 });
+
 conditionalRender = function(res,directory,filetoreturn,data){
     var temp = filetoreturn.split('.').pop();
     if(temp == "js" || temp == "css")//the file extension; prevents files from loading index.ejs instead of the javascript files

@@ -43,6 +43,7 @@ angular.module('MyApp').controller("profile", function($scope, $state, $statePar
         })
 
     }
+    //If user is looking at own profile
     if($stateParams._id) {
         var User = Parse.Object.extend("User")
         var q = new Parse.Query(User)
