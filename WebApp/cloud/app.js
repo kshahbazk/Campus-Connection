@@ -21,13 +21,34 @@ app.set('view engine', 'ejs');    // Set the template engine
 
 //make sure to include these routes before the call with /*; it will lock out the other routes.
 //you don't need any special format for the ejs. it all goes through because local as an object has everything put into the brackets.
-app.get('/registration', function(req, res) {
+app.get('/register', function(req, res) {
     res.render('index.ejs', { data: 'Congrats, you just set up your app!2'});
 });
-app.get('/*', function(req, res) {
-    res.render('index.ejs');
+conditionalRender = function(res,directory,filetoreturn,data){
+    var temp = filetoreturn.split('.').pop();
+    if(temp == "js" || temp == "css")//the file extension; prevents files from loading index.ejs instead of the javascript files
+        res.render(directory+"/"+filetoreturn, data)
+    else
+        res.render('index.ejs', data);
+}
+app.get('/', function(req,res){
+    res.redirect("profile")
+})
+/*
+These calls prevent the server from retrieving index.ejs when it wants a javascript or a css file.
+ */
+app.get('/:dir1/:dir2/:dir3/:file', function(req, res) {
+    conditionalRender(res,req.params.dir1+"/"+req.params.dir2+"/"+req.params.dir3, req.params.file, {})
 });
-
+app.get('/:dir1/:dir2/:file', function(req, res) {
+    conditionalRender(res,req.params.dir1+"/"+req.params.dir2, req.params.file, {})
+});
+app.get('/:dir1/:file', function(req, res) {
+    conditionalRender(res,req.params.dir1, req.params.file, {})
+});
+app.get('/:file', function(req, res) {
+    conditionalRender(res,"", req.params.file, {})
+});
 
 // // Example reading from the request query string of an HTTP get request.
 // app.get('/test', function(req, res) {
