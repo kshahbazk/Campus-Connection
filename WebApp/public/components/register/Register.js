@@ -13,7 +13,7 @@ angular.module('MyApp').controller('Register', function($scope){
     query.find({
         success: function (elems) {
             //$scope.universities = [];
-            //done this way to prevent calling a method over and over when the page updates
+            //This isn't necessary in the future. name is equivalent to r.attribute.name, no need for get
             $scope.updateUniversities(elems.map(function(r){return {text: r.get("name"), value: r}}));
 
         }})}
