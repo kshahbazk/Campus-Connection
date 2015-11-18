@@ -13,7 +13,6 @@ angular.module('MyApp').controller('login', function($scope,$state){
         Parse.User.logIn($scope.username, $scope.password, {
             success: function (user) {
                 // Hooray! Let them use the app now.
-                alert("IT WORKED");
                 console.log(Parse.User.current())
                 $state.go("profile")
             },

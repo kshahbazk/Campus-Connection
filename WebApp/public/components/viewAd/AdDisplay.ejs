@@ -10,13 +10,14 @@
 				<div class="thumbnail">
 				<img src="http://cdn.mos.techradar.com/art/games_consoles/Xbox%20One/Xbox%20One%20-%20one%20year%20on/XboxOneMain-1200-80.jpg" alt="...">
 				<div class="caption">
-				<h3>Xbox one</h3>
+					<!--Product information -->
+				<h3>{{ad.attributes.product}}</h3><!-- name-->
 				<p>
 
-					$350 USD<br>
-					Average price for item $365 USD
+					{{ad.attributes.price | currency}}<br><!-- price -->
+					Average price of the item: {{ad.attributes.productaverage}}<!-- (weighted?) average price?  -->
 				</p>
-				<p><a href="#" class="btn btn-primary" role="button">Buy </a> <a href="#" class="btn btn-primary" role="button">View Item Analysis</a></p>
+				<p><a href="#" class="btn btn-primary" role="button" >Buy </a> <a href="#" class="btn btn-primary" role="button">View Item Analysis</a></p>
 				</div>
 				</div>
 
@@ -29,28 +30,9 @@
 				<div class="panel panel-default">
 				<div class="panel-heading">Product Information</div>
 				<div class="panel-body">
-					The Xbox One Elite Console is the only console built with a Solid State Hybrid Drive (SSHD). The spacious 1TB SSHD delivers improved performance and stores your favorite games, including Xbox 360 titles.
+					{{ad.attributes.description}}
 				</div>
 				</div>
-
-				<div class="panel panel-default">
-				<div class="panel-heading">What's included</div>
-				<div class="panel-body">
-					1)Includes: 500GB hard drive Xbox One Console, full-game digital download of Gears of War: Ultimate Edition, newly updated Xbox One black wireless controller with a 3.5mm headset jack so you can plug in any compatible headset, AC Power Cable, and an HDMI Cable.<br>
-					<br>
-					2)Includes access to the entire Xbox 360 Gears of War collection to play on Xbox One at no additional cost if you play Gears of War: Ultimate Edition on Xbox Live before 12/31/2015.<br>
-					<br>
-					3)Includes early access to the Gears of War 4 Beta.<br>
-					<br>
-					4)Play five campaign chapters never released on console and experience competitive multiplayer in 60FPS with 19 maps and six game modes.<br>
-					<br>
-					5)Features the Superstar Cole multiplayer skin.<br>
-					<br>
-					6)Quickly switch between your games, live TV, and apps like Amazon Instant Video, Netflix, and HBO GO<br>
-				</div>
-				</div>
-
-				<div class="panel panel-default">
 				<div class="panel-heading">Seller reviews</div>
 				<div class="panel-body">
 					...
@@ -69,7 +51,7 @@
 
 <div class="container">
 <div class="jumbotron">
-	<h1>Other items being sold on campus</h1>
+	<h1>Other items being sold on campus</h1><!-- TF you want me to pull this from? -->
 	<div class="row">
 
 		<div class="col-xsm-2 col-md-4">
@@ -77,12 +59,13 @@
 		<p>
 			<div class="thumbnail">
 				<img src="http://www.portableone.com/images/macbook-pro-for-college.jpg" alt="...">
+				<!--How are we handling images?-->
 				<div class="caption">
 				<h3>MacBook pro</h3>
-		</p>
-		<p><a class="btn btn-primary btn-lg" href="http://facebook.com" role="button">Buy</a></p>
 				</div>
 			</div>
+		</p>
+		<p><a class="btn btn-primary btn-lg" href="http://facebook.com" role="button">Buy</a></p>
 		</div>
 
 
@@ -93,10 +76,11 @@
 				<img src="http://www.dfcd.net/projects/ti89/holster.jpg" alt="...">
 				<div class="caption">
 				<h3>TI-89</h3>
-		</p>
-		<p><a class="btn btn-primary btn-lg" href="http://facebook.com" role="button">Buy</a></p>
 				</div>
 			</div>
+		</p>
+		<p><a class="btn btn-primary btn-lg" href="http://facebook.com" role="button">Buy</a></p>
+
 		</div>
 
 
@@ -107,6 +91,8 @@
 				<img src="http://www5.pcmag.com/media/images/343056-lenovo-ideapad-yoga-2-pro-angle.jpg" alt="...">
 				<div class="caption">
 				<h3>Yoga Pro 2</h3>
+				</div>
+			</div>
 		</p>
 		<p><a class="btn btn-primary btn-lg" href="http://facebook.com" role="button">Buy</a></p>
 				</div>

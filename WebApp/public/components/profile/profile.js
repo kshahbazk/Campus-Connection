@@ -49,7 +49,7 @@ angular.module('MyApp').controller("profile", function($scope, $state, $statePar
         var q = new Parse.Query(User)
         q.equalTo("objectId",$stateParams._id)
         q.include("universityPointer")
-        q.first({
+        q.find({
             success: function (elem) {
                 $scope.$apply(function() {
                     $scope.user = elem

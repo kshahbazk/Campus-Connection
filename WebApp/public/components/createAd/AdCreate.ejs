@@ -1,0 +1,35 @@
+<form class="form-login ng-pristine ng-valid job-form center-block" ng-Submit="persistAd()" role="form">
+    <h2 class="form-signin-heading">Make an Ad. Sell Stuff</h2>
+    <div class="input-group">
+        <div class="input-group-addon">
+            Product:
+        </div>
+        <!--Hm. actually, it should never reference productPointer; if the user changes the name the want to change the product associated with it.-->
+        <input class="form-control" placeholder="" ng-model="ad.attributes.productName" type="text" required>
+    </div>
+    <div class="input-group"><!--Hm. desired behavior: select product, fills in price? how to do-->
+        <div class="input-group-addon">
+            Price:
+        </div>
+        <input class="form-control" ng-model="ad.attributes.price" type="text" required currency-formatter>
+    </div>
+    <div class="input-group">
+        <div class="input-group-addon">
+            Title:
+        </div>
+        <input class="form-control" placeholder="" ng-model="ad.attributes.title" type="text" required>
+    </div>
+    <div class="input-group">
+        <div class="input-group-addon">
+            Image:
+        </div>
+        <input class="form-control" type="file" fileread="ad.attributes.image.attributes.data" required><!--fileread instead of ng.model to use the fileread directive-->
+    </div>
+    <div class="input-group">
+        <div class="input-group-addon">
+            Description:
+        </div>
+        <textarea class="form-control" placeholder="" ng-model="ad.attributes.description" type="text" required></textarea>
+    </div>
+    <button class="btn btn-success btn-lg btn-block" type="submit">Submit</button>
+</form>
