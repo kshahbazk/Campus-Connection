@@ -17,7 +17,7 @@ var app = angular.module('MyApp',["ui.router"])
 
         }).state('product', {
             url: '/product',
-            templateUrl: 'components/product/ProductPage.ejs',
+            templateUrl: 'components/product/AdPage.ejs',
             controller: 'productController',
             title: 'Product'
 
