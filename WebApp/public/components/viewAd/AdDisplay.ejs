@@ -11,13 +11,13 @@
 				<img ng-show="imgurl" src="{{imgurl}}" alt="...">
 				<div class="caption">
 					<!--Product information -->
-				<h3>{{ad.attributes.product}}</h3><!-- name-->
+				<h3>{{ad.attributes.title}}</h3><!-- name-->
 				<p>
 
 					{{ad.attributes.price | currency}}<br><!-- price -->
-					Average price of the item: {{ad.attributes.productPointer.attributes.weighterAverage}}<!-- (weighted?) average price?  -->
+					Average price of the item: {{ad.attributes.productPointer.attributes.weightedAverage | currency}}<!-- (weighted?) average price?  -->
 				</p>
-				<p><a href="#" class="btn btn-primary" role="button" >Buy </a> <a href="#" class="btn btn-primary" role="button">View Item Analysis</a></p>
+				<p><a href="#" class="btn btn-primary" role="button" >Buy </a></p>
 				</div>
 				</div>
 
@@ -33,7 +33,8 @@
 					{{ad.attributes.description}}
 				</div>
 				</div>
-				<div class="panel-heading">Seller reviews</div>
+				<div class="panel panel-default">
+				<div class="panel-heading">Seller reviews <a href="/profile?_id={{r.attributes.userPointer.id}}">Profile</a></div>
 				<div class="panel-body">
 					<div ng-cloak class="col-xsm-2 col-md-6 ratingscontainer">
 						<h2 ng-show="loaded && !noreviews">Average Rating: {{total | number : 2}}/5</h2>
@@ -47,6 +48,7 @@
 					</div>
 				</div>
 				</div>
+			</div>
 
 			</div>
 

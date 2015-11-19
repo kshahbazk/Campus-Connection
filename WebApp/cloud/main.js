@@ -1,17 +1,17 @@
 var app = require('cloud/app.js');
 var _ = require("cloud/npm/lodash/lodash");
 
-Parse.Cloud.beforeSave("createAd", function(request, response) {
+Parse.Cloud.beforeSave("Ad", function(request, response) {
   var ad = request.object;
 
   var toLowerCase = function(w) { return w.toLowerCase(); };
 
-  var words = ad.get("title").split(/b/);
+  var words = ad.get("title").split(" ");
   words = _.map(words, toLowerCase);
 
 
 
-  post.set("searchArray", words);
+  ad.set("searchArray", words);
   response.success();
 });
 

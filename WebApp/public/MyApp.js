@@ -35,6 +35,10 @@ var app = angular.module('MyApp',["ui.router"])
             templateUrl: 'components/login/logIn.ejs',
             controller: 'login',
             title: 'Log In'
+        }).state('LandingPage', {
+            url: '/LandingPage',
+            templateUrl: 'components/LandingPage/LandingPage.ejs',
+            title: 'Log In'
         }).state('LogOut', {
             url: '/LogOut',
             template: '<p>Logging Out...</p>',

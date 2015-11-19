@@ -33,7 +33,7 @@ conditionalRender = function(res,directory,filetoreturn,data){
         res.render('index.ejs', data);
 }
 app.get('/', function(req,res){
-    res.redirect("profile")
+    res.redirect("LandingPage")
 })
 /*
 These calls prevent the server from retrieving index.ejs when it wants a javascript or a css file.
