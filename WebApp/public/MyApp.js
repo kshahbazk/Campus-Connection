@@ -35,6 +35,11 @@ var app = angular.module('MyApp',["ui.router"])
             templateUrl: 'components/login/logIn.ejs',
             controller: 'login',
             title: 'Log In'
+        }).state('LogOut', {
+            url: '/LogOut',
+            template: '<p>Logging Out...</p>',
+            controller: 'LogOut',
+            title: 'Goodbye'
         })
         .state('register', {
             url: '/register',
@@ -94,21 +99,3 @@ app.directive('currencyFormatter', ['$filter', function ($filter) {
 }]);
 //Once more liberated from stack exchange. handles filereads.
 // http://stackoverflow.com/questions/17063000/ng-model-for-input-type-file
-app.directive("fileread", [function () {
-    return {
-        scope: {
-            fileread: "="
-        },
-        link: function (scope, element, attributes) {
-            element.bind("change", function (changeEvent) {
-                var reader = new FileReader();
-                reader.onload = function (loadEvent) {
-                    scope.$apply(function () {
-                        scope.fileread = loadEvent.target.result;
-                    });
-                }
-                reader.readAsDataURL(changeEvent.target.files[0]);
-            });
-        }
-    }
-}]);

@@ -23,7 +23,7 @@
         <div class="input-group-addon">
             Image:
         </div>
-        <input class="form-control" type="file" fileread="ad.attributes.image.attributes.data" required><!--fileread instead of ng.model to use the fileread directive-->
+        <input type="file" name="file" onchange="angular.element(this).scope().saveFile(this.files)"/>
     </div>
     <div class="input-group">
         <div class="input-group-addon">

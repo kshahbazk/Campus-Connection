@@ -17,7 +17,7 @@ angular.module('MyApp').controller("profile", function($scope, $state, $statePar
                 $scope.total = 0.0;
                 $scope.ratings = elems
 
-            //console.log(ratings);
+                //console.log(ratings);
                 if($scope.ratings.length <= 0)
                 {
                     $scope.noreviews=true;
@@ -43,13 +43,12 @@ angular.module('MyApp').controller("profile", function($scope, $state, $statePar
         })
 
     }
-    //If user is looking at own profile
     if($stateParams._id) {
         var User = Parse.Object.extend("User")
         var q = new Parse.Query(User)
         q.equalTo("objectId",$stateParams._id)
         q.include("universityPointer")
-        q.find({
+        q.first({
             success: function (elem) {
                 $scope.$apply(function() {
                     $scope.user = elem

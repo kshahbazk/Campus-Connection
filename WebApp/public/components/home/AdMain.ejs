@@ -20,7 +20,7 @@
                 <div class="table-responsive">
                     <table class="table table-striped">
                         <thead>
-                        <tr ng-repeat="">
+                        <tr>
                             <th class="col-md-1">Date</th>
                             <th class="col-md-1">Price</th>
                             <th class="col-md-1">Location</th>
@@ -29,28 +29,13 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>10/15/15</td>
-                            <td>$20</td>
-                            <td>SJSU</td>
-                            <td><a href="#">Xbox</a></td>
+                        <tr ng-repeat="ad in ads">
+                            <td>{{ad.createdAt | date : 'shortDate'}}</td>
+                            <td>{{ad.attributes.price}}</td>
+                            <td>{{ad.attributes.userPointer.attributes.universityPointer.attributes.name}}</td>
+                            <td><a href="/viewAd?_id={{ad.id}}">{{ad.attributes.title}}</a></td>
 
                         </tr>
-                        <tr>
-                            <td>10/10/15</td>
-                            <td>$35</td>
-                            <td>SJSU</td>
-                            <td><a href="#">Xbox One</a></td>
-                        </tr>
-                        <tr>
-                            <td>10/10/15</td>
-                            <td>$12</td>
-                            <td>SJSU</td>
-                            <td> <a href="#">Xbox One</a> </td>
-
-                        </tr>
-
-
                         </tbody>
                     </table>
                 </div>
