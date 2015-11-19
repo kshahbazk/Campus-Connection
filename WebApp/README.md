@@ -16,11 +16,21 @@
   Documentation will be available on the github repo on the wiki.
   the github for this project is https://github.com/kshahbazk/Campus-Connection
 
+  Installation Direction
+  ----------------------
+
+  In order to run our project, from the main directory in a terminal window run node cloud/app.js .
+  
+  Make sure to install node and onto your computer.
+
+  You should open it in Safari for testing purposes if you want to run it locally;
+  if you want to check it on other browsers just go to our website at campusconnection.parseapp.com .
+
 
   Authors
   --------
 
      o John Franklin
      o Atif Khan
-     o Shahzeb Khan
+     o Shahbaz Khan
      o Enrique Padilla
