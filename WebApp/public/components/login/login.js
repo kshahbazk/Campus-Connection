@@ -14,7 +14,7 @@ angular.module('MyApp').controller('login', function($scope,$state){
             success: function (user) {
                 // Hooray! Let them use the app now.
                 console.log(Parse.User.current())
-                $state.go("profile")
+                document.location.href = "/profile"
             },
             error: function (user, error) {
                 // Show the error message somewhere and let the user try again.

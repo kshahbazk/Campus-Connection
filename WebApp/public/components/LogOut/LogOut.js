@@ -3,7 +3,6 @@
  */
 angular.module("MyApp").controller("LogOut",function($state){
         Parse.User.logOut()
-        $state.go("login",{}, {reload: true})
-
+        document.location.href = "/login"
     }
 )
