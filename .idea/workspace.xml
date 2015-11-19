@@ -2,8 +2,160 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c28bc1d0-0b3d-428a-b853-b5f7126f8f3f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebApp/cloud/views/AdMain.ejs" afterPath="$PROJECT_DIR$/WebApp/cloud/views/AdMain.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/firebug-lite/skin/xp/blank.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/firebug-lite/skin/xp/buttonBg.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/firebug-lite/skin/xp/buttonBgHover.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/firebug-lite/skin/xp/detach.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/firebug-lite/skin/xp/detachHover.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/firebug-lite/skin/xp/disable.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/firebug-lite/skin/xp/disable.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/firebug-lite/skin/xp/disableHover.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/firebug-lite/skin/xp/disableHover.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/firebug-lite/skin/xp/down.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/firebug-lite/skin/xp/downActive.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/firebug-lite/skin/xp/downHover.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/firebug-lite/skin/xp/errorIcon-sm.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/firebug-lite/skin/xp/errorIcon.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/firebug-lite/skin/xp/errorIcon.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/firebug-lite/skin/xp/firebug.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/firebug-lite/skin/xp/group.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/firebug-lite/skin/xp/infoIcon.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/firebug-lite/skin/xp/infoIcon.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/firebug-lite/skin/xp/loading_16.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/firebug-lite/skin/xp/min.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/firebug-lite/skin/xp/minHover.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/benchmark.js/nano.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/firebug-lite/skin/xp/off.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/firebug-lite/skin/xp/offHover.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/firebug-lite/skin/xp/pixel_transparent.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/firebug-lite/skin/xp/search.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/firebug-lite/skin/xp/search.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/firebug-lite/skin/xp/shadow.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/firebug-lite/skin/xp/shadow2.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/firebug-lite/skin/xp/shadowAlpha.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/firebug-lite/skin/xp/sprite.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/firebug-lite/skin/xp/tabHoverLeft.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/firebug-lite/skin/xp/tabHoverMid.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/firebug-lite/skin/xp/tabHoverRight.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/firebug-lite/skin/xp/tabLeft.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/firebug-lite/skin/xp/tabMenuCheckbox.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/firebug-lite/skin/xp/tabMenuPin.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/firebug-lite/skin/xp/tabMenuRadio.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/firebug-lite/skin/xp/tabMenuTarget.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/firebug-lite/skin/xp/tabMenuTargetHover.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/firebug-lite/skin/xp/tabMid.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/firebug-lite/skin/xp/tabRight.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/firebug-lite/skin/xp/textEditorBorders.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/firebug-lite/skin/xp/textEditorBorders.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/firebug-lite/skin/xp/textEditorCorners.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/firebug-lite/skin/xp/textEditorCorners.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/firebug-lite/skin/xp/titlebarMid.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/firebug-lite/skin/xp/toolbarMid.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/firebug-lite/skin/xp/tree_close.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/firebug-lite/skin/xp/tree_open.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/firebug-lite/skin/xp/twistyClosed.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/firebug-lite/skin/xp/twistyOpen.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/firebug-lite/skin/xp/up.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/firebug-lite/skin/xp/upActive.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/firebug-lite/skin/xp/upHover.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/firebug-lite/skin/xp/warningIcon.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/firebug-lite/skin/xp/warningIcon.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/.editorconfig" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/.gitattributes" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/.jscsrc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/.travis.yml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/public/components/createAd/AdCreate.ejs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/CODE_OF_CONDUCT.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/CONTRIBUTING.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/backbone/LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/benchmark.js/LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/underscore/LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/public/components/LandingPage/LandingPage.ejs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/public/components/LogOut/LogOut.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/doc/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/underscore/test/arrays.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/test/backbone.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/backbone/backbone.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/lib/fp/base.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/benchmark.js/benchmark.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/lib/fp/bower.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/bower.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/lib/fp/build.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/lib/main/build.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/underscore/test/chaining.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/backbone/test/collection.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/underscore/test/collections.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/public/components/createAd/createAd.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/underscore/test/cross-document.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/firebug-lite/skin/xp/debugger.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/backbone/test/setup/dom-setup.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/backbone/test/setup/environment.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/backbone/test/events.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/firebug-lite/skin/xp/firebug-1.3a2.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/firebug-lite/src/firebug-lite-debug.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/firebug-lite/skin/xp/firebug.IE6.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/firebug-lite/skin/xp/firebug.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/firebug-lite/skin/xp/firebug.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/lib/fp/fp.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/underscore/test/functions.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/public/components/home/home.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/firebug-lite/skin/xp/html.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/index.ejs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/perf/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/test/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/json-js/json2.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/firebug-lite/license.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/dist/lodash.core.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/dist/lodash.core.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/dist/lodash.fp.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/dist/lodash.fp.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/lodash.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/dist/lodash.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/dist/lodash.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/lib/fp/mapping.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/lib/common/minify.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/backbone/test/model.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/backbone/test/noconflict.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/lib/fp/node.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/underscore/test/objects.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/perf/asset/perf-ui.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/perf/perf.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/firebug-lite/skin/xp/roundCorner.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/backbone/test/router.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/perf/run-perf.sh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/test/run-test.sh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/test/saucelabs.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/backbone/test/sync.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/test/asset/test-ui.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/test/test.fp.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/test/test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/lib/common/uglify.options.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/underscore/underscore-min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/test/underscore.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/underscore/underscore.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/lib/fp/util.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/underscore/test/utility.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/vendor/backbone/test/view.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/public/components/viewAd/viewAd.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/cloud/npm/lodash/test/asset/worker.js" />
+      <change type="DELETED" beforePath="C:\Users\Wiki\Campus-Connection\WebApp\cloud\views\hello.ejs" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Wiki\Campus-Connection\WebApp\cloud\views\index.ejs" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Wiki\Campus-Connection\WebApp\public\components\product\productController.js" afterPath="" />
+      <change type="MOVED" beforePath="C:\Users\Wiki\Campus-Connection\WebApp\cloud\views\AdMain.ejs" afterPath="$PROJECT_DIR$/WebApp/public/components/home/AdMain.ejs" />
+      <change type="MOVED" beforePath="C:\Users\Wiki\Campus-Connection\WebApp\public\components\product\ProductPage.ejs" afterPath="$PROJECT_DIR$/WebApp/public/components/viewAd/AdDisplay.ejs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebApp/public/MyApp.js" afterPath="$PROJECT_DIR$/WebApp/public/MyApp.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebApp/public/components/register/Register.js" afterPath="$PROJECT_DIR$/WebApp/public/components/register/Register.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebApp/cloud/app.js" afterPath="$PROJECT_DIR$/WebApp/cloud/app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebApp/public/shared/headers/header.ejs" afterPath="$PROJECT_DIR$/WebApp/public/shared/headers/header.ejs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebApp/public/shared/headers/header.js" afterPath="$PROJECT_DIR$/WebApp/public/shared/headers/header.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebApp/public/components/login/login.js" afterPath="$PROJECT_DIR$/WebApp/public/components/login/login.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebApp/cloud/main.js" afterPath="$PROJECT_DIR$/WebApp/cloud/main.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebApp/public/components/profile/profile.ejs" afterPath="$PROJECT_DIR$/WebApp/public/components/profile/profile.ejs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebApp/public/components/profile/profile.js" afterPath="$PROJECT_DIR$/WebApp/public/components/profile/profile.js" />
     </list>
     <ignored path="Campus-Connection.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -24,26 +176,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="hello.ejs" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/WebApp/cloud/views/hello.ejs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.857143">
-              <caret line="10" column="7" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AdMain.ejs" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/WebApp/cloud/views/AdMain.ejs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
-              <caret line="0" column="42" selection-start-line="0" selection-start-column="42" selection-end-line="0" selection-end-column="42" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WebApp/cloud/app.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -58,7 +190,7 @@
         <entry file="file://$PROJECT_DIR$/WebApp/public/MyApp.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="52" column="33" selection-start-line="52" selection-start-column="33" selection-end-line="52" selection-end-column="33" />
+              <caret line="52" column="10" selection-start-line="52" selection-start-column="10" selection-end-line="52" selection-end-column="10" />
               <folding />
             </state>
           </provider>
@@ -77,7 +209,7 @@
       <file leaf-file-name="profile.ejs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WebApp/public/components/profile/profile.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
+            <state vertical-scroll-proportion="0.0">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
@@ -104,11 +236,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Registration.ejs" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Registration.ejs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WebApp/public/components/register/Registration.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.9860558">
+            <state vertical-scroll-proportion="-22.0">
               <caret line="30" column="15" selection-start-line="30" selection-start-column="15" selection-end-line="30" selection-end-column="15" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LandingPage.ejs" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/WebApp/public/components/LandingPage/LandingPage.ejs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="1.8406374">
+              <caret line="56" column="7" selection-start-line="56" selection-start-column="7" selection-end-line="56" selection-end-column="7" />
               <folding />
             </state>
           </provider>
@@ -146,6 +288,7 @@
         <option value="$PROJECT_DIR$/WebApp/cloud/views/Registration.ejs" />
         <option value="$PROJECT_DIR$/WebApp/cloud/app.js" />
         <option value="$PROJECT_DIR$/WebApp/cloud/views/AdMain.ejs" />
+        <option value="$PROJECT_DIR$/WebApp/public/components/LandingPage/LandingPage.ejs" />
       </list>
     </option>
   </component>
@@ -184,6 +327,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -304,6 +448,28 @@
               <option name="myItemId" value="components" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Campus-Connection" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Campus-Connection" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WebApp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="register" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
@@ -356,6 +522,10 @@
               <option name="myItemId" value="components" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="login" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -379,7 +549,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="login" />
+              <option name="myItemId" value="LandingPage" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -403,7 +573,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -498,12 +667,11 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-14" y="0" width="3215" height="1714" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32990655" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2585611" sideWeight="0.4902439" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2585611" sideWeight="0.4902439" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25793383" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -511,6 +679,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2542056" sideWeight="0.5097561" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -563,10 +732,58 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/WebApp/cloud/views/hello.ejs">
+    <entry file="file://$PROJECT_DIR$/WebApp/cloud/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="7" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
+          <caret line="49" column="1" selection-start-line="49" selection-start-column="1" selection-end-line="49" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebApp/public/MyApp.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="52" column="10" selection-start-line="52" selection-start-column="10" selection-end-line="52" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebApp/public/components/login/login.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebApp/public/components/profile/profile.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebApp/public/components/profile/profile.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebApp/public/components/register/Register.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebApp/public/components/register/Registration.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -583,15 +800,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebApp/cloud/views/hello.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="7" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -607,15 +815,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebApp/cloud/views/hello.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="7" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -631,15 +830,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebApp/cloud/views/hello.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -655,15 +845,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebApp/cloud/views/hello.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -671,14 +852,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebApp/cloud/views/hello.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -702,7 +875,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -714,26 +886,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebApp/cloud/views/hello.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.857143">
-          <caret line="10" column="7" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/WebApp/public/MyApp.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="52" column="33" selection-start-line="52" selection-start-column="33" selection-end-line="52" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebApp/cloud/views/AdMain.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0">
-          <caret line="0" column="42" selection-start-line="0" selection-start-column="42" selection-end-line="0" selection-end-column="42" />
+          <caret line="52" column="10" selection-start-line="52" selection-start-column="10" selection-end-line="52" selection-end-column="10" />
           <folding />
         </state>
       </provider>
@@ -742,7 +898,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -790,8 +945,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/WebApp/public/components/register/Registration.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9860558">
+        <state vertical-scroll-proportion="-22.0">
           <caret line="30" column="15" selection-start-line="30" selection-start-column="15" selection-end-line="30" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebApp/public/components/LandingPage/LandingPage.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.8406374">
+          <caret line="56" column="7" selection-start-line="56" selection-start-column="7" selection-end-line="56" selection-end-column="7" />
           <folding />
         </state>
       </provider>

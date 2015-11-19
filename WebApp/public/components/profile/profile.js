@@ -17,7 +17,7 @@ angular.module('MyApp').controller("profile", function($scope, $state, $statePar
                 $scope.total = 0.0;
                 $scope.ratings = elems
 
-            //console.log(ratings);
+                //console.log(ratings);
                 if($scope.ratings.length <= 0)
                 {
                     $scope.noreviews=true;

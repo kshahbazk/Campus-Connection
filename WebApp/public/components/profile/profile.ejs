@@ -55,7 +55,7 @@
                 <div class="col-md-2"><h2>{{r.attributes.rating}}/5</h2></div>
                 <div class="col-md-7" ng-show="r.attributes.userPointer.attributes.objectId != currentUser.attributes.objectId" ><h3>{{r.attributes.review}} </h3></div>
                 <div class="col-md-4" ng-show="r.attributes.userPointer.attributes.objectId == currentUser.attributes.objectId" ><h3>{{r.attributes.review}} </h3></div>
-                <div class="col-md-3" ng-show="r.attributes.userPointer.attributes.objectId == currentUser.attributes.objectId" ><button class="btn btn-success btn-md" data-target=".bs-example-modal-lg" ng-click="loadReview(r)" data-toggle="modal" type="button" >
+                <div class="col-md-3" ng-show="r.attributes.userPointer.attributes.objectId == currentUser.attributes.objectId" ><button class="btn btn-success btn-md" data-target=".bs-example-modal-lg" ng-click="loadReview(r)" data-toggle="modal" style="margin-top:30px"type="button" >
                             Edit Review
                         </button></div>
 

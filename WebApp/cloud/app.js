@@ -16,14 +16,15 @@ catch(e)//Only used locally. no impact to performance this way
 
 // Global app configuration section
   // Specify the folder to find templates
-app.set('views', 'cloud/views');
+app.set('views', 'cloud');//Screw it. no more confusing views folder in cloud.
 app.set('view engine', 'ejs');    // Set the template engine
 
 //make sure to include these routes before the call with /*; it will lock out the other routes.
 //you don't need any special format for the ejs. it all goes through because local as an object has everything put into the brackets.
 app.get('/register', function(req, res) {
-    res.render('index.ejs', { data: 'Congrats, you just set up your app!2'});
+    res.render('index.ejs', { data: 'Congrats, you just set up your app!'});
 });
+
 conditionalRender = function(res,directory,filetoreturn,data){
     var temp = filetoreturn.split('.').pop();
     if(temp == "js" || temp == "css")//the file extension; prevents files from loading index.ejs instead of the javascript files
@@ -32,7 +33,7 @@ conditionalRender = function(res,directory,filetoreturn,data){
         res.render('index.ejs', data);
 }
 app.get('/', function(req,res){
-    res.redirect("profile")
+    res.redirect("LandingPage")
 })
 /*
 These calls prevent the server from retrieving index.ejs when it wants a javascript or a css file.

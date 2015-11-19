@@ -1,20 +1,19 @@
 /**
  * Created by johnfranklin on 10/15/15.
  */
-angular.module('MyApp').controller('Register', function($scope){
+angular.module('MyApp').controller('Register', function($scope, $state){
     //Modified from Parse's example
     //OK, I've finally figured out how this works. $scope refers to the scope for the function, while this is the scope for the function currently...?
     var University = Parse.Object.extend("University")
     console.log("BREATHING");
-    console.log(University);
+    //console.log(University);
     var query = new Parse.Query(University)
-    console.log(query);
 
     try{
     query.find({
         success: function (elems) {
             //$scope.universities = [];
-            //done this way to prevent calling a method over and over when the page updates
+            //This isn't necessary in the future. name is equivalent to r.attribute.name, no need for get
             $scope.updateUniversities(elems.map(function(r){return {text: r.get("name"), value: r}}));
 
         }})}
@@ -54,7 +53,7 @@ angular.module('MyApp').controller('Register', function($scope){
         user.signUp(null, {
             success: function (user) {
                 // Hooray! Let them use the app now.
-
+                $state.go("login")
             },
             error: function (user, error) {
                 // Show the error message somewhere and let the user try again.

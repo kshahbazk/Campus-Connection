@@ -15,18 +15,35 @@ var app = angular.module('MyApp',["ui.router"])
             controller: 'profile',
             title: 'User Profiles'
 
-        }).state('product', {
-            url: '/product',
-            templateUrl: 'components/product/ProductPage.ejs',
-            controller: 'productController',
-            title: 'Product'
-
-        })
-        .state('login', {
+        }).state('home', {
+            url: '/home',
+            templateUrl: 'components/home/AdMain.ejs',
+            controller: 'home',
+            title: 'Ad'
+        }).state('viewAd', {
+            url: '/viewAd?_id',
+            templateUrl: 'components/viewAd/AdDisplay.ejs',
+            controller: 'viewAd',
+            title: 'Ad'
+        }).state('createAd', {
+            url: '/createAd?_id',
+            templateUrl: 'components/createAd/AdCreate.ejs',
+            controller: 'createAd',
+            title: 'Make Your Ad'
+        }).state('login', {
             url: '/login',
             templateUrl: 'components/login/logIn.ejs',
             controller: 'login',
             title: 'Log In'
+        }).state('LandingPage', {
+            url: '/LandingPage',
+            templateUrl: 'components/LandingPage/LandingPage.ejs',
+            title: 'Log In'
+        }).state('LogOut', {
+            url: '/LogOut',
+            template: '<p>Logging Out...</p>',
+            controller: 'LogOut',
+            title: 'Goodbye'
         })
         .state('register', {
             url: '/register',
@@ -57,4 +74,32 @@ app.directive('updateTitle', ['$rootScope', '$timeout',
         };
     }
 ]);
+//Liberated from stackExchange. Annoying problem that isn't the focus of this course.
+// http://stackoverflow.com/questions/23927695/angularjs-currency-formatting-in-input-box
+app.directive('currencyFormatter', ['$filter', function ($filter) {
 
+
+    formatter = function (num) {
+        return $filter('currency')(num);
+    };
+
+    return {
+        restrict: 'A',
+        require: 'ngModel',
+        link: function (scope, element, attr, ngModel) {
+            ngModel.$parsers.push(function (str) {
+                return str ? Number(str) : '';
+            });
+            ngModel.$formatters.push(formatter);
+
+            element.bind('blur', function() {
+                element.val(formatter(ngModel.$modelValue))
+            });
+            element.bind('focus', function () {
+                element.val(ngModel.$modelValue);
+            });
+        }
+    };
+}]);
+//Once more liberated from stack exchange. handles filereads.
+// http://stackoverflow.com/questions/17063000/ng-model-for-input-type-file

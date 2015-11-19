@@ -8,16 +8,15 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">CampusConnect</a>
+            <a class="navbar-brand" href="/LandingPage">CampusConnect</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Inbox <span class="sr-only">(current)</span></a></li>
-                <li><a href="/product">Sell</a></li>
+                <li><a href="/createAd">Sell</a></li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Buy <span class="caret"></span></a>
+                    <a href="/home" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Buy <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="#">Action</a></li>
                         <li><a href="#">Another action</a></li>
@@ -36,8 +35,10 @@
                 <button type="submit" class="btn btn-default">Submit</button>
             </form>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="/profile">Account</a></li>
-                <li><a href="#">Help</a></li>
+                <li ng-show="user"><a href="/profile">{{user.attributes.FirstName}} {{user.attributes.LastName}}</a></li>
+                <li ng-show="user"><a href="/LogOut">Log Out</a></li>
+                <li ng-show="!user"><a href="/login">Log In</a></li>
+                <li ng-show="!user"><a href="/register">Register</a></li>
             </ul>
             </li>
             </ul>
