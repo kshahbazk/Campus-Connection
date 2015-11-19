@@ -8,7 +8,7 @@
 
 			<div class="col-xsm-2 col-md-2">
 				<div class="thumbnail">
-				<img src="http://cdn.mos.techradar.com/art/games_consoles/Xbox%20One/Xbox%20One%20-%20one%20year%20on/XboxOneMain-1200-80.jpg" alt="...">
+				<img ng-show="imgurl" src="{{imgurl}}" alt="...">
 				<div class="caption">
 					<!--Product information -->
 				<h3>{{ad.attributes.product}}</h3><!-- name-->
@@ -35,7 +35,16 @@
 				</div>
 				<div class="panel-heading">Seller reviews</div>
 				<div class="panel-body">
-					...
+					<div ng-cloak class="col-xsm-2 col-md-6 ratingscontainer">
+						<h2 ng-show="loaded && !noreviews">Average Rating: {{total | number : 2}}/5</h2>
+						<h2 ng-show="loaded && noreviews">No Reviews! A blank slate.</h2>
+						<div class="row panel panel-default" ng-repeat="r in ratings">
+							<div class="col-md-3"><h2>{{r.attributes.userPointer.attributes.FirstName}} {{r.attributes.userPointer.attributes.LastName}}</h2></div>
+							<div class="col-md-2"><h2>{{r.attributes.rating}}/5</h2></div>
+							<div class="col-md-7"  ><h3>{{r.attributes.review}} </h3></div>
+						</div>
+
+					</div>
 				</div>
 				</div>
 
