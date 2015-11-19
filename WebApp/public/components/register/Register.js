@@ -1,7 +1,7 @@
 /**
  * Created by johnfranklin on 10/15/15.
  */
-angular.module('MyApp').controller('Register', function($scope){
+angular.module('MyApp').controller('Register', function($scope, $state){
     //Modified from Parse's example
     //OK, I've finally figured out how this works. $scope refers to the scope for the function, while this is the scope for the function currently...?
     var University = Parse.Object.extend("University")
@@ -53,7 +53,7 @@ angular.module('MyApp').controller('Register', function($scope){
         user.signUp(null, {
             success: function (user) {
                 // Hooray! Let them use the app now.
-
+                $state.go("login")
             },
             error: function (user, error) {
                 // Show the error message somewhere and let the user try again.

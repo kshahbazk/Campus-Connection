@@ -6,6 +6,7 @@ angular.module("MyApp").controller("home", function($scope,$timeout){
     var q = new Parse.Query(Ad)
     q.include("userPointer")
     q.include("userPointer.universityPointer")
+    q.ascending("createdAt");
     q.find({success:function(elems){
         //$timeout(
             $scope.$apply(function(){$scope.ads = elems})

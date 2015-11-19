@@ -29,7 +29,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr ng-repeat="ad in ads">
+                        <tr ng-repeat="ad in ads ">
                             <td>{{ad.createdAt | date : 'shortDate'}}</td>
                             <td>{{ad.attributes.price}}</td>
                             <td>{{ad.attributes.userPointer.attributes.universityPointer.attributes.name}}</td>
