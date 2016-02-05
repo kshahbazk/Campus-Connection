@@ -97,7 +97,7 @@ angular.module('MyApp').controller('createAd', function($scope, $state, $statePa
         {
             success: function(ad) {
                 console.log($scope.ad)
-               $state.go("viewAd",{_id: $scope.ad.id})
+               $state.go("viewListing",{_id: $scope.ad.id})
             },
             error: function (user, error) {
                 // Show the error message somewhere and let the user try again.

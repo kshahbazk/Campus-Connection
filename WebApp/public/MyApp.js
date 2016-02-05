@@ -17,13 +17,13 @@ var app = angular.module('MyApp',["ui.router"])
 
         }).state('home', {
             url: '/home',
-            templateUrl: 'components/home/AdMain.ejs',
+            templateUrl: 'components/home/Home.ejs',
             controller: 'home',
             title: 'Ad'
-        }).state('viewAd', {
-            url: '/viewAd?_id',
-            templateUrl: 'components/viewAd/AdDisplay.ejs',
-            controller: 'viewAd',
+        }).state('viewListing', {
+            url: '/viewListing?_id',
+            templateUrl: 'components/viewListing/AdDisplay.ejs',
+            controller: 'viewListing',
             title: 'Ad'
         }).state('createAd', {
             url: '/createAd?_id',

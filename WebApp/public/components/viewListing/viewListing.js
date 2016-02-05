@@ -1,7 +1,7 @@
 /**
  * Created by mtbsickrider on 11/17/15.
  */
-angular.module("MyApp").controller("viewAd", function($scope, $stateParams, $state){
+angular.module("MyApp").controller("viewListing", function($scope, $stateParams, $state){
     if($stateParams._id) {
         var Ad = Parse.Object.extend("Ad")
         var q = new Parse.Query(Ad)

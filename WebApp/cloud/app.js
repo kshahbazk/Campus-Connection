@@ -3,15 +3,21 @@
 express = require('express');
 app = express();
 try {//Try catch block here makes behavior on server and locally the same! no more commenting and uncommenting.
+    console.log("In Try")
     app.use(express.json())
     app.use(express.urlencoded({extended: true}))
+    console.log("Passed Try")
 }
+
 catch(e)//Only used locally. no impact to performance this way
 {
+    console.log("In Catch")
     bodyParser = require('body-parser');
     app.use(express.static('public'));
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({extended: true}))
+    console.log("Passed Catch")
+
 }
 
 // Global app configuration section
@@ -27,6 +33,8 @@ app.get('/register', function(req, res) {
 
 conditionalRender = function(res,directory,filetoreturn,data){
     var temp = filetoreturn.split('.').pop();
+    console.log(directory);
+    console.log(filetoreturn);
     if(temp == "js" || temp == "css")//the file extension; prevents files from loading index.ejs instead of the javascript files
         res.render(directory+"/"+filetoreturn, data)
     else

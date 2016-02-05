@@ -1,6 +1,10 @@
 .ratingscontainer > div.panel-default:nth-child(even) {
     background-color: #F5F5F5;
 }
+.input-group{
+    margin-top: 1px;
+    margin-bottom: 1px;
+}
 span.stars, span.stars span {
     display: block;
     background: url(../../cloud/stars.png) 0 -16px repeat-x;
