@@ -33,7 +33,7 @@ app.get('/register', function(req, res) {
 
 conditionalRender = function(res,directory,filetoreturn,data){
     var temp = filetoreturn.split('.').pop();
-    console.log(directory);
+    //console.log(directory);
     console.log(filetoreturn);
     if(temp == "js" || temp == "css")//the file extension; prevents files from loading index.ejs instead of the javascript files
         res.render(directory+"/"+filetoreturn, data)
@@ -45,6 +45,7 @@ app.get('/', function(req,res){
 })
 /*
 These calls prevent the server from retrieving index.ejs when it wants a javascript or a css file.
+Need a better solution.
  */
 app.get('/:dir1/:dir2/:dir3/:file', function(req, res) {
     conditionalRender(res,req.params.dir1+"/"+req.params.dir2+"/"+req.params.dir3, req.params.file, {})
@@ -72,4 +73,4 @@ app.get('/:file', function(req, res) {
 // });
 
 // Attach the Express app to Cloud Code.
-app.listen(8080);
+app.listen(80);
