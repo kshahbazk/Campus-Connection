@@ -2,51 +2,59 @@
 // These two lines are required to initialize Express in Cloud Code.
 express = require('express');
 app = express();
-try {//Try catch block here makes behavior on server and locally the same! no more commenting and uncommenting.
-    console.log("In Try")
-    app.use(express.json())
-    app.use(express.urlencoded({extended: true}))
-    console.log("Passed Try")
+
+console.log("In Catch")
+bodyParser = require('body-parser');
+app.use(express.static('public'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}))
+var modelNames=[];
+var fs = require("fs")
+String.prototype.capitalize = function() {
+    return this.charAt(0).toUpperCase() + this.slice(1);
 }
-
-catch(e)//Only used locally. no impact to performance this way
-{
-    console.log("In Catch")
-    bodyParser = require('body-parser');
-    app.use(express.static('public'));
-    app.use(bodyParser.json());
-    app.use(bodyParser.urlencoded({extended: true}))
-    console.log("Passed Catch")
-
-}
-
+fs.readdir('cloud/models',function(err,files){//files is a string array of the names of the files(??)
+    if(err) throw err;
+    files.forEach(function(file){
+        //
+        var name = file.slice(0, file.length - 3)//removes .js
+        modelNames.push(name.capitalize());
+    });
+});
+var dbRoutes = require(__dirname + '/routes/dbRoutes')
+app.use("/api", dbRoutes);
 // Global app configuration section
   // Specify the folder to find templates
 app.set('views', 'cloud');//Screw it. no more confusing views folder in cloud.
 app.set('view engine', 'ejs');    // Set the template engine
-
 //make sure to include these routes before the call with /*; it will lock out the other routes.
 //you don't need any special format for the ejs. it all goes through because local as an object has everything put into the brackets.
 app.get('/register', function(req, res) {
     res.render('index.ejs', { data: 'Congrats, you just set up your app!'});
 });
-
 conditionalRender = function(res,directory,filetoreturn,data){
     var temp = filetoreturn.split('.').pop();
     //console.log(directory);
     console.log(filetoreturn);
-    if(temp == "js" || temp == "css")//the file extension; prevents files from loading index.ejs instead of the javascript files
-        res.render(directory+"/"+filetoreturn, data)
+    if(filetoreturn=="modelNameList")
+    {
+        res.json(modelNames);
+    }
+    else if(temp == "js" || temp == "css")//the file extension; prevents files from loading index.ejs instead of the javascript files
+        res.sendFile(directory+"/"+filetoreturn, data)
     else
         res.render('index.ejs', data);
 }
 app.get('/', function(req,res){
     res.redirect("LandingPage");
 })
+
+
 /*
 These calls prevent the server from retrieving index.ejs when it wants a javascript or a css file.
 Need a better solution.
  */
+
 app.get('/:dir1/:dir2/:dir3/:file', function(req, res) {
     conditionalRender(res,req.params.dir1+"/"+req.params.dir2+"/"+req.params.dir3, req.params.file, {})
 });
@@ -59,7 +67,6 @@ app.get('/:dir1/:file', function(req, res) {
 app.get('/:file', function(req, res) {
     conditionalRender(res,"", req.params.file, {})
 });
-
 // // Example reading from the request query string of an HTTP get request.
 // app.get('/test', function(req, res) {
 //   // GET http://example.parseapp.com/test?message=hello
@@ -73,4 +80,4 @@ app.get('/:file', function(req, res) {
 // });
 
 // Attach the Express app to Cloud Code.
-app.listen(80);
+app.listen(8080);
