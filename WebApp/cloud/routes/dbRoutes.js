@@ -88,9 +88,17 @@ dbRouter.get("/:_model", function(req,res, next){
         toPopulate = req.query.$populate;
         delete req.query.$populate
     }
+    var toSort;
+    if(req.query.$sort)//String
+    {
+        toSort = req.query.$sort;
+        delete req.query.$sort;
+    }
     query = ret_model.find(req.query)
     if(toPopulate)
         query = query.populate(toPopulate)//Keep it a single string.
+    if(toSort)
+        query = query.sort(toSort)//Keep it a single string.
     query.exec(function(err, elements){
         if(err){
             console.log(err);

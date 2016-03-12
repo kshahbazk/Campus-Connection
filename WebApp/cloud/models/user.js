@@ -9,8 +9,7 @@ var User = db.model('User', {
   userName: {type: String},
   firstName: {type: String, required: true},
   lastName: {type: String, required: true},
-  ownerId: {type: String},//will be the same as _id; important to allow modifications of the user table without rewriting functions
-  //This will be email here. id = email
+  createdAt: {type: Date, required: true, default: Date.now},
   photo: {type: String},
   })
 

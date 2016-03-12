@@ -9,8 +9,8 @@ var ad = db.model('Ad', {
     productPointer: {type: db.Schema.Types.ObjectId, ref: 'Product'},
     userPointer: {type: db.Schema.Types.ObjectId, ref: 'User'},
     image: String,
-    searchArray: [String]
-
+    searchArray: [String],
+    createdAt: {type: Date, required: true, default: Date.now}
 })
 
 module.exports = ad

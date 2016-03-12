@@ -24,19 +24,19 @@
                                 <div class="input-group-addon">
                                     Rating(1-5)
                                 </div>
-                                <input class="form-control" ng-model="rev.attributes.rating" type="number" min="1" max="5" required>
+                                <input class="form-control" ng-model="rev.rating" type="number" min="1" max="5" required>
                             </div>
                             <div class="input-group">
                                 <div class="input-group-addon">
                                     Title:
                                 </div>
-                                <input class="form-control" placeholder="Who and What" ng-model="rev.attributes.name" type="text" required>
+                                <input class="form-control" placeholder="Who and What" ng-model="rev.name" type="text" required>
                             </div>
                             <div class="input-group">
                                 <div class="input-group-addon">
                                     Review:
                                 </div>
-                                <textarea class="form-control" placeholder="" ng-model="rev.attributes.review" type="text" required></textarea>
+                                <textarea class="form-control" placeholder="" ng-model="rev.review" type="text" required></textarea>
                             </div>
                             <button class="btn btn-success btn-lg btn-block" type="submit" style="margin-bottom: 1em;">Submit</button>
                         </form>
@@ -53,9 +53,9 @@
             <div class="row panel panel-default" ng-repeat="r in ratings">
                 <div class="col-md-3"><h2>{{r.attributes.userPointer.attributes.FirstName}} {{r.attributes.userPointer.attributes.LastName}}</h2></div>
                 <div class="col-md-2"><h2>{{r.attributes.rating}}/5</h2></div>
-                <div class="col-md-7" ng-show="r.attributes.userPointer.attributes.objectId != currentUser.attributes.objectId" ><h3>{{r.attributes.review}} </h3></div>
-                <div class="col-md-4" ng-show="r.attributes.userPointer.attributes.objectId == currentUser.attributes.objectId" ><h3>{{r.attributes.review}} </h3></div>
-                <div class="col-md-3" ng-show="r.attributes.userPointer.attributes.objectId == currentUser.attributes.objectId" ><button class="btn btn-success btn-md" data-target=".bs-example-modal-lg" ng-click="loadReview(r)" data-toggle="modal" style="margin-top:30px"type="button" >
+                <div class="col-md-7" ng-show="r.attributes.userPointer._id != currentUser._id" ><h3>{{r.attributes.review}} </h3></div>
+                <div class="col-md-4" ng-show="r.userPointer._id == currentUser._id" ><h3>{{r.attributes.review}} </h3></div>
+                <div class="col-md-3" ng-show="r.userPointer._id == currentUser._id" ><button class="btn btn-success btn-md" data-target=".bs-example-modal-lg" ng-click="loadReview(r)" data-toggle="modal" style="margin-top:30px"type="button" >
                             Edit Review
                         </button></div>
 

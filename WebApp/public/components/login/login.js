@@ -1,26 +1,27 @@
 /**
  * Created by johnfranklin on 10/15/15.
  */
-angular.module('MyApp').controller('login', function($scope,$state){
+angular.module('MyApp').controller('login', function($scope,$state, $http){
     //Modified from Parse's example
 
     console.log("BREATHING");
     $scope.logIn = function() {
         //user.email Notification? figure this out after we get connected.
-
+        var toSend = {};
+        toSend.username = $scope.username;
+        toSend.password = $scope.password;
         // other fields can be set just like with Parse.Object
+        $http.post("/loginAuth", toSend).then(function successCallback(response) {
+            // this callback will be called asynchronously
+            // when the response is available
+            //What do we do to store the current user?
+            document.location.href = "/profile"
+        }, function errorCallback(response) {
+            alert(response);
+            // called asynchronously if an error occurs
+            // or server returns response with an error status.
+        })
 
-        Parse.User.logIn($scope.username, $scope.password, {
-            success: function (user) {
-                // Hooray! Let them use the app now.
-                console.log(Parse.User.current())
-                document.location.href = "/profile"
-            },
-            error: function (user, error) {
-                // Show the error message somewhere and let the user try again.
-                alert("Error: " + error.code + " " + error.message);
-            }
-        });
         //window.location.href = "/login#accepted"
     }
 

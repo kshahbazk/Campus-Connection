@@ -6,7 +6,7 @@ var feedback = db.model('Feedback', {
     recipientPointer: {type: db.Schema.Types.ObjectId, ref: 'User'},
     name: String,
     rating: Number,
-    review: String
-
+    review: String,
+    createdAt: {type: Date, required: true, default: Date.now}
 })
 module.exports = feedback;

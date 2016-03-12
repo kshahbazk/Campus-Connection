@@ -1,26 +1,22 @@
 /**
  * Created by mtbsickrider on 11/17/15.
  */
-angular.module("MyApp").controller("viewListing", function($scope, $stateParams, $state){
+angular.module("MyApp").controller("viewListing", function($scope, $stateParams, $state, Ad, Feedback){
     if($stateParams._id) {
         var Ad = Parse.Object.extend("Ad")
         var q = new Parse.Query(Ad)
         q.equalTo("objectId",$stateParams._id)
         q.include("productPointer")
         q.include("userPointer")
-        q.first({success:function(elem){
+        Ad.query({_id: $stateParams._id, $populate:"productPointer userPointer"}).$promise.then(function(elem){
             $scope.$apply(function() {
                 $scope.ad = elem;//Is this all I need?
                 if($scope.ad.attributes.image)
                     $scope.imgurl = $scope.ad.attributes.image.url();
 
                 console.log($scope.ad)
-                console.log($scope.user);
-                var Feedback = Parse.Object.extend("Feedback")
-                var q2 = new Parse.Query(Feedback)
-                q2.equalTo("recipientPointer",$scope.ad.attributes.userPointer)
-                q2.include("userPointer")
-                q2.find({success:function(elems){
+                console.log($scope.user)
+                Feedback.query({recipientPointer: $scope.ad.userPointer._id, $populate:"userPointer"}).$promise.then(function(elems){
                     console.log(elems)
                     $scope.$apply(function() {
                         $scope.total = 0.0;
@@ -33,8 +29,8 @@ angular.module("MyApp").controller("viewListing", function($scope, $stateParams,
                         }
                         else {
                             for (var i = 0; i < $scope.ratings.length; i++) {
-                                if($scope.ratings[i].attributes.rating)
-                                    $scope.total += $scope.ratings[i].attributes.rating
+                                if($scope.ratings[i].rating)
+                                    $scope.total += $scope.ratings[i].rating
                             }
                             $scope.total /= $scope.ratings.length;
                         }
@@ -45,18 +41,16 @@ angular.module("MyApp").controller("viewListing", function($scope, $stateParams,
                         $scope.loaded=true;
                     })
                 },
-                    error: function (user, error) {
+                    function (error) {
                         // Show the error message somewhere and let the user try again.
-                        alert("Error: " + error.code + " " + error.message);
-                    }
-                })
+                        alert(error);
+                    })
             })
-        },
-            error: function (user, error) {
+            },
+            function (error) {
                 // Show the error message somewhere and let the user try again.
-                alert("Error: " + error.code + " " + error.message);
-            }
-        })
+                alert(error);
+            })
 
     }
     else{//????

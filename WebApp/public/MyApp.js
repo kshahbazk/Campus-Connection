@@ -104,21 +104,32 @@ app.directive('currencyFormatter', ['$filter', function ($filter) {
 //Once more liberated from stack exchange. handles filereads.
 // http://stackoverflow.com/questions/17063000/ng-model-for-input-type-file
 var generateResource = function(name)
-{
-    app.factory(name, function($resource) {
-        return $resource('api/' + name +'/:_id', { _id: '@_id' }, {
-            update: {
-                method: 'PUT'
-            }
+{//
+    var q = $resource('api/' + name +'/:_id', { _id: '@_id' }, {
+        update: {
+            method: 'PUT'
+        },
+        create: {
+            method: 'POST'
+        }});
 
-        });
+        q.prototype.$save = function() {
+        if (this._id) {
+            return this.$update();
+        } else {
+            return this.$create();
+        }
+    };
+    app.factory(name, function($resource) {
+        return q;
     });
+
 }
 //When you make a model, add it to the modelNameList and to the function call in the server run javascript
 //(index.js for now, could change in the future
 app.run(function($http) {
     $http.get("/modelNameList").success(function(response) {
-        var modelNameList = response
+        var modelNameList = response;
         for (var i = 0; i < modelNameList.length; i++)
             generateResource(modelNameList[i]);
     })

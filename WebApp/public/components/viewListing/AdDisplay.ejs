@@ -11,11 +11,11 @@
 				<img ng-show="imgurl" src="{{imgurl}}" alt="...">
 				<div class="caption">
 					<!--Product information -->
-				<h3>{{ad.attributes.title}}</h3><!-- name-->
+				<h3>{{ad.title}}</h3><!-- name-->
 				<p>
 
-					{{ad.attributes.price | currency}}<br><!-- price -->
-					Average price of the item: {{ad.attributes.productPointer.attributes.weightedAverage | currency}}<!-- (weighted?) average price?  -->
+					{{ad.price | currency}}<br><!-- price -->
+					Average price of the item: {{ad.productPointer.weightedAverage | currency}}<!-- (weighted?) average price?  -->
 				</p>
 				<p><a href="#" class="btn btn-primary" role="button" >Buy </a></p>
 				</div>
@@ -30,19 +30,19 @@
 				<div class="panel panel-default">
 				<div class="panel-heading">Product Information</div>
 				<div class="panel-body">
-					{{ad.attributes.description}}
+					{{ad.description}}
 				</div>
 				</div>
 				<div class="panel panel-default">
-				<div class="panel-heading">Seller reviews <a href="/profile?_id={{ad.attributes.userPointer.id}}">Profile</a></div>
+				<div class="panel-heading">Seller reviews <a href="/profile?_id={{ad.userPointer._id}}">Profile</a></div>
 				<div class="panel-body">
 					<div ng-cloak class="col-xsm-2 col-md-6 ratingscontainer">
 						<h2 ng-show="loaded && !noreviews">Average Rating: {{total | number : 2}}/5</h2>
 						<h2 ng-show="loaded && noreviews">No Reviews! A blank slate.</h2>
 						<div class="row panel panel-default" ng-repeat="r in ratings">
-							<div class="col-md-3"><h2>{{r.attributes.userPointer.attributes.FirstName}} {{r.attributes.userPointer.attributes.LastName}}</h2></div>
-							<div class="col-md-2"><h2>{{r.attributes.rating}}/5</h2></div>
-							<div class="col-md-7"  ><h3>{{r.attributes.review}} </h3></div>
+							<div class="col-md-3"><h2>{{r.userPointer.firstName}} {{r.userPointer.lastName}}</h2></div>
+							<div class="col-md-2"><h2>{{r.rating}}/5</h2></div>
+							<div class="col-md-7"  ><h3>{{r.review}} </h3></div>
 						</div>
 
 					</div>

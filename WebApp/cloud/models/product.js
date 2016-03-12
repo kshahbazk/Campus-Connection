@@ -4,8 +4,8 @@
 var db = require('../database')
 var product = db.model('Product', {
     name: String,
-    weightedPriceAverage: Number
-
+    weightedPriceAverage: Number,
+    createdAt: {type: Date, required: true, default: Date.now}
 })
 
 module.exports = product

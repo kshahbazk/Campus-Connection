@@ -3,6 +3,6 @@
  */
 angular.module("MyApp").controller("LogOut",function($state){
         Parse.User.logOut()
-        document.location.href = "/login"
+        document.location.href = "/login"//What are we doing here?
     }
 )

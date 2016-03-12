@@ -1,17 +1,14 @@
 /**
  * Created by johnfranklin on 11/10/15.
  */
-angular.module('MyApp').controller("profile", function($scope, $state, $stateParams){
+angular.module('MyApp').controller("profile", function($scope, $state, $stateParams, Feedback, User){
     $scope.getFeedback = function()
     {
 
         console.log($scope.user);
         var Feedback = Parse.Object.extend("Feedback")
         $scope.blank = new Feedback();
-        var q = new Parse.Query(Feedback)
-        q.equalTo("recipientPointer",$scope.user)
-        q.include("userPointer")
-        q.find({success:function(elems){
+        Feedback.query({recipientPointer: $scope.user, $populate:"userPointer"}).$promise.then(function(elems){
 
             $scope.$apply(function() {
                 $scope.total = 0.0;
@@ -24,8 +21,8 @@ angular.module('MyApp').controller("profile", function($scope, $state, $statePar
                 }
                 else {
                     for (var i = 0; i < $scope.ratings.length; i++) {
-                        if($scope.ratings[i].attributes.rating)
-                            $scope.total += $scope.ratings[i].attributes.rating
+                        if($scope.ratings[i].rating)
+                            $scope.total += $scope.ratings[i].rating
                     }
                     $scope.total /= $scope.ratings.length;
                 }
@@ -36,38 +33,33 @@ angular.module('MyApp').controller("profile", function($scope, $state, $statePar
                 $scope.loaded=true;
             })
         },
-            error: function (user, error) {
+            function(error) {
                 // Show the error message somewhere and let the user try again.
-                alert("Error: " + error.code + " " + error.message);
-            }
-        })
+                alert(error);
+            })
 
     }
     if($stateParams._id) {
-        var User = Parse.Object.extend("User")
-        var q = new Parse.Query(User)
-        q.equalTo("objectId",$stateParams._id)
-        q.include("universityPointer")
-        q.first({
-            success: function (elem) {
+        User.get({_id: $stateParams._id, $populate: "universityPointer"}).$promise.then(
+            function (elem) {
                 $scope.$apply(function() {
                     $scope.user = elem
-                    $scope.currentUser = Parse.User.current()
+                    $scope.currentUser = what;//...? what do I do here?
                     $scope.isCurrentUser = $scope.user.id == $scope.currentUser.id
 
                 })
                 if($scope.user)
                     $scope.getFeedback()
             },
-            error: function (user, error) {
+            function (user, error) {
                 // Show the error message somewhere and let the user try again.
                 alert("Error: " + error.code + " " + error.message);
-            }})
+            })
     }
     else
     {
         $scope.isCurrentUser = true;
-        $scope.user = $scope.currentUser = Parse.User.current();
+        $scope.user = $scope.currentUser = what;//See previous
         if (!$scope.user)
             $state.go("login")
         $scope.getFeedback()
@@ -81,19 +73,19 @@ angular.module('MyApp').controller("profile", function($scope, $state, $statePar
         //load into review submitter?
     }
     $scope.submit = function(){
-        if(!$scope.rev.attributes.userPointer)
-            $scope.rev.attributes.userPointer= $scope.currentUser;
-        if(!$scope.rev.attributes.recipientPointer)
-            $scope.rev.attributes.recipientPointer = $scope.user;
-        $scope.rev.save($scope.rev, {
-            success:function(){
+        if(!$scope.rev.userPointer)
+            $scope.rev.userPointer = $scope.currentUser._id
+        if(!$scope.rev.recipientPointer)
+            $scope.rev.recipientPointer = $scope.user._id;
+        $scope.rev.$save().$promise.then(
+            function(){
                 $state.go($state.current, {}, {reload: true});//reload the current state
             },
-            error: function (user, error) {
+            function (error) {
                 // Show the error message somewhere and let the user try again.
-                alert("Error: " + error.code + " " + error.message);
+                alert(error);
             }
-        })
+        )
     }
 
 })

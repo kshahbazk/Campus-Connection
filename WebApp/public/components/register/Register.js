@@ -1,24 +1,18 @@
 /**
  * Created by johnfranklin on 10/15/15.
  */
-angular.module('MyApp').controller('Register', function($scope, $state){
+angular.module('MyApp').controller('Register', function($scope, $state, University){
     //Modified from Parse's example
     //OK, I've finally figured out how this works. $scope refers to the scope for the function, while this is the scope for the function currently...?
-    var University = Parse.Object.extend("University")
-    console.log("BREATHING");
+   console.log("BREATHING");
     //console.log(University);
-    var query = new Parse.Query(University)
-
-    try{
-    query.find({
-        success: function (elems) {
+    University.query(
+        function (elems) {
             //$scope.universities = [];
             //This isn't necessary in the future. name is equivalent to r.attribute.name, no need for get
-            $scope.updateUniversities(elems.map(function(r){return {text: r.get("name"), value: r}}));
+            $scope.updateUniversities(elems.map(function(r){return {text: r.name, value: r._id}}));
 
-        }})}
-    catch(e)//for home testing.
-    {console.log(e)}
+        })
     $scope.updateUniversities= function(universities){
         //Holy shit. this is a hell of a bug, rooted deep in facets of angular I wasn't aware of.
         //angular doesn't refresh objects until the user interacts with them.
@@ -38,31 +32,33 @@ angular.module('MyApp').controller('Register', function($scope, $state){
             return;
         }
         console.log(this);
-        {
-        user = new Parse.User();
-        user.set("username", $scope.username);
-        user.set("password", $scope.password1);
-        user.set("email", $scope.email);
-        user.set("FirstName", $scope.fName);
-        user.set("universityPointer", $scope.university);
-        user.set("LastName", $scope.lName);
+
+        var user = {};
+        user.username = $scope.username;
+        user.password = $scope.password1;
+        user.email = $scope.email;
+        user.firstName = $scope.fName;
+        user.universityPointer = $scope.university;
+        user.lastName = $scope.lName;
         //user.email Notification? figure this out after we get connected.
 
         // other fields can be set just like with Parse.Object
 
-        user.signUp(null, {
-            success: function (user) {
+        $http.post("/registerAuth", user).then(
+            function(user) {
                 // Hooray! Let them use the app now.
+                //Need to add cookie. How?
+                // How do we authenticate actions after login?
                 $state.go("login")
             },
-            error: function (user, error) {
+            function(error) {
                 // Show the error message somewhere and let the user try again.
-                alert("Error: " + error.code + " " + error.message);
+                alert(error);
             }
-        });
+        );
         console.log(user);
         //window.location.href = "/login#accepted"
     }
 
 
-}})
+})
