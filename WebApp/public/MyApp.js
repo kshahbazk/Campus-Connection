@@ -105,22 +105,22 @@ app.directive('currencyFormatter', ['$filter', function ($filter) {
 // http://stackoverflow.com/questions/17063000/ng-model-for-input-type-file
 var generateResource = function(name)
 {//
-    var q = $resource('api/' + name +'/:_id', { _id: '@_id' }, {
-        update: {
-            method: 'PUT'
-        },
-        create: {
-            method: 'POST'
-        }});
+    app.factory(name, function($resource) {
+        var q = $resource('api/' + name +'/:_id', { _id: '@_id' }, {
+            update: {
+                method: 'PUT'
+            },
+            create: {
+                method: 'POST'
+            }});
 
         q.prototype.$save = function() {
-        if (this._id) {
-            return this.$update();
-        } else {
-            return this.$create();
-        }
-    };
-    app.factory(name, function($resource) {
+            if (this._id) {
+                return this.$update();
+            } else {
+                return this.$create();
+            }
+        };
         return q;
     });
 

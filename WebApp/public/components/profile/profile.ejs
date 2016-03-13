@@ -6,8 +6,8 @@
                 <img src="http://40.media.tumblr.com/1c19e7322e3c113145a427df1ee121cd/tumblr_nv99a51tJS1u5ilzwo1_1280.jpg" height = 500 width = 300 alt="...">
 
                 <div class="caption">
-                    <h3>{{user.attributes.universityPointer.attributes.name}}</h3>
-                    <h3>{{user.attributes.FirstName}} {{user.attributes.LastName}}</h3>
+                    <h3>{{user.universityPointer.name}}</h3>
+                    <h3>{{user.firstName}} {{user.lastName}}</h3>
                     <p><a href="mailto:{{user.attributes.email}}">Email</a></p>
                     <p><a href="http://www.example.com">Message Me</a></p>
                 </div>
@@ -51,10 +51,10 @@
             <h2 ng-show="loaded && !noreviews">Average Rating: {{total | number : 2}}/5</h2>
             <h2 ng-show="loaded && noreviews">No Reviews! A blank slate.</h2>
             <div class="row panel panel-default" ng-repeat="r in ratings">
-                <div class="col-md-3"><h2>{{r.attributes.userPointer.attributes.FirstName}} {{r.attributes.userPointer.attributes.LastName}}</h2></div>
-                <div class="col-md-2"><h2>{{r.attributes.rating}}/5</h2></div>
-                <div class="col-md-7" ng-show="r.attributes.userPointer._id != currentUser._id" ><h3>{{r.attributes.review}} </h3></div>
-                <div class="col-md-4" ng-show="r.userPointer._id == currentUser._id" ><h3>{{r.attributes.review}} </h3></div>
+                <div class="col-md-3"><h2>{{r.userPointer.firstName}} {{r.userPointer.lastName}}</h2></div>
+                <div class="col-md-2"><h2>{{r.rating}}/5</h2></div>
+                <div class="col-md-7" ng-show="r.attributes.userPointer._id != currentUser._id" ><h3>{{r.review}} </h3></div>
+                <div class="col-md-4" ng-show="r.userPointer._id == currentUser._id" ><h3>{{r.review}} </h3></div>
                 <div class="col-md-3" ng-show="r.userPointer._id == currentUser._id" ><button class="btn btn-success btn-md" data-target=".bs-example-modal-lg" ng-click="loadReview(r)" data-toggle="modal" style="margin-top:30px"type="button" >
                             Edit Review
                         </button></div>
