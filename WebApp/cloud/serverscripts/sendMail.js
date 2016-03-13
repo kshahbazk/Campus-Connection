@@ -6,7 +6,7 @@
  */
 var q = {};
 var nodemailer = require('nodemailer');
-var User = require('../models/user');
+var User = require('../models/Users');
 // create reusable transporter object using SMTP transport
 var transporter = nodemailer.createTransport({
     service: 'Gmail',

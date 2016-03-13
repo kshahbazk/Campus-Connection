@@ -1,15 +1,20 @@
 
-// These two lines are required to initialize Express in Cloud Code.
-express = require('express');
+var express = require('express');
+var mongoose = require('mongoose');
+var bodyParser = require('body-parser');
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+var jwt = require('express-jwt');
+var auth = jwt({secret: 'SECRET', userProperty: 'payload'});
+
 app = express();
 
-console.log("In Catch")
-bodyParser = require('body-parser');
 app.use(express.static('public'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}))
+//app.use(bodyParser.urlencoded({extended: true}))
+
 var modelNames=[];
-var fs = require("fs")
+var fs = require("fs");
 String.prototype.capitalize = function() {
     return this.charAt(0).toUpperCase() + this.slice(1);
 }
@@ -21,17 +26,50 @@ fs.readdir('cloud/models',function(err,files){//files is a string array of the n
         modelNames.push(name.capitalize());
     });
 });
-var dbRoutes = require(__dirname + '/routes/dbRoutes')
+var dbRoutes = require(__dirname + '/routes/dbRoutes');
 app.use("/api", dbRoutes);
+var userRoutes = require(__dirname + '/routes/userRoutes');
+app.use("/user", userRoutes);
+var User = mongoose.model('User');
+
+app.use(passport.initialize());
+passport.use(new LocalStrategy(
+	function(username,password, done) {
+		User.findOne({username:username}).exec(function(err, user) {
+			if(user) {
+				return done(null, user);
+			} else {
+				return done(null, false);
+			}
+		})
+	}
+));
+
+passport.serializeUser(function(user, done) {
+	if(user) {
+		done(null, user._id);
+	}
+});
+
+passport.deserializeUser(function(id, done){
+	User.findOne({_id:id}).exec(function(err, user) {
+		if(user) {
+			return done(null, user )
+		} else {
+			return done(null, false);
+		}
+	})
+});
+
+
 // Global app configuration section
   // Specify the folder to find templates
 app.set('views', 'cloud');//Screw it. no more confusing views folder in cloud.
 app.set('view engine', 'ejs');    // Set the template engine
 //make sure to include these routes before the call with /*; it will lock out the other routes.
 //you don't need any special format for the ejs. it all goes through because local as an object has everything put into the brackets.
-app.get('/register', function(req, res) {
-    res.render('index.ejs', { data: 'Congrats, you just set up your app!'});
-});
+
+
 conditionalRender = function(res,directory,filetoreturn,data){
     var temp = filetoreturn.split('.').pop();
     //console.log(directory);
@@ -55,6 +93,8 @@ These calls prevent the server from retrieving index.ejs when it wants a javascr
 Need a better solution.
  */
 
+//TODO:use wildcard for routes
+
 app.get('/:dir1/:dir2/:dir3/:file', function(req, res) {
     conditionalRender(res,req.params.dir1+"/"+req.params.dir2+"/"+req.params.dir3, req.params.file, {})
 });
@@ -67,17 +107,7 @@ app.get('/:dir1/:file', function(req, res) {
 app.get('/:file', function(req, res) {
     conditionalRender(res,"", req.params.file, {})
 });
-// // Example reading from the request query string of an HTTP get request.
-// app.get('/test', function(req, res) {
-//   // GET http://example.parseapp.com/test?message=hello
-//   res.send(req.query.message);
-// });
 
-// // Example reading from the request body of an HTTP post request.
-// app.post('/test', function(req, res) {
-//   // POST http://example.parseapp.com/test (with request body "message=hello")
-//   res.send(req.body.message);
-// });
-
-// Attach the Express app to Cloud Code.
+console.log("all good");
 app.listen(8080);
+
