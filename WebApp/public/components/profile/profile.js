@@ -1,20 +1,18 @@
 /**
  * Created by johnfranklin on 11/10/15.
  */
-angular.module('MyApp').controller("profile", function($scope, $state, $stateParams, Feedback, User){
+angular.module('MyApp').controller("profile", function($scope, $state, $stateParams, $uibModal, Feedback, User){
     $scope.getFeedback = function()
     {
 
-        console.log($scope.user);
-        var Feedback = Parse.Object.extend("Feedback")
-        $scope.blank = new Feedback();
-        Feedback.query({recipientPointer: $scope.user, $populate:"userPointer"}).$promise.then(function(elems){
 
-            $scope.$apply(function() {
+        $scope.blank = new Feedback();
+        Feedback.query({recipientPointer: $scope.user._id, $populate:"userPointer"}).$promise.then(function(elems){
+
+
                 $scope.total = 0.0;
                 $scope.ratings = elems
-
-                //console.log(ratings);
+                //console.log($scope.ratings);
                 if($scope.ratings.length <= 0)
                 {
                     $scope.noreviews=true;
@@ -31,7 +29,7 @@ angular.module('MyApp').controller("profile", function($scope, $state, $statePar
                     $scope.rev = new Feedback();
                 }
                 $scope.loaded=true;
-            })
+
         },
             function(error) {
                 // Show the error message somewhere and let the user try again.
@@ -42,16 +40,16 @@ angular.module('MyApp').controller("profile", function($scope, $state, $statePar
     if($stateParams._id) {
         User.get({_id: $stateParams._id, $populate: "universityPointer"}).$promise.then(
             function (elem) {
-                $scope.$apply(function() {
-                    $scope.user = elem
-                    $scope.currentUser = what;//...? what do I do here?
-                    $scope.isCurrentUser = $scope.user.id == $scope.currentUser.id
-
-                })
+                //console.log(elem);
+                $scope.user = elem
+                if(elem.universityPointer)
+                    $scope.user.universityName = elem.universityPointer.name;//resolves problem; localStorage only allows for storage of strings, not objects for security reasons.
+                $scope.currentUser = localStorage;//...? what do I do here?
+                $scope.isCurrentUser = $scope.user._id == $scope.currentUser._id
                 if($scope.user)
                     $scope.getFeedback()
             },
-            function (user, error) {
+            function (error) {
                 // Show the error message somewhere and let the user try again.
                 alert("Error: " + error.code + " " + error.message);
             })
@@ -59,8 +57,8 @@ angular.module('MyApp').controller("profile", function($scope, $state, $statePar
     else
     {
         $scope.isCurrentUser = true;
-        $scope.user = $scope.currentUser = what;//See previous
-        if (!$scope.user)
+        $scope.user = $scope.currentUser = localStorage;//See previous
+        if (!$scope.user.token)
             $state.go("login")
         $scope.getFeedback()
     }
@@ -68,24 +66,70 @@ angular.module('MyApp').controller("profile", function($scope, $state, $statePar
     {
 
         $scope.rev = review;
-        console.log($scope.rev)
+        if(!$scope.rev.recipientPointer) {
+            $scope.ratings.push($scope.rev);
+        }
 
+        $scope.modalInstance = $uibModal.open({
+            animation: true,
+            templateUrl: 'myModalContent.html',
+            controller: "modalController",
+            resolve: {
+                oldScope: function () {
+                    return $scope;
+                }
+
+            }
+        });
+        //console.log($scope.rev)
+        $scope.modalInstance.result.then(function(){
+            // closed
+            if(!$scope.rev.recipientPointer) {
+                $scope.ratings.pop();
+            }
+           // console.log($scope.ratings)
+        }, function(){
+            // dismissed
+            if(!$scope.rev.recipientPointer) {
+                $scope.ratings.pop();
+            }
+            else if(!$scope.rev.recipientPointer._id) {
+
+            }
+
+           // console.log($scope.ratings)
+        });
         //load into review submitter?
     }
-    $scope.submit = function(){
-        if(!$scope.rev.userPointer)
-            $scope.rev.userPointer = $scope.currentUser._id
-        if(!$scope.rev.recipientPointer)
-            $scope.rev.recipientPointer = $scope.user._id;
-        $scope.rev.$save().$promise.then(
-            function(){
-                $state.go($state.current, {}, {reload: true});//reload the current state
-            },
-            function (error) {
-                // Show the error message somewhere and let the user try again.
-                alert(error);
-            }
-        )
-    }
 
+
+})
+angular.module('MyApp').controller("modalController",function($scope, $uibModalInstance, oldScope){
+    $scope.rev = oldScope.rev;
+    $scope.submit = function() {
+        var noUser = false
+        if (!$scope.rev.userPointer) {
+            noUser = true;
+            $scope.rev.userPointer = oldScope.currentUser._id
+        }
+
+        if (!$scope.rev.recipientPointer) {
+            $scope.rev.recipientPointer = oldScope.user._id;
+            oldScope.total = (oldScope.total * oldScope.ratings.length + oldScope.rev.rating) / (oldScope.ratings.length + 1);
+
+        }
+        //Callbacks work, but promises do NOT work with save. I cannot figure out why.
+        $scope.rev.$save(function(){
+            $scope.rev.userPointer = {
+                firstName: oldScope.currentUser.firstName,
+                lastName: oldScope.currentUser.lastName,
+                _id: oldScope.currentUser._id
+            };
+            console.log("update works?")
+        });
+
+
+        $uibModalInstance.dismiss();
+
+    }
 })

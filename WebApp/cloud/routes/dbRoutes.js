@@ -94,7 +94,7 @@ dbRouter.get("/:_model", function(req,res, next){
         toSort = req.query.$sort;
         delete req.query.$sort;
     }
-    query = ret_model.find(req.query)
+    var query = ret_model.find(req.query)
     if(toPopulate)
         query = query.populate(toPopulate)//Keep it a single string.
     if(toSort)
@@ -116,8 +116,16 @@ if(ret_model == null)
     res.json(201, {error : "Invalid Request"});
     return;
 }
-
-ret_model.findOne({_id : req.params._id}, function(err, element){
+    var toPopulate;
+    if(req.query.$populate)//String
+    {
+        toPopulate = req.query.$populate;
+        delete req.query.$populate
+    }
+    var query = ret_model.findOne({_id : req.params._id})
+    if(toPopulate)
+        query = query.populate(toPopulate)//Keep it a single string.
+    query.exec(function(err, element){
     if(err){return next(err);};
     //console.log(element);
     res.json(element);
@@ -161,10 +169,12 @@ dbRouter.put("/:_model/:_id", function(req,res,next){
                 doc[property] = req.body[property];
             console.log(doc);
             doc.save();
+            res.status(204).end();//needed for put callback
         }
         else{console.log("nothing returned for update")}
         console.log("In find callback!")
     });
+
 
 });
 dbRouter.put("/:_model/", function(req,res, next){
@@ -178,6 +188,7 @@ dbRouter.put("/:_model/", function(req,res, next){
     ret_model.update(req.query, req.body, function(err, numAffected){
         if(err){return next(err);}
         console.log("In Put callback!")
+        res.status(204).end()//needed for put callback
     });
 
 });
@@ -192,6 +203,7 @@ dbRouter.delete("/:_model/:_id", function(req,res,next){
 
     ret_model.remove({_id : req.params._id},function(err){
         if(err){return next(err);};
+        res.status(204).end();//needed for delet callback
     })
 });
 module.exports = dbRouter;

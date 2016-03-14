@@ -6,44 +6,46 @@
                 <img src="http://40.media.tumblr.com/1c19e7322e3c113145a427df1ee121cd/tumblr_nv99a51tJS1u5ilzwo1_1280.jpg" height = 500 width = 300 alt="...">
 
                 <div class="caption">
-                    <h3>{{user.universityPointer.name}}</h3>
+                    <h3>{{user.universityName}}</h3>
                     <h3>{{user.firstName}} {{user.lastName}}</h3>
-                    <p><a href="mailto:{{user.attributes.email}}">Email</a></p>
+                    <p><a href="mailto:{{user.email}}">Email</a></p>
                     <p><a href="http://www.example.com">Message Me</a></p>
                 </div>
             </div>
         </div>
-        <div aria-hidden="true" aria-labelledby="myLargeModalLabel" class="modal fade bs-example-modal-lg" role="dialog" tabindex="-1">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="form-group" style="width: 50%; margin: 0 auto;">
-                        <form class="form-login ng-pristine ng-valid job-form center-block" ng-Submit="submit()" role="form">
-                            <h2 class="form-signin-heading">Review them!</h2>
+        <script type="text/ng-template" id="myModalContent.html">
 
-                            <div class="input-group">
-                                <div class="input-group-addon">
-                                    Rating(1-5)
-                                </div>
-                                <input class="form-control" ng-model="rev.rating" type="number" min="1" max="5" required>
+            <form class="form-login ng-pristine ng-valid job-form center-block" ng-Submit="submit()" role="form">
+                 <div class="modal-header">
+                    <h2 class="form-signin-heading">Review them!</h2>
+                 </div>
+                <div class="modal-body">
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                Rating(1-5)
                             </div>
-                            <div class="input-group">
-                                <div class="input-group-addon">
-                                    Title:
-                                </div>
-                                <input class="form-control" placeholder="Who and What" ng-model="rev.name" type="text" required>
-                            </div>
-                            <div class="input-group">
-                                <div class="input-group-addon">
-                                    Review:
-                                </div>
-                                <textarea class="form-control" placeholder="" ng-model="rev.review" type="text" required></textarea>
-                            </div>
-                            <button class="btn btn-success btn-lg btn-block" type="submit" style="margin-bottom: 1em;">Submit</button>
-                        </form>
+                            <input class="form-control" ng-model="rev.rating" type="number" min="1" max="5" required>
+                        </div>
+                        <div class="input-group">
+                        <div class="input-group-addon">
+                            Title:
+                        </div>
+                        <input class="form-control" placeholder="Who and What" ng-model="rev.title" type="text" required>
+                    </div>
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            Review:
+                        </div>
+                        <textarea class="form-control" placeholder="" ng-model="rev.review" type="text" required></textarea>
                     </div>
                 </div>
-            </div>
-        </div>
+                <div class="modal-footer">
+                    <button class="btn btn-success btn-md" type="submit" style="margin-bottom: 1em;">Submit</button>
+                </div>
+
+            </form>
+
+        </script>
         <div ng-cloak class="col-xsm-2 col-md-6 ratingscontainer">
             <button ng-show="loaded && !isCurrentUser" class="btn btn-success btn-md btn-block" data-target=".bs-example-modal-lg" data-toggle="modal" type="button" ng-click="loadReview(blank)">
                 Leave Review
@@ -53,9 +55,9 @@
             <div class="row panel panel-default" ng-repeat="r in ratings">
                 <div class="col-md-3"><h2>{{r.userPointer.firstName}} {{r.userPointer.lastName}}</h2></div>
                 <div class="col-md-2"><h2>{{r.rating}}/5</h2></div>
-                <div class="col-md-7" ng-show="r.attributes.userPointer._id != currentUser._id" ><h3>{{r.review}} </h3></div>
+                <div class="col-md-7" ng-show="r.userPointer._id != currentUser._id" ><h3>{{r.review}} </h3></div>
                 <div class="col-md-4" ng-show="r.userPointer._id == currentUser._id" ><h3>{{r.review}} </h3></div>
-                <div class="col-md-3" ng-show="r.userPointer._id == currentUser._id" ><button class="btn btn-success btn-md" data-target=".bs-example-modal-lg" ng-click="loadReview(r)" data-toggle="modal" style="margin-top:30px"type="button" >
+                <div class="col-md-3" ng-show="r.userPointer._id == currentUser._id" ><button class="btn btn-success btn-md" ng-click="loadReview(r)" style="margin-top:30px"type="button" >
                             Edit Review
                         </button></div>
 

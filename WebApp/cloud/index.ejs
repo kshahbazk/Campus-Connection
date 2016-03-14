@@ -41,15 +41,17 @@
 <header ng-include="'shared/headers/header.ejs'"></header>
 <body>
 <div ui-view></div>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>-->
 <script src="https://code.angularjs.org/1.5.0/angular.min.js"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap-csp.css"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
 <script src="https://code.angularjs.org/1.5.0/angular-resource.min.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
 <script src="MyApp.js"></script>
-<script>
-    Parse.initialize("tNMXiePfqLbNZP7ch3IES1OQ2QFU7SPGghtIH2ix","tUck3LOWIoFGniMZfUACjHJOfSkfhevhKcP89D3O");
-    angular.module('MyApp').factory('serverInfo', function(){
+<script>//This is bad code. not sure what to do with it.
+   app.factory('serverInfo', function(){
         /*
          pass any information as an object called data within the object. Can't pass it directly for now; can't find a way.
          Call serverInfo() and include serverInfo in the dependencies at the top of the controller to access in javascript files
@@ -57,7 +59,35 @@
          */
         return <%- locals ? JSON.stringify(locals) : "{}"%>;//works. define what you want to transfer as data in those
     })
+
+    var generateResource = function(name) {//
+        //console.log(name);
+        app.factory(name, function ($resource) {
+            var q = $resource('api/' + name + '/:_id', {_id: '@_id'}, {
+                update: {
+                    method: 'PUT'
+                },
+                create: {
+                    method: 'POST'
+                }
+            });
+            q.prototype.$save = function (callback) {
+                if (this._id) {
+                    return this.$update(callback);
+                } else {
+                    return this.$create(callback);
+                }
+            };
+
+            return q;
+        });
+
+    }
+    var modelNameList = <%- locals.models ? JSON.stringify(locals.models) : "{}"%>;
+    for (var i = 0; i < modelNameList.length; i++)
+        generateResource(modelNameList[i]);
 </script>
+
 <script src="components/register/Register.js"></script>
 <script src="components/profile/profile.js"></script>
 <script src="components/login/login.js"></script>

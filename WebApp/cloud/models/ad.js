@@ -6,9 +6,11 @@ var ad = db.model('Ad', {
     title: String,
     description: String,
     price: Number,
-    productPointer: {type: db.Schema.Types.ObjectId, ref: 'Product'},
+    quality: Number,
+    productName: String,
     userPointer: {type: db.Schema.Types.ObjectId, ref: 'User'},
-    image: String,
+    imagePointer: {type: db.Schema.Types.ObjectId, ref: 'File'},
+    ppvPointer:{type: db.Schema.Types.ObjectId, ref: 'Ppvcache'},
     searchArray: [String],
     createdAt: {type: Date, required: true, default: Date.now}
 })

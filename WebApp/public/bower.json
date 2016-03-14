@@ -1,0 +1,7 @@
+{
+  "name": "CampusConnection",
+  "description": "",
+  "dependencies": {
+    "angular-bootstrap": "*"
+  }
+}

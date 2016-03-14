@@ -1,11 +1,24 @@
 <form class="form-login ng-pristine ng-valid job-form center-block" ng-Submit="persistAd()" style="margin-left:50px; margin-right:50px"role="form">
     <h2 class="form-signin-heading">Make an Ad. Sell Stuff</h2>
+    <div ng-show="ad.ppvPointer">{{ad.ppvPointer.ppv}}</div>
+    <div class="input-group">
+        <div class="input-group-addon">
+            Title:
+        </div>
+        <input class="form-control" placeholder="" ng-model="ad.title" type="text" required>
+    </div>
     <div class="input-group">
         <div class="input-group-addon">
             Product:
         </div>
         <!--Hm. actually, it should never reference productPointer; if the user changes the name the want to change the product associated with it.-->
-        <input class="form-control" placeholder="" ng-model="ad.productName" type="text" required>
+        <input class="form-control" placeholder="" ng-model="ad.productName" type="text" ng-change="findPPV()" required>
+    </div>
+    <div class="input-group">
+        <div class="input-group-addon">
+            Condition:
+        </div>
+        <textarea class="form-control" placeholder="" ng-model="ad.quality" type="text" ng-change="findPPV()" required></textarea>
     </div>
     <div class="input-group"><!--Hm. desired behavior: select product, fills in price? how to do-->
         <div class="input-group-addon">
@@ -13,12 +26,7 @@
         </div>
         <input class="form-control" ng-model="ad.price" type="text" required currency-formatter>
     </div>
-    <div class="input-group">
-        <div class="input-group-addon">
-            Title:
-        </div>
-        <input class="form-control" placeholder="" ng-model="ad.title" type="text" required>
-    </div>
+
     <div class="input-group">
         <div class="input-group-addon">
             Image:

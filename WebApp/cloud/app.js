@@ -8,7 +8,6 @@ var jwt = require('express-jwt');
 var auth = jwt({secret: 'SECRET', userProperty: 'payload'});
 
 app = express();
-
 app.use(express.static('public'));
 app.use(bodyParser.json());
 //app.use(bodyParser.urlencoded({extended: true}))
@@ -35,7 +34,7 @@ var User = mongoose.model('User');
 app.use(passport.initialize());
 passport.use(new LocalStrategy(
 	function(username,password, done) {
-		User.findOne({username:username}).exec(function(err, user) {
+		User.findOne({$or:[{username:username}, {email:username}]}).exec(function(err, user) {
 			if(user) {
 				return done(null, user);
 			} else {
@@ -74,15 +73,12 @@ conditionalRender = function(res,directory,filetoreturn,data){
     var temp = filetoreturn.split('.').pop();
     //console.log(directory);
     console.log(filetoreturn);
-    if(filetoreturn=="modelNameList")
-    {
-        res.json(modelNames);
-    }
-    else if(temp == "js" || temp == "css")//the file extension; prevents files from loading index.ejs instead of the javascript files
+    if(temp == "js" || temp == "css")//the file extension; prevents files from loading index.ejs instead of the javascript files
         res.sendFile(directory+"/"+filetoreturn, data)
     else
         res.render('index.ejs', data);
 }
+
 app.get('/', function(req,res){
     res.redirect("LandingPage");
 })
@@ -94,18 +90,18 @@ Need a better solution.
  */
 
 //TODO:use wildcard for routes
-
+var names = {models:modelNames};
 app.get('/:dir1/:dir2/:dir3/:file', function(req, res) {
-    conditionalRender(res,req.params.dir1+"/"+req.params.dir2+"/"+req.params.dir3, req.params.file, {})
+    conditionalRender(res,req.params.dir1+"/"+req.params.dir2+"/"+req.params.dir3, req.params.file, names)
 });
 app.get('/:dir1/:dir2/:file', function(req, res) {
-    conditionalRender(res,req.params.dir1+"/"+req.params.dir2, req.params.file, {})
+    conditionalRender(res,req.params.dir1+"/"+req.params.dir2, req.params.file, names)
 });
 app.get('/:dir1/:file', function(req, res) {
-    conditionalRender(res,req.params.dir1, req.params.file, {})
+    conditionalRender(res,req.params.dir1, req.params.file, names)
 });
 app.get('/:file', function(req, res) {
-    conditionalRender(res,"", req.params.file, {})
+    conditionalRender(res,"", req.params.file, names)
 });
 
 console.log("all good");

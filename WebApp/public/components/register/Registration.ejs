@@ -9,18 +9,18 @@
             <form name="reg"class="form-signin" ng-submit="createAccount()">
                 <h2 class="form-signin-heading"><FONT COLOR="white">Campus Connection</FONT></h2>
                 <label for="inputFName" class="sr-only" >First Name</label>
-                <input type="text" id="inputFName" ng-model="fName" class="form-control" placeholder="First Name" required autofocus>
+                <input type="text" id="inputFName" ng-model="user.firstName" class="form-control" placeholder="First Name" required autofocus>
                 <label for="inputLName" class="sr-only" >Last Name</label>
-                <input type="text" id="inputLName" class="form-control" ng-model="lName" placeholder="Last Name" required>
-                <select class="form-control" ng-model="university" ng-options="uni.value as uni.text for uni in universities" id='sel1' required>
+                <input type="text" id="inputLName" class="form-control" ng-model="user.lastName" placeholder="Last Name" required>
+                <select class="form-control" ng-model="user.location" ng-options="uni.text as uni.text for uni in universities" id='sel1' required>
                     <option value="">Select University</option>
                 </select>
                 <label for="username" class="sr-only" >Username</label>
-                <input type="text" id="username" class="form-control" ng-model="username" placeholder="Username" required>
+                <input type="text" id="username" class="form-control" ng-model="user.username" placeholder="Username" required>
                 <label for="inputEmail" class="sr-only" >Email address</label>
-                <input type="email" id="inputEmail" class="form-control" ng-model="email" placeholder="Email address" required>
+                <input type="email" id="inputEmail" class="form-control" ng-model="user.email" placeholder="Email address" required>
                 <label for="inputPassword1" class="sr-only" >Password</label>
-                <input type="password" id="inputPassword1" class="form-control" ng-model="password1" placeholder="Password" required>
+                <input type="password" id="inputPassword1" class="form-control" ng-model="user.password" placeholder="Password" required>
                 <input type="password" id="inputPassword2" class="form-control" ng-model="password2" placeholder="Repeat Password" required>
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
             </form>

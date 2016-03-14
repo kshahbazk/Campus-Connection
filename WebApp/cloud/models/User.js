@@ -9,7 +9,7 @@ var UserSchema = new mongoose.Schema({
 	salt: String,
 	email: {type: String, required: true, unique: true},
 	verified: {type:Boolean, default: false},
-	//universityPointer: {type: db.Schema.Types.ObjectId, ref: 'University'},
+	location: String,
 	//userPointer: {type: db.Schema.Types.ObjectId, ref: 'Users'},
 	firstName: {type: String, required: true},
 	lastName: {type: String, required: true},
