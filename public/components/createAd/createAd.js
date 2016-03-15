@@ -37,7 +37,7 @@ angular.module('MyApp').controller('createAd', function($scope, $state, $statePa
                 //default price right?
                 product.name = $scope.ad.productName;
                 //Is this what we should do? seems iffy to base the weighted average on the first posting
-                //I guess future modifications will be based on cloud code or something.
+                //I guess future modifications will be based on server code or something.
                 product.$save(
                     function(response) {
                         console.log($scope.ad)

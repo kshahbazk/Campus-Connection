@@ -3,7 +3,7 @@
  */
 
 var express = require('express');
-
+var db = require('mongoose');
 
 var dbmodels = {};
 var fs = require('fs');
@@ -11,13 +11,14 @@ String.prototype.capitalize = function() {
     return this.charAt(0).toUpperCase() + this.slice(1);
 }
 //Attempting to genericize previously generic database. TESTTESTTEST
-fs.readdir('cloud/models',function(err,files){//files is a string array of the names of the files(??)
+fs.readdir('server/models',function(err,files){//files is a string array of the names of the files(??)
     if(err) throw err;
     files.forEach(function(file){
         //
         var name = file.slice(0, file.length - 3)//removes .js
         try
         {
+
             dbmodels[name.capitalize()] = db.model(name.capitalize());
         }
         catch(e) {
@@ -25,6 +26,7 @@ fs.readdir('cloud/models',function(err,files){//files is a string array of the n
         }
 
     });
+		console.log(dbmodels);
 });
 
 var dbRouter = express.Router();
