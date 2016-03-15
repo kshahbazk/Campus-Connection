@@ -1,7 +1,7 @@
 /**
  * Created by johnfranklin on 2/18/16.
  */
-var db = require('../database')
+var db = require('../database');
 var ad = db.model('Ad', {
     title: String,
     description: String,

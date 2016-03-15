@@ -3,7 +3,8 @@
  */
 
 var express = require('express');
-db = require('../database');
+
+
 var dbmodels = {};
 var fs = require('fs');
 String.prototype.capitalize = function() {
@@ -59,8 +60,8 @@ var writePermissions = function(objOfQuery, ownerId)
     return objOfQuery;
 }
 dbRouter.get("/:_model", function(req,res, next){
-    console.log("Email: " + req.query);
-    console.log(req.params._model);
+    //console.log("Email: " + req.query);
+    //console.log(req.params._model);
     var ret_model = retrieveModel(req.params._model);
     if(ret_model == null)
     {
@@ -68,7 +69,7 @@ dbRouter.get("/:_model", function(req,res, next){
         return;
     }
     job = new ret_model(req.body);
-    console.log(req.query)
+    //console.log(req.query)
     for(property in req.query){//for each property of the query
         if(req.query[property] instanceof Array || req.query[property].charAt(0) == '{') {//primary issue. no need for syntax errors otherwise
             try {
@@ -103,12 +104,12 @@ dbRouter.get("/:_model", function(req,res, next){
         if(err){
             console.log(err);
         };
-        console.log(elements);
+        //console.log(elements);
         res.json(elements);
     });
 });
 dbRouter.get("/:_model/:_id", function(req,res, next){
-console.log("Id: " + req.params._id);
+//console.log("Id: " + req.params._id);
 
 var ret_model = retrieveModel(req.params._model);
 if(ret_model == null)
@@ -132,10 +133,10 @@ if(ret_model == null)
 })
 });
 dbRouter.post("/:_model", function(req,res, next){//Really want to include login req here, but need to handle User creation without being logged in.
-    console.log('Post Received.');
+    //console.log('Post Received.');
     //console.log(req);
-    console.log(req.body);
-    console.log(req.params._model);
+    //console.log(req.body);
+    //console.log(req.params._model);
     var ret_model = retrieveModel(req.params._model);
     if(ret_model == null)
     {
@@ -144,7 +145,7 @@ dbRouter.post("/:_model", function(req,res, next){//Really want to include login
     if(req.body.ownerId == null && req.user != null)//needed to resolve an issue with register
         req.body.ownerId = ""
     var job = new ret_model(req.body);
-    console.log(job);
+    //console.log(job);
     job.save(function(err, job){
         if(err){
             console.log(err);
@@ -152,11 +153,12 @@ dbRouter.post("/:_model", function(req,res, next){//Really want to include login
             console.log("Job did not save correctly.");
             return next(err)
         };
-        res.json(201, job);
+        console.log(job._id);
+        res.json(200, job);
     })
 });
 dbRouter.put("/:_model/:_id", function(req,res,next){
-    console.log("In Put!")
+    //console.log("In Put!")
     var ret_model = retrieveModel(req.params._model);
     //console.log(req.user.email);
     if(ret_model == null)
@@ -167,7 +169,7 @@ dbRouter.put("/:_model/:_id", function(req,res,next){
         if(doc) {
             for (property in req.body)
                 doc[property] = req.body[property];
-            console.log(doc);
+            //console.log(doc);
             doc.save();
             res.status(204).end();//needed for put callback
         }
@@ -178,9 +180,9 @@ dbRouter.put("/:_model/:_id", function(req,res,next){
 
 });
 dbRouter.put("/:_model/", function(req,res, next){
-    console.log("In Put!")
+    //console.log("In Put!")
     var ret_model = retrieveModel(req.params._model);
-    console.log(req.user.email);
+    //console.log(req.user.email);
     if(ret_model == null)
     {
         return next({error : "Invalid Request"});

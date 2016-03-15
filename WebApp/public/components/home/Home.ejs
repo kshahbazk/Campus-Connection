@@ -32,7 +32,7 @@
                         <tr ng-repeat="ad in ads ">
                             <td>{{ad.createdAt | date : 'shortDate'}}</td>
                             <td>{{ad.price}}</td>
-                            <td>{{ad.universityPointer.name}}</td>
+                            <td>{{ad.userPointer.location}}</td>
                             <td><a href="/viewListing?_id={{ad._id}}">{{ad.title}}</a></td>
 
                         </tr>

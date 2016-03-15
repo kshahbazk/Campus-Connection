@@ -1,6 +1,7 @@
 /**
  * Created by johnfranklin on 2/22/16.
  */
+var db = require('../database');
 var feedback = db.model('Feedback', {
     userPointer: {type: db.Schema.Types.ObjectId, ref: 'User'},
     recipientPointer: {type: db.Schema.Types.ObjectId, ref: 'User'},

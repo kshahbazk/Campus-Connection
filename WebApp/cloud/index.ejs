@@ -71,7 +71,7 @@
                     method: 'POST'
                 }
             });
-            q.prototype.$save = function (callback) {
+            q.prototype.$save = function(callback) {
                 if (this._id) {
                     return this.$update(callback);
                 } else {

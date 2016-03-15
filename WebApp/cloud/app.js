@@ -9,7 +9,7 @@ var auth = jwt({secret: 'SECRET', userProperty: 'payload'});
 
 app = express();
 app.use(express.static('public'));
-app.use(bodyParser.json());
+app.use(bodyParser.json({limit: '50mb'}));
 //app.use(bodyParser.urlencoded({extended: true}))
 
 var modelNames=[];
@@ -29,8 +29,8 @@ var dbRoutes = require(__dirname + '/routes/dbRoutes');
 app.use("/api", dbRoutes);
 var userRoutes = require(__dirname + '/routes/userRoutes');
 app.use("/user", userRoutes);
+app.use("/files", require(__dirname + '/routes/imageRoutes'));
 var User = mongoose.model('User');
-
 app.use(passport.initialize());
 passport.use(new LocalStrategy(
 	function(username,password, done) {

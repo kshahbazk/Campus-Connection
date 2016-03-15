@@ -1,10 +1,10 @@
 
 angular.module('MyApp').controller('createAd', function($scope, $state, $stateParams, $timeout, Ad, Product, File, Ppvcache){
-    $scope.qualityOptions = [{text: "Broken", value: 0},{text: "Bad", value: 1},{text: "Average", value: 2},{text: "Good", value: 3},{text: "New", value: 4}];
+    $scope.qualityOptions = [{text: "Broken", value: 1},{text: "Bad", value: 2},{text: "Average", value: 3},{text: "Good", value: 4},{text: "New", value: 5}];
     if($stateParams._id)//update
     {
 
-        Ad.get({_id: $stateParams._id, $populate:"userPointer ppvPointer"}).then(function(elem){
+        Ad.get({_id: $stateParams._id, $populate:"userPointer ppvPointer"}).$promise.then(function(elem){
 
                 $scope.ad = elem
                 console.log(elem)
@@ -60,7 +60,8 @@ angular.module('MyApp').controller('createAd', function($scope, $state, $statePa
     $scope.persistAdParse = function() {
         console.log($scope.ad)
         $scope.ad.userPointer = localStorage._id;
-        $scope.ad.ppvPointer = $scope.ad.ppvPointer._id;
+        if($scope.ad.ppvPointer)//always populated if it exists, so no risk of
+            $scope.ad.ppvPointer = $scope.ad.ppvPointer._id;
         console.log($scope.ad)
 
         $scope.ad.$save(
@@ -76,7 +77,7 @@ angular.module('MyApp').controller('createAd', function($scope, $state, $statePa
     }
 
 
-    $scope.$saveFile = function(files) {
+    $scope.saveFile = function(files) {
         if (files.length > 0) {
             console.log(files)
             console.log(files[0])
@@ -84,11 +85,17 @@ angular.module('MyApp').controller('createAd', function($scope, $state, $statePa
             var name = files[0].name;
             var reader = new FileReader();
             reader.onloadend = function () {
-                console.log($scope.user.email);
+                //console.log($scope.user.email);
                 var f = new File();
-                f.fileContent = reader.result;
-                f.$save(new function(ret){
-                    $scope.ad.filePointer = f._id;
+                f.fileType = files[0].type;
+                var x = reader.result.indexOf(",")
+                f.encoding = reader.result.slice(reader.result.indexOf(";") + 1, x)
+                console.log(f.encoding);
+
+                f.fileContent = reader.result.slice(x + 1);
+                f.$save(function(ret,ret2){//Stupid! callback doesn't work if you describe the function as new function(...), only function(...)
+                    $scope.ad.imagePointer = ret._id;
+                    console.log($scope.ad.imagePointer);
                 });
                 //window.location.assign("/profile");
             };
@@ -97,11 +104,20 @@ angular.module('MyApp').controller('createAd', function($scope, $state, $statePa
 
         }
     }
-    $scope.findPPV = new function(){
+    $scope.findPPV = function(){
         if($scope.ad.productName && $scope.ad.quality)
         {
-            Ppvcache.get({productName: $scope.ad.productName, quality: $scope.ad.quality, location: localStorage.location}).then(function(elem){
-                $scope.ad.ppvPointer = elem;
+            Ppvcache.query({productName: $scope.ad.productName, quality: $scope.ad.quality, location: localStorage.location}).$promise.then(function(elems){
+                if(elems.length > 0)
+                    $scope.ad.ppvPointer = elems[0];
+                else {
+                    console.log("Where is PPV?")
+                    //what do we do here?
+                }
+            },
+            function (user, error) {
+                // Show the error message somewhere and let the user try again.
+               console.log(user);
             })
         }
     }
