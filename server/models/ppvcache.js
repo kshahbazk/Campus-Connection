@@ -1,13 +1,11 @@
-/**
- * Created by johnfranklin on 3/13/16.
- */
-var db = require('../database');
-var ad = db.model('Ppvcache', {
+var mongoose = require('mongoose');
+
+var PpvCacheSchema = new mongoose.Schema({
     productName: String,
     quality: Number,
     location: String,
     ppv: Number,
     createdAt: {type: Date, required: true, default: Date.now}
-})
+});
 
-module.exports = ad
+module.exports =  mongoose.model('Ppvcache', PpvCacheSchema);

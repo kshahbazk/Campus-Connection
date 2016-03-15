@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var crypto = require('crypto');
 var jwt = require('jsonwebtoken');
-var db = require('../database');
+
 var UserSchema = new mongoose.Schema({
 	username: {type: String, lowercase:true, unique:true},
 	hash: String,
@@ -9,7 +9,6 @@ var UserSchema = new mongoose.Schema({
 	email: {type: String, required: true, unique: true},
 	verified: {type:Boolean, default: false},
 	location: String,
-	//userPointer: {type: db.Schema.Types.ObjectId, ref: 'Users'},//
 	firstName: {type: String, required: true},
 	lastName: {type: String, required: true},
 	createdAt: {type: Date, required: true, default: Date.now},
@@ -44,4 +43,4 @@ UserSchema.methods.generateJWT = function() {
 	}, 'SECRET');
 };
 
-mongoose.model('User', UserSchema);
+module.exports =  mongoose.model('User', UserSchema);

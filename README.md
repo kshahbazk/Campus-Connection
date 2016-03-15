@@ -19,7 +19,7 @@
   Installation Direction
   ----------------------
 
-  In order to run our project, from the main directory in a terminal window run node cloud/app.js .
+  In order to run our project, from the main directory in a terminal window run node cloud/server.js .
   
   Make sure to install node and onto your computer.
 
