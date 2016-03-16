@@ -52,14 +52,14 @@ app.get('/:dir1/:file', function(req, res) {
 app.get('/:file', function(req, res) {
 	conditionalRender(res,"", req.params.file, names)
 });
-var server = app.listen(8080, function () {
+var server = app.listen(80, function () {
 	var host = server.address().address;
 	var port = server.address().port;
 
 	console.log('Example app listening at http://%s:%s', host, port);
 });
 
-/* TODO: John loook at this code to improve on our routing, then move this to a routing file and use require :)
+/* TODO: John look at this code to improve on our routing, then move this to a routing file and use require :)
 
 app.get('/partials/!*' , function(req,res){
 	//Starts from views directory
