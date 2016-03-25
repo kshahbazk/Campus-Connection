@@ -51,7 +51,7 @@
 
 <style>
 .modal-footer{
-    text-align: left;    
+    text-align: left;
 }
 
 .form-inline .form-group {
@@ -193,46 +193,43 @@ mark {
               <div class="modal-body form-inline">
                 <div class="form-group has-feedback">
                     <label class="control-label" for="firstnamelabel">* First name</label>
-                    <input type="text" class="form-control" id="firstnameinput" aria-describedby="firstnameinput" required="">
+                    <input type="text" class="form-control" id="firstnameinput" ng-model="user.firstName" aria-describedby="firstnameinput" required>
                     <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
                 </div>
                 
                 <div class="form-group has-feedback">
                     <label class="control-label" for="lastnamelabel">* Last name</label>
-                    <input type="text" class="form-control" id="lastnameinput" aria-describedby="lastnameinput" required="">
+                    <input type="text" class="form-control" id="lastnameinput" ng-model="user.lastName" aria-describedby="lastnameinput" required>
                     <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
                 </div>
                 
                 <div class="form-group has-feedback">
                     <label class="control-label" for="emaillabel">* Email address</label>
-                    <input type="email" class="form-control" id="emailinput" aria-describedby="emailinput" required="">
+                    <input type="email" class="form-control" id="emailinput" ng-model="user.email" aria-describedby="emailinput" required>
                     <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
                 </div>
                 
                 <div class="form-group has-feedback">
                     <label class="control-label" for="passwordlabel">* Password</label>
-                    <input type="password" class="form-control" id="passwordinput" aria-describedby="passwordinput" required="">
+                    <input type="password" class="form-control" id="passwordinput" ng-model="user.firstName" aria-describedby="passwordinput" required>
                     <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
                 </div>
                 
                 <div class="form-group has-feedback">
                     <label class="control-label" for="re-enterpasswordlabel">* Re-enter password</label>
-                    <input type="password" class="form-control" id="re-enterpasswordinput" aria-describedby="re-enterpasswordinput" required="">
+                    <input type="password" class="form-control" id="re-enterpasswordinput"  ng-model="password2" aria-describedby="re-enterpasswordinput" required>
                     <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
                 </div>
-                
-                 <div class="form-group has-feedback" >
-                    <label class="control-label" for="postcodelabel">* University</label>
-                    <select class="form-control">
-                        <option>- Please select -</option>
-                        <option>San Jose State University</option>
-                        <option>Santa Clara University</option>
-                        
-                    </select>
-                </div><br/>
+
+                  <div class="form-group has-feedback" >
+                      <label class="control-label" for="postcodelabel">* University</label>
+                      <select class="form-control" ng-model="user.location" ng-options="uni.text as uni.text for uni in universities" id='sel1' required>
+                          <option value="">Select University</option>
+                      </select>
+                  </div><br/>
                 
                  <div class="form-group">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">Sign up</button>
+                    <button type="submit" class="btn btn-primary" data-dismiss="modal" >Sign up</button>
                  </div>
                 
               </div><!-- end modal-Body -->
@@ -255,13 +252,13 @@ mark {
               <div class="modal-body">
                 <div class="form-group has-feedback">
                   <label class="control-label">Email Address</label>
-                  <input type="email" class="form-control" id="inputSuccess2" aria-describedby="inputSuccess2Status" placeholder="Email">
+                  <input type="email" class="form-control" id="inputSuccess1" aria-describedby="inputSuccess2Status" ng-model="username" placeholder="Email">
                   <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
                 </div>
                 
                 <div class="form-group has-feedback">
                   <label class="control-label">Password</label>
-                  <input type="password" class="form-control" id="inputSuccess2" aria-describedby="inputSuccess2Status" placeholder="Password">
+                  <input type="password" class="form-control" id="inputSuccess2" aria-describedby="inputSuccess2Status" ng-model="password" placeholder="Password">
                   <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
                 </div>
                 

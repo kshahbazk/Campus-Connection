@@ -1,10 +1,17 @@
 /**
  * Created by johnfranklin on 10/15/15.
  */
-angular.module('MyApp').controller('login', function($scope,$state, $http){
+angular.module('MyApp').controller('login', function($scope,$state, $http,$uibModalInstance, oldScope){
     //Modified from Parse's example
 
     console.log("BREATHING");
+    $scope.toRegister = function() {
+        oldScope.toRegister = true;
+        $uibModalInstance.dismiss();
+    }
+    $scope.dismiss = function(){
+        $uibModalInstance.dismiss();
+    }
     $scope.logIn = function() {
         //user.email Notification? figure this out after we get connected.
         var toSend = {};
@@ -24,8 +31,10 @@ angular.module('MyApp').controller('login', function($scope,$state, $http){
             localStorage.token = response.data.token;
             console.log(localStorage);
             document.location.href = "/profile"
+            $uibModalInstance.close();
         }, function errorCallback(response) {
-            alert(response);
+            console.log(response);
+            alert(response.data.message);
             // called asynchronously if an error occurs
             // or server returns response with an error status.
         })

@@ -24,7 +24,7 @@ router.post('/register', function(req, res, next){
 	//TODO: Create student verification with regex
 	user.email = req.body.email;
 	user.firstName = req.body.firstName
-	user.email = req.body.email;;
+	user.email = req.body.email;
 	user.lastName = req.body.lastName;
 	user.location = req.body.location;
 
@@ -32,7 +32,10 @@ router.post('/register', function(req, res, next){
 	user.setPassword(req.body.password);
 
 	user.save(function (err){
-		if(err){ return next(err); }
+		if(err){
+			console.log(err);
+
+			return next(err.message); }
 
 		return res.json({token: user.generateJWT()})
 	});
