@@ -16,18 +16,22 @@
         <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
             <ul class="nav navbar-nav">
                 <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                <li ng-show="user.token"><a href="/createAd">Sell</a></li>
+                <li ng-show="user.token"><a href="/home">Buy</a></li>
+                <li ng-show="user.token"><a href="/profile">Profile</a></li>
+                <li ng-show="user.token"><a href="/LogOut">Log Out</a></li>
                 <li class="hidden">
                     <a href="#page-top"></a>
                 </li>
-                <li><!--This is annoying. what are we going to do with this element when we aren't on the landing page? load the landing page and scroll to it?-->
+                <li ng-show="!user.token"><!--This is annoying. what are we going to do with this element when we aren't on the landing page? load the landing page and scroll to it?-->
                     <a class="page-scroll" href="#about">About</a>
                 </li>
-                <li>
+                <li ng-show="!user.token">
                     <a href="#" ng-click="loginModal()">
                         Log In
                     </a>
                 </li>
-                <li>
+                <li ng-show="!user.token">
                     <a href="#" ng-click="registerModal()">
                         Sign Up
                     </a> 
@@ -105,17 +109,17 @@
             <div class="modal-body">
                 <div class="form-group has-feedback">
                     <label class="control-label">Email Address</label>
-                    <input type="email" class="form-control" id="inputSuccess2" aria-describedby="inputSuccess2Status" placeholder="Email">
+                    <input type="email" class="form-control" id="inputSuccess2" ng-model="username" aria-describedby="inputSuccess2Status" placeholder="Email">
                     <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
                 </div>
 
                 <div class="form-group has-feedback">
                     <label class="control-label">Password</label>
-                    <input type="password" class="form-control" id="inputSuccess2" aria-describedby="inputSuccess2Status" placeholder="Password">
+                    <input type="password" class="form-control" id="inputSuccess2" ng-model="password" aria-describedby="inputSuccess2Status" placeholder="Password">
                     <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
                 </div>
 
-                <button type="button" class="btn btn-primary">Login</button>
+                <button type="submit" class="btn btn-primary">Login</button>
                 <input type="checkbox" value="rememberme" id="rememberme">Remember me <br/><br/>
 
                 <a href="#">Forgot your password?</a>

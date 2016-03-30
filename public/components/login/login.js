@@ -13,6 +13,7 @@ angular.module('MyApp').controller('login', function($scope,$state, $http,$uibMo
         $uibModalInstance.dismiss();
     }
     $scope.logIn = function() {
+        console.log("in logIn function!");
         //user.email Notification? figure this out after we get connected.
         var toSend = {};
         toSend.username = $scope.username;
