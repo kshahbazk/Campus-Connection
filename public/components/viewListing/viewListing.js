@@ -6,10 +6,10 @@ angular.module("MyApp").controller("viewListing", function($scope, $stateParams,
 
         Ad.get({_id: $stateParams._id, $populate:"userPointer ppvPointer"}).$promise.then(function(elem){
 
-            $scope.ad = elem;//Is this all I need?
-            console.log($scope.ad)
+            $scope.listing = elem;//Is this all I need?
+            console.log($scope.listing)
             console.log($scope.user)
-            Feedback.query({recipientPointer: $scope.ad.userPointer._id, $populate:"userPointer"}).$promise.then(function(elems){
+            Feedback.query({recipientPointer: $scope.listing.userPointer._id, $populate:"userPointer"}).$promise.then(function(elems){
                 console.log(elems)
 
                 $scope.total = 0.0;

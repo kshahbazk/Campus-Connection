@@ -5,5 +5,6 @@ module.exports = function(app) {
 	var userRoutes = require('../routes/userRoutes');
 	app.use("/user", userRoutes);
 	app.use("/files", require('../routes/imageRoutes'));
+	app.use("/web", require('../routes/amazonRoutes'));
 }
 

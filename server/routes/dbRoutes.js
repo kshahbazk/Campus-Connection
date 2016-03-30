@@ -129,7 +129,10 @@ if(ret_model == null)
     if(toPopulate)
         query = query.populate(toPopulate)//Keep it a single string.
     query.exec(function(err, element){
-    if(err){return next(err);};
+    if(err){
+        console.log(err);
+        return next(err);
+    };
     //console.log(element);
     res.json(element);
 })

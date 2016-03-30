@@ -1,21 +1,21 @@
 <style type="text/css">
-   body { background: white; }
+   body {color:black}
 </style>
 
-	<div class="container">
+	<div class="container" style="padding-top: 70px">
 
 		<div class="row">
 
 			<div class="col-xsm-2 col-md-2">
 				<div class="thumbnail">
-				<img ng-show="ad.imagePointer" src="files/images/{{ad.imagePointer}}" alt="...">
+				<img ng-show="listing.imagePointer" src="files/images/{{listing.imagePointer}}" alt="...">
 				<div class="caption">
 					<!--Product information -->
-				<h3>{{ad.title}}</h3><!-- name-->
+				<h3>{{listing.title}}</h3><!-- name-->
 				<p>
 
-					{{ad.price | currency}}<br><!-- price -->
-					Average price of the item: {{ad.ppvPointer.ppv | currency}}<!-- (weighted?) average price?  -->
+					{{listing.price | currency}}<br><!-- price -->
+					Average price of the item: {{listing.ppvPointer.ppv | currency}}<!-- (weighted?) average price?  -->
 				</p>
 				<p><a href="#" class="btn btn-primary" role="button" >Buy </a></p>
 				</div>
@@ -28,13 +28,13 @@
 			<div class="col-xsm-2 col-md-10">
 
 				<div class="panel panel-default">
-				<div class="panel-heading">Product Information</div>
+				<div class="panel-helistinging">Product Information</div>
 				<div class="panel-body">
-					{{ad.description}}
+					{{listing.description}}
 				</div>
 				</div>
 				<div class="panel panel-default">
-				<div class="panel-heading">Seller reviews: <a href="/profile?_id={{ad.userPointer._id}}">Profile</a></div>
+				<div class="panel-helistinging">Seller reviews: <a href="/profile?_id={{listing.userPointer._id}}">Profile</a></div>
 				<div class="panel-body">
 					<div ng-cloak class="col-xsm-2 col-md-6 ratingscontainer">
 						<h2 ng-show="loaded && !noreviews">Average Rating: {{total | number : 2}}/5</h2>

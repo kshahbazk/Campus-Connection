@@ -119,6 +119,7 @@ angular.module('MyApp').controller("modalController",function($scope, $uibModalI
 
         }
         //Callbacks work, but promises do NOT work with save. I cannot figure out why.
+
         $scope.rev.$save(function(){
             $scope.rev.userPointer = {
                 firstName: oldScope.currentUser.firstName,

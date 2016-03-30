@@ -19,12 +19,12 @@ var app = angular.module('MyApp',["ui.router", "ngResource", 'ui.bootstrap'])
             url: '/home',
             templateUrl: 'components/home/Home.ejs',
             controller: 'home',
-            title: 'Ad'
+            title: 'View All Listings'
         }).state('viewListing', {
             url: '/viewListing?_id',
-            templateUrl: 'components/viewListing/AdDisplay.ejs',
+            templateUrl: 'components/viewListing/viewListing.ejs',
             controller: 'viewListing',
-            title: 'Ad'
+            title: 'View a Listing'
         }).state('createAd', {
             url: '/createAd?_id',
             templateUrl: 'components/createAd/AdCreate.ejs',
@@ -37,8 +37,8 @@ var app = angular.module('MyApp',["ui.router", "ngResource", 'ui.bootstrap'])
             title: 'Log In'
         }).state('LandingPage', {
             url: '/LandingPage',
-            templateUrl: 'components/LandingPage/LandingPage.ejs',
-            title: 'Log In'
+            templateUrl: 'components/LandingPage/NewLandingPage.ejs',
+            title: 'CC'
         }).state('LogOut', {
             url: '/LogOut',
             template: '<p>Logging Out...</p>',

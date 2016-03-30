@@ -1,7 +1,7 @@
 /**
  * Created by johnfranklin on 10/15/15.
  */
-angular.module('MyApp').controller('Register', function($scope, $state, $http, University){
+angular.module('MyApp').controller('Register', function($scope, $state, $http, $uibModalInstance,University){
     //Modified from Parse's example
     //OK, I've finally figured out how this works. $scope refers to the scope for the function, while this is the scope for the function currently...?
    console.log("BREATHING");
@@ -14,13 +14,10 @@ angular.module('MyApp').controller('Register', function($scope, $state, $http, U
             $scope.updateUniversities(elems.map(function(r){return {text: r.name, value: r._id}}));
 
         })
+    $scope.dismiss = function(){
+        $uibModalInstance.dismiss();
+    }
     $scope.updateUniversities= function(universities){
-        //Holy shit. this is a hell of a bug, rooted deep in facets of angular I wasn't aware of.
-        //angular doesn't refresh objects until the user interacts with them.
-        // clicking the dropdown doesn't constitute interacting, so they won't see the variables.
-        // if they type in a value into any of the other elements, the options pop up.
-        // resolution is simple when you know the problem however;
-        // use $scope.$apply, and pass a function making the changes that aren't showing up.
 
         $scope.universities = universities;
     }
@@ -41,14 +38,13 @@ angular.module('MyApp').controller('Register', function($scope, $state, $http, U
         $http.post("/user/register", $scope.user).then(
             function(user) {
                 // Hooray! Let them use the app now.
-                //Need to add cookie. How?
-                // How do we authenticate actions after login?
-                $state.go("login")
+
+                $uibModalInstance.close();
             },
             function(error) {
                 // Show the error message somewhere and let the user try again.
                 console.log(error);
-                alert(error);
+                alert(error.data);
             }
         );
         console.log($scope.user);
