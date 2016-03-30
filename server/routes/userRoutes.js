@@ -56,7 +56,7 @@ router.post('/login', function(req, res, next){
 			return res.json({_id: user._id, firstName: user.firstName, lastName: user.lastName, email: user.email, location: user.location, token: user.generateJWT()});
 		} else {
 			console.log(info);
-			return res.status(401).json(info);
+			return return res.status(400).json({message: 'Invalid Username or Password.'});
 		}
 	})(req, res, next);
 });
