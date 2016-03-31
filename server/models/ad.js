@@ -14,6 +14,7 @@ var AdSchema = new mongoose.Schema({
     imagePointer: {type: mongoose.Schema.Types.ObjectId, ref: 'File'},
     ppvPointer:{type: mongoose.Schema.Types.ObjectId, ref: 'Ppvcache'},
     searchArray: [String],
+    category: String,
     createdAt: {type: Date, required: true, default: Date.now}
 });
 

@@ -1,5 +1,5 @@
 
-angular.module('MyApp').controller('createAd', function($scope, $state, $stateParams, $timeout, Ad, Product, File, Ppvcache){
+angular.module('MyApp').controller('createAd', function($scope, $state, $stateParams, $timeout, $http, Ad, Product, File, Ppvcache){
     $scope.qualityOptions = [{text: "Broken", value: 1},{text: "Bad", value: 2},{text: "Average", value: 3},{text: "Good", value: 4},{text: "New", value: 5}];
     if($stateParams._id)//update
     {
@@ -22,6 +22,15 @@ angular.module('MyApp').controller('createAd', function($scope, $state, $statePa
         console.log($scope.ad)
     }
     //don't call it createAd in the function. seems like initialize, not persist to DB
+    $scope.getAmazonResults = function(str)
+    {
+        return $http.get("web/amazonLookup/" + str, {}).then(function (response) {
+            console.log("Are you there?")
+            console.log(response.data)
+            return response.data
+        })
+    }
+
     $scope.persistAd = function() {
         //JOHN: productId isn't defined. how about querying the Product Table to see if the name lines up?
         console.log($scope.ad.imagedata);
@@ -93,7 +102,7 @@ angular.module('MyApp').controller('createAd', function($scope, $state, $statePa
                 console.log(f.encoding);
 
                 f.fileContent = reader.result.slice(x + 1);
-                f.$save(function(ret,ret2){//Stupid! callback doesn't work if you describe the function as new function(...), only function(...)
+                f.$save(function(ret,ret2){//callback doesn't work if you describe the function as new function(...), only function(...)
                     $scope.ad.imagePointer = ret._id;
                     console.log($scope.ad.imagePointer);
                 });
@@ -107,10 +116,13 @@ angular.module('MyApp').controller('createAd', function($scope, $state, $statePa
     $scope.findPPV = function(){
         if($scope.ad.productName && $scope.ad.quality)
         {
-            Ppvcache.query({productName: $scope.ad.productName, quality: $scope.ad.quality, location: localStorage.location}).$promise.then(function(elems){
-                if(elems.length > 0)
-                    $scope.ad.ppvPointer = elems[0];
+            $http.get('web/getPPV',{params: {productName: $scope.ad.productName, quality: $scope.ad.quality, location: localStorage.location}}).then(function(elem){
+                if(elem) {
+                    console.log(elem.data)
+                    $scope.ad.ppvPointer = elem.data
+                }
                 else {
+                    //should never happen
                     console.log("Where is PPV?")
                     //what do we do here?
                 }

@@ -2,7 +2,7 @@
 var mongoose = require('mongoose');
 
 var ProductSchema = new mongoose.Schema({
-    name: String,
+        name: String,
     createdAt: {type: Date, required: true, default: Date.now}
 });
 

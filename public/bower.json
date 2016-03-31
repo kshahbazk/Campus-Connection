@@ -2,7 +2,7 @@
   "name": "CampusConnection",
   "description": "",
   "dependencies": {
-    "angular-bootstrap": "*"
-
+    "angular-bootstrap": "*",
+    "typeahead.js": "*"
   }
 }
