@@ -1,12 +1,13 @@
 <form class="form-login ng-pristine ng-valid job-form center-block" ng-Submit="persistAd()" style="padding-top: 70px;margin-left:50px; margin-right:50px"role="form">
     <h2 class="form-signin-heading">Make an Ad. Sell Stuff</h2>
-    <div ng-show="ad.ppvPointer">{{ad.ppvPointer.ppv}}</div>
+    <div style="background-color: white; color:black">{{ad.ppvPointer.ppv}}</div>
     <div class="input-group">
         <div class="input-group-addon">
             Product:
         </div>
         <!--Hm. actually, it should never reference productPointer; if the user changes the name the want to change the product associated with it.-->
-        <input class="form-control" placeholder="" ng-model="ad.productName" type="text" ng-change="findPPV()" required>
+        <input class="form-control" placeholder="" ng-model="ad.productName" uib-typeahead="product for product in getAmazonResults(ad.productName)" typeahead-wait-ms="200" typeahead-min-length="3" typeahead-loading="loadingLocations" type="text" ng-blur="findPPV()" required>
+        <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
     </div>
     <div class="input-group">
         <div class="input-group-addon">

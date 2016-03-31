@@ -101,11 +101,5 @@ app.directive('currencyFormatter', ['$filter', function ($filter) {
         }
     };
 }]);
-//Once more liberated from stack exchange. handles filereads.
-// http://stackoverflow.com/questions/17063000/ng-model-for-input-type-file
-
-//When you make a model, add it to the modelNameList and to the function call in the server run javascript
-//(index.js for now, could change in the future
-
 
 
