@@ -10,13 +10,14 @@ var util = require('util')
 var db = require('../config/mongoose');
 var Product = require('../models/product')
 //console.log(util.inspect(Product, {showHidden: false, depth: null}));
+var process = require("process")
 var PpvCache = require('../models/ppvcache')
 var weightindex = [20,10,10,10,40];
 var uniarr = ["San Jose State University","Santa Clara University"]// would be replaced with a query to the university table when we expand.
 var OperationHelper = require('apac').OperationHelper
 var opHelper = new OperationHelper({
-        awsId:     'AKIAIAV3Q75D4WH4TMBA',
-        awsSecret: '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',
+        awsId:     process.env.AWSAccessKeyId,
+        awsSecret: process.env.AWSSecretKey,
         assocId:   'campusco0e9-20',
         // xml2jsOptions: an extra, optional, parameter for if you want to pass additional options for the xml2js module. (see https://github.com/Leonidas-from-XIV/node-xml2js#options)
         version:   '2013-08-01'
