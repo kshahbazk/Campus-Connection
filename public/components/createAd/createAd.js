@@ -17,7 +17,7 @@ angular.module('MyApp').controller('createAd', function($scope, $state, $statePa
 
     }
     else//create
-    {
+    {//Weird bug. not showing changes to amazonRoutes for git
         $scope.ad = new Ad();
         console.log($scope.ad)
     }

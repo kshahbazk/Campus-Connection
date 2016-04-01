@@ -77,7 +77,7 @@ router.get('/amazonLookup/:text',function(req, res, next) {
         amazonQuery.Title = req.params.text
     }
     else
-    {
+    {//Weird bug. not showing changes to amazonRoutes for git
         amazonQuery.SearchIndex = 'Blended';
         amazonQuery.Keywords = req.params.text
     }
@@ -88,7 +88,10 @@ router.get('/amazonLookup/:text',function(req, res, next) {
                 var titles = results.ItemSearchResponse.Items[0].Item
                 if (titles) {
                     for (var i = 0; i < titles.length; i++) {
-                        titles[i] = titles[i].ItemAttributes[0].Title[0];
+                        if(titles[i].ItemAttributes && titles[i].ItemAttributes[0].Title)
+                            titles[i] = titles[i].ItemAttributes[0].Title[0];
+                        else
+                            titles[i] = "";//???
                     }
                     res.json(titles);//send an array of all titles.
                 }
