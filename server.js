@@ -10,7 +10,6 @@ require('./server/config/mongoose');
 require('./server/config/passport');
 require('./server/config/routes')(app);
 
-
 conditionalRender = function(res,directory,filetoreturn,data){
     var temp = filetoreturn.split('.').pop();
     //console.log(directory);
@@ -19,7 +18,10 @@ conditionalRender = function(res,directory,filetoreturn,data){
         res.sendFile(directory+"/"+filetoreturn, data)
     else
         res.render('index.ejs', data);
-}
+};
+
+
+
 
 app.get('/', function(req,res){
     res.redirect("LandingPage");

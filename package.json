@@ -2,10 +2,12 @@
   "name": "application-name",
   "version": "0.0.1",
   "dependencies": {
+    "apac": "^1.0.0",
     "bower": "^1.7.7",
     "cookie-parser": "^1.4.1",
     "crypto": "0.0.3",
     "ejs": "^2.4.1",
+    "email-verification": "^0.3.1",
     "express-jwt": "^3.3.0",
     "express-session": "^1.13.0",
     "jsonwebtoken": "^5.7.0",
@@ -13,7 +15,6 @@
     "mongoose": "^4.4.7",
     "morgan": "^1.7.0",
     "passport": "^0.3.2",
-    "passport-local": "^1.0.0",
-    "apac": "^1.0.0"
+    "passport-local": "^1.0.0"
   }
 }
