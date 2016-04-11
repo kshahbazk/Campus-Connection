@@ -63,7 +63,7 @@ var populateFromAmazon = function(x, location,res, quality)
         }
     }
     else{
-        console.log(x.ItemAttributes[0].Title[0]);
+        //console.log(x.ItemAttributes[0].Title[0]);
     }
 
 }
