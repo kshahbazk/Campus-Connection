@@ -36,13 +36,15 @@ angular.module("MyApp").controller("viewListing", function($scope, $stateParams,
             },
                 function (error) {
                     // Show the error message somewhere and let the user try again.
+                    console.log("Feedback")
                     alert(error);
                 })
 
             },
             function (error) {
                 // Show the error message somewhere and let the user try again.
-                alert(error);
+                console.log("Which error")
+                alert("Adblock Ultimate not supported due to being overzealous with URLs and blocking listing . Use Adblock Plus instead on FireFox.");
             })
 
     }

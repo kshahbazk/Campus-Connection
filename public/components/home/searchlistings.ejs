@@ -1,0 +1,135 @@
+
+
+<!--search-->
+
+<!--ss--->
+<!-- Page Header -->
+
+<div class="carousel fade-carousel slide" data-ride="carousel" data-interval="4000" id="bs-carousel">
+    <!-- Overlay -->
+    <div class="overlay"></div>
+
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#bs-carousel" data-slide-to="0" class="active"></li>
+
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+        <div class="item slides active">
+            <div class="slide-1"></div>
+            <div class="hero">
+
+                <h1>ADS DONE BETTER</h1>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<div style="background-color:white">
+<hr>
+<!--------------------->
+
+<div class="container">
+
+    <!-- Search -->
+
+    <div class="col-md-10 col-md-offset-2">
+        <form action="" class="search-form">
+            <div class="form-group has-feedback">
+                <label for="search" class="sr-only">Search</label>
+                <input type="text" class="form-control" name="search" id="search" placeholder="search">
+                <span class="glyphicon glyphicon-search form-control-feedback"></span>
+            </div>
+        </form>
+    </div>
+
+    <!-- Search end -->
+
+
+</div>
+<!-- /header end -->
+
+<!-- This is one row -->
+<div class="container">
+
+    <div class="row bootstrap snippets">
+
+        <div ng-repeat="ad in ads" class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+            <div class="card">
+                <div class="thumbnail">
+                    <img ng-show="ad.imagePointer" width="360" height="270" src="files/images/{{ad.imagePointer}}" alt="thumbnail">
+                    <a href="#" class="thumb-cover"></a>
+                    <div class="details">
+
+                        <div class="numbers">
+                            <b class="downloads"><i class="fa fa-area-chart"></i> {{ad.ppvPointer.ppv | currency}}</b>
+
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <b class="actions">
+                        <a class="btn btn-neutral btn-round btn-fill" href="viewListing?_id={{ad._id}}">{{ad.description}}</a>
+
+                    </b>
+                </div>
+                <div class="card-info">
+                    <a href="#">
+                        <h3>{{ad.title}}
+                            <div class="time pull-right">{{ad.price | currency}}</div>
+                        </h3>
+                        <div class="circle-red"><i class="fa fa-circle-o"></i></div>
+                        <p>{{qualityOptions[ad.quality - 1].text}} Condition</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- / We need about 3 a page -->
+
+
+</div>
+<hr>
+
+<!-- Pagination -->
+<div class="row text-center">
+    <div class="col-lg-12">
+        <ul class="pagination">
+            <li>
+                <a href="#">&laquo;</a>
+            </li>
+            <li class="active">
+                <a href="#">1</a>
+            </li>
+            <li>
+                <a href="#">2</a>
+            </li>
+            <li>
+                <a href="#">3</a>
+            </li>
+            <li>
+                <a href="#">4</a>
+            </li>
+            <li>
+                <a href="#">5</a>
+            </li>
+            <li>
+                <a href="#">&raquo;</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- /.row -->
+
+
+
+<hr>
+
+<!-- Footer -->
+<footer>
+
+</footer>
+
+</div>

@@ -10,6 +10,7 @@ require('./server/config/mongoose');
 require('./server/config/passport');
 require('./server/config/routes')(app);
 
+
 conditionalRender = function(res,directory,filetoreturn,data){
     var temp = filetoreturn.split('.').pop();
     //console.log(directory);
@@ -19,9 +20,16 @@ conditionalRender = function(res,directory,filetoreturn,data){
     else
         res.render('index.ejs', data);
 };
+conditionalRenderWholeDir = function(res, url,data){
+	var temp = url.slice(url.lastIndexOf("/"))
+	//console.log(directory);
+	console.log(url);
+	if(temp == "js" || temp == "css")//the file extension; prevents files from loading index.ejs instead of the javascript files
+		res.sendFile(url, data)
 
-
-
+	else
+		res.render('index.ejs', data);
+};
 
 app.get('/', function(req,res){
     res.redirect(200, "LandingPage");
@@ -41,17 +49,8 @@ var names;
 	names = {models:modelNames};
 
 });
-app.get('/:dir1/:dir2/:dir3/:file', function(req, res) {
-	conditionalRender(res,req.params.dir1+"/"+req.params.dir2+"/"+req.params.dir3, req.params.file, names)
-});
-app.get('/:dir1/:dir2/:file', function(req, res) {
-	conditionalRender(res,req.params.dir1+"/"+req.params.dir2, req.params.file, names)
-});
-app.get('/:dir1/:file', function(req, res) {
-	conditionalRender(res,req.params.dir1, req.params.file, names)
-});
-app.get('/:file', function(req, res) {
-	conditionalRender(res,"", req.params.file, names)
+app.get('*', function (req,res) {
+	conditionalRenderWholeDir(res, req.params[0],names);
 });
 var server = app.listen(80, function () {
 	var host = server.address().address;
@@ -59,17 +58,3 @@ var server = app.listen(80, function () {
 
 	console.log('Example app listening at http://%s:%s', host, port);
 });
-
-/* TODO: John look at this code to improve on our routing, then move this to a routing file and use require :)
-
-app.get('/partials/!*' , function(req,res){
-	//Starts from views directory
-	console.log(req.params[0]);
-	res.render('../../public/app/' + req.params[0]); //differebt from video , was trying to get object, not stirng
-});
-
-app.get('*', function (req,res) {
-	res.render('index');
-});*/
-
-module.exports = app;
