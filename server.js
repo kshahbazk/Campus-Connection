@@ -24,7 +24,7 @@ conditionalRender = function(res,directory,filetoreturn,data){
 
 
 app.get('/', function(req,res){
-    res.redirect("LandingPage");
+    res.redirect(200, "LandingPage");
 });
 
 /*
@@ -38,7 +38,6 @@ var modelNames= [];
 var names;
 	serverHelper.getModelNames(function(Mn) {
 	modelNames = Mn;
-	console.log(modelNames);
 	names = {models:modelNames};
 
 });
@@ -72,3 +71,5 @@ app.get('/partials/!*' , function(req,res){
 app.get('*', function (req,res) {
 	res.render('index');
 });*/
+
+module.exports = app;
