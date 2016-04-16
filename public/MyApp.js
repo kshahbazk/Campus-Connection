@@ -17,7 +17,7 @@ var app = angular.module('MyApp',["ui.router", "ngResource", 'ui.bootstrap'])
 
         }).state('home', {
             url: '/home',
-            templateUrl: 'components/home/Home.ejs',
+            templateUrl: 'components/home/searchlistings.ejs',
             controller: 'home',
             title: 'View All Listings'
         }).state('viewListing', {
