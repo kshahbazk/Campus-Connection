@@ -19,7 +19,7 @@ conditionalRender = function(res,directory,filetoreturn,data){
         res.sendFile(directory+"/"+filetoreturn, data)
     else
         res.render('index.ejs', data);
-}
+};
 conditionalRenderWholeDir = function(res, url,data){
 	var temp = url.slice(url.lastIndexOf("/"))
 	//console.log(directory);
@@ -29,10 +29,10 @@ conditionalRenderWholeDir = function(res, url,data){
 
 	else
 		res.render('index.ejs', data);
-}
+};
 
 app.get('/', function(req,res){
-    res.redirect("LandingPage");
+    res.redirect(200, "LandingPage");
 });
 
 /*
@@ -46,7 +46,6 @@ var modelNames= [];
 var names;
 	serverHelper.getModelNames(function(Mn) {
 	modelNames = Mn;
-	console.log(modelNames);
 	names = {models:modelNames};
 
 });
@@ -59,13 +58,3 @@ var server = app.listen(80, function () {
 
 	console.log('Example app listening at http://%s:%s', host, port);
 });
-
-/* TODO: John look at this code to improve on our routing, then move this to a routing file and use require :)
-
-app.get('/partials/!*' , function(req,res){
-	//Starts from views directory
-	console.log(req.params[0]);r
-	res.render('../../public/app/' + req.params[0]); //differebt from video , was trying to get object, not stirng
-});*/
-
-
