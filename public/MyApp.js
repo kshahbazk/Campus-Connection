@@ -1,7 +1,7 @@
 /**
  * Created by johnfranklin on 10/15/15.
  */
-var app = angular.module('MyApp',["ui.router", "ngResource", 'ui.bootstrap'])
+var app = angular.module('MyApp',["ui.router", "ngResource", 'ui.bootstrap' ])
 .config(function($stateProvider, $urlRouterProvider, $locationProvider) {
 
     $urlRouterProvider.otherwise('/');
@@ -36,7 +36,7 @@ var app = angular.module('MyApp',["ui.router", "ngResource", 'ui.bootstrap'])
             controller: 'login',
             title: 'Log In'
         }).state('LandingPage', {
-            url: '/LandingPage',
+            url: '/',
             templateUrl: 'components/LandingPage/NewLandingPage.ejs',
             title: 'CC'
         }).state('LogOut', {

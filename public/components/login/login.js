@@ -31,7 +31,7 @@ angular.module('MyApp').controller('login', function($scope,$state, $http,$uibMo
             localStorage.email = response.data.email;
             localStorage.token = response.data.token;
             console.log(localStorage);
-            document.location.href = "/profile"
+            $state.go("profile")
             $uibModalInstance.close();
         }, function errorCallback(response) {
             console.log(response);

@@ -42,13 +42,13 @@ router.post('/register', function(req, res){
 		!req.body.email ||
 		!req.body.firstName ||
 		!req.body.lastName){
-		 res.status(400).json({message: 'Please fill out all fields'});
+		 return res.status(400).json({message: 'Please fill out all fields'});
 	}
 
 	var user = new User();
 	//Check if email ends with .edu
 	if (req.body.email.slice(req.body.email.length - 3) != "edu") {
-		  res.status(400).json({message: 'Email must end with edu'});
+		  return res.status(400).json({message: 'Email must end with edu'});
 	}
 
 
@@ -64,7 +64,7 @@ router.post('/register', function(req, res){
 
 	nev.createTempUser(user, function(err, newTempUser) {
 		if (err) {
-			 res.status(404).send('ERROR: creating temp user FAILED');
+			 return res.status(404).send('ERROR: creating temp user FAILED');
 		}
 
 		// new user created
@@ -73,19 +73,21 @@ router.post('/register', function(req, res){
 			console.log("going to send email");
 			nev.sendVerificationEmail(newTempUser.email, URL, function(err, info) {
 				if (err) {
-					 res.status(404).send('ERROR: sending verification email FAILED');
+					return res.status(404).send('ERROR: sending verification email FAILED');
 				}
-				console.log("Sent email");
-				 res.status(200).json({
-					msg: 'An email has been sent to you. Please check it to verify your account.',
-					info: info
-				});
+				else {
 
+					console.log("Sent email");
+					return res.status(200).json({
+						msg: 'An email has been sent to you. Please check it to verify your account.',
+						info: info
+					});
+				}
 			});
 			// user already exists in temporary collection!
 		} else {
 			 res.json({
-				msg: 'You have already signed up. Please check your email to verify your account.'
+				message: 'You have already signed up. Please check your email to verify your account.'
 			});
 		}
 	});

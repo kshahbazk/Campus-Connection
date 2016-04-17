@@ -8,6 +8,6 @@ angular.module("MyApp").controller("LogOut",function($state){
         delete localStorage.email;
         delete localStorage.location;
         delete localStorage.token;
-        document.location.href = "/LandingPage"
+        $state.go("LandingPage")
     }
 )
