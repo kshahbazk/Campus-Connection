@@ -42,13 +42,13 @@ router.post('/register', function(req, res){
 		!req.body.email ||
 		!req.body.firstName ||
 		!req.body.lastName){
-		 res.status(400).json({message: 'Please fill out all fields'});
+		 res.status(400).json({msg: 'Please fill out all fields'});
 	}
 
 	var user = new User();
 	//Check if email ends with .edu
 	if (req.body.email.slice(req.body.email.length - 3) != "edu") {
-		  res.status(400).json({message: 'Email must end with edu'});
+		  res.status(400).json({msg: 'Email must end with edu'});
 	}
 
 
@@ -84,32 +84,21 @@ router.post('/register', function(req, res){
 			});
 			// user already exists in temporary collection!
 		} else {
-			 res.json({
+			 res.status(400).json({
 				msg: 'You have already signed up. Please check your email to verify your account.'
 			});
 		}
 	});
 });
 
-router.post('/login', function(req, res, next){
-	//console.log(req.body);
-	if(!req.body.username || !req.body.password){
-		return res.status(400).json({message: 'Please fill out all fields'});
-	}
-
-	passport.authenticate('local', function(err, user, info){
-		if(err){
-			return next(err); }
-
-		if(user){
-			console.log({_id: user._id, firstName: user.firstName, lastName: user.lastName, email: user.email, location: user.location});
-			return res.json({_id: user._id, firstName: user.firstName, lastName: user.lastName, email: user.email, location: user.location, token: user.generateJWT()});
-		} else {
-			console.log(info);
-			return res.status(400).json({message: 'Invalid Username or Password.'});
+router.post('/login',
+	passport.authenticate('local'),
+	function(req, res){
+		if(req.user){
+			user = req.user;
+			res.send({_id: user._id, firstName: user.firstName, lastName: user.lastName, email: user.email, location: user.location, token: user.generateJWT()});
 		}
-	})(req, res, next);
-});
+	});
 
 router.get('/email-verification/:URL', function(req, res) {
 	var url = req.params.URL;
