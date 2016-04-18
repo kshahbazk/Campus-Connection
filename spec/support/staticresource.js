@@ -1,7 +1,7 @@
 /**
  * Created by johnfranklin on 4/17/16.
  */
-// static file for resource stuff. can't use the file because it's dynamically generated.
+// static file for resource stuff. can't use it where it is by default because it's dynamically generated and tests don't involve the backend
 app.factory('serverInfo', function(){
     /*
      pass any information as an object called data within the object. Can't pass it directly for now; can't find a way.
