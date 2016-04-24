@@ -1,129 +1,104 @@
-<style type="text/css">
-   body {color:black}
-</style>
 
-	<div class="container" style="padding-top: 70px">
-
+<div class="container">
+	<div class="container">
 		<div class="row">
-
-			<div class="col-xsm-2 col-md-2">
-				<div class="thumbnail">
-				<img ng-show="listing.imagePointer" src="files/images/{{listing.imagePointer}}" alt="...">
-				<div class="caption">
-					<!--Product information -->
-				<h3>{{listing.title}}</h3><!-- name-->
-				<p>
-
-					{{listing.price | currency}}<br><!-- price -->
-					Average price of the item: {{listing.ppvPointer.ppv | currency}}<!-- (weighted?) average price?  -->
-				</p>
-				<p><a href="#" class="btn btn-primary" role="button" >Buy </a></p>
-				</div>
-				</div>
+			<div class="col-lg-12 text-center">
+				<h2>XBOX ONE Brand New</h2>
 
 			</div>
+		</div>
+		<hr>
+		<div class="accordian">
+			<ul>
+				<li>
+					<div class="image_title">
+						<a href="#">Console</a>
+					</div>
+					<a href="#">
+						<img src="http://cdn.mos.techradar.com/art/games_consoles/Xbox%20One/Xbox%20One%20-%20one%20year%20on/front_square-970-80.jpg"/>
+					</a>
+				</li>
+				<li>
+					<div class="image_title">
+						<a href="#">Controller</a>
+					</div>
+					<a href="#">
+						<img src="http://static4.gamespot.com/uploads/scale_medium/mig/6/2/2/3/2286223-XboxOneController_98825_screen.jpg"/>
+					</a>
+				</li>
+				<li>
+					<div class="image_title">
+						<a href="#">Game</a>
+					</div>
+					<a href="#">
+						<img src="http://thecodeplayer.com/uploads/media/00kih8g.jpg"/>
+					</a>
+				</li>
 
 
+			</ul>
+		</div>
+	</div>
 
-			<div class="col-xsm-2 col-md-10">
 
-				<div class="panel panel-default">
-				<div class="panel-helistinging">Product Information</div>
-				<div class="panel-body">
-					{{listing.description}}
+	<div class="row">
+		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-8">
+			<div class="box">
+				<div class="box-icon">
+					<span class="fa fa-newspaper-o fa-4x"></span>
 				</div>
+				<div class="info">
+					<h4 class="text-center">Description</h4>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti atque, tenetur quam aspernatur corporis at explicabo nulla dolore necessitatibus doloremque exercitationem sequi dolorem architecto perferendis quas aperiam debitis dolor soluta!</p>
+					<a href="" class="btn">Link</a>
 				</div>
-				<div class="panel panel-default">
-				<div class="panel-helistinging">Seller reviews: <a href="/profile?_id={{listing.userPointer._id}}">Profile</a></div>
-				<div class="panel-body">
-					<div ng-cloak class="col-xsm-2 col-md-6 ratingscontainer">
-						<h2 ng-show="loaded && !noreviews">Average Rating: {{total | number : 2}}/5</h2>
-						<h2 ng-show="loaded && noreviews">No Reviews! A blank slate.</h2>
-						<div class="row panel panel-default" ng-repeat="r in ratings | limitTo : 3">
-							<div class="col-md-3"><h2>{{r.userPointer.firstName}} {{r.userPointer.lastName}}</h2></div>
-							<div class="col-md-2"><h2>{{r.rating}}/5</h2></div>
-							<div class="col-md-7"  ><h3>{{r.review}} </h3></div>
+			</div>
+		</div>
+
+		<!--
+            ****** Analytics *******
+            -->
+		<div class="col-sm-4 col-md-4">
+			<!--
+               ****** LINE CHART WIDGET *******
+               -->
+
+			<div id="line-chart-widget" class="panel">
+				<div class="panel-heading">
+					<h4 class="text-uppercase"><strong>Analytics</strong></h4>
+				</div>
+
+				<div class="panel-footer">
+					<div class="list-block">
+						<ul class="text-center legend">
+							<li>
+								<h3>$214</h3>
+								<strong>Listed Price</strong>
+							</li>
+							<li>
+								<h3>$300</h3>
+								<strong>PPV Price</strong>
+							</li>
+						</ul>
+					</div>
+					<div class="chart-block clearfix">
+
+						<div class="pull-right">
+							<div class="change text-center"><i class="fa fa-plus"></i> 86.00</div>
 						</div>
-
 					</div>
 				</div>
-				</div>
 			</div>
-
-			</div>
-
 		</div>
-
 	</div>
 
+	<hr>
 
-
-
-
-<div class="container">
-<div class="jumbotron">
-	<h1>Other items being sold on campus</h1><!-- TF you want me to pull this from? -->
 	<div class="row">
-
-		<div class="col-xsm-2 col-md-4">
-
-		<p>
-			<div class="thumbnail">
-				<img src="http://www.portableone.com/images/macbook-pro-for-college.jpg" alt="...">
-				<!--How are we handling images?-->
-				<div class="caption">
-				<h3>MacBook pro</h3>
-				</div>
-			</div>
-		</p>
-		<p><a class="btn btn-primary btn-lg" href="http://facebook.com" role="button">Buy</a></p>
-		</div>
-
-
-		<div class="col-xsm-2 col-md-4">
-
-		<p>
-			<div class="thumbnail">
-				<img src="http://www.dfcd.net/projects/ti89/holster.jpg" alt="...">
-				<div class="caption">
-				<h3>TI-89</h3>
-				</div>
-			</div>
-		</p>
-		<p><a class="btn btn-primary btn-lg" href="http://facebook.com" role="button">Buy</a></p>
+		<div class="col-lg-12 text-center">
+			<h2>Related Items</h2>
 
 		</div>
-
-
-		<div class="col-xsm-2 col-md-4">
-
-		<p>
-			<div class="thumbnail">
-				<img src="http://www5.pcmag.com/media/images/343056-lenovo-ideapad-yoga-2-pro-angle.jpg" alt="...">
-				<div class="caption">
-				<h3>Yoga Pro 2</h3>
-				</div>
-			</div>
-		</p>
-		<p><a class="btn btn-primary btn-lg" href="http://facebook.com" role="button">Buy</a></p>
-				</div>
-			</div>
-		</div>
-
 	</div>
-</div>
-</div>
 
-<div class="container">
-	<div class="btn-group btn-group-justified" role="group" aria-label="...">
-	<div class="btn-group" role="group">
-		<button type="button" class="btn btn-default">Left</button>
-	</div>
-	<div class="btn-group" role="group">
-		<button type="button" class="btn btn-default">Middle</button>
-	</div>
-	<div class="btn-group" role="group">
-		<button type="button" class="btn btn-default">Right</button>
-	</div>
-	</div>
 </div>
