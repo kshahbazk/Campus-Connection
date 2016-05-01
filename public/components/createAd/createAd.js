@@ -84,33 +84,37 @@ angular.module('MyApp').controller('createAd', function($scope, $state, $statePa
 
 
     }
-
-
+    $scope.ad.imagePointer = [];
+    $scope.ad.fileNames = [];
     $scope.saveFile = function(files) {
         if (files.length > 0) {
             console.log(files)
             console.log(files[0])
             console.log(files[0].name)
             var name = files[0].name;
-            var reader = new FileReader();
-            reader.onloadend = function () {
-                //console.log($scope.user.email);
-                var f = new File();
-                f.fileType = files[0].type;
-                var x = reader.result.indexOf(",")
-                f.encoding = reader.result.slice(reader.result.indexOf(";") + 1, x)
-                console.log(f.encoding);
+            for(var i = 0; i < files.length; i++) {
+                (function(i) {
+                    var reader = new FileReader();
+                    reader.onloadend = function () {
+                        //console.log($scope.user.email);
+                        var f = new File();
+                        f.fileName = files[i].name.slice(files[i].name.lastIndexOf("."))
+                        f.fileType = files[i].type;
+                        var x = reader.result.indexOf(",")
+                        f.encoding = reader.result.slice(reader.result.indexOf(";") + 1, x)
+                        console.log(f.encoding);
 
-                f.fileContent = reader.result.slice(x + 1);
-                f.$save(function(ret,ret2){//callback doesn't work if you describe the function as new function(...), only function(...)
-                    $scope.ad.imagePointer = ret._id;
-                    console.log($scope.ad.imagePointer);
-                });
-                //window.location.assign("/profile");
-            };
+                        f.fileContent = reader.result.slice(x + 1);
+                        f.$save(function (ret, ret2) {//callback doesn't work if you describe the function as new function(...), only function(...)
+                            $scope.ad.imagePointer.add(ret._id);
+                            console.log($scope.ad.imagePointer);
+                        });
+                        //window.location.assign("/profile");
+                    };
 
-            reader.readAsDataURL(files[0]);
-
+                    reader.readAsDataURL(files[i]);
+                })(i)
+            }
         }
     }
     $scope.findPPV = function(){

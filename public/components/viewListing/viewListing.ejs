@@ -3,38 +3,21 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12 text-center">
-				<h2>XBOX ONE Brand New</h2>
+				<h2>{{listing.title}}</h2>
 
 			</div>
 		</div>
 		<hr>
-		<div class="accordian">
+		<div class="accordian" ng-show="listing.imagePointer">
 			<ul>
-				<li>
-					<div class="image_title">
-						<a href="#">Console</a>
+				<li ng-repeat="pointer in listing.imagePointer">
+					<!--<div class="image_title">
+						<a href="#">??? what do you want here Atif? I don't have filenames!</a>
 					</div>
-					<a href="#">
-						<img src="http://cdn.mos.techradar.com/art/games_consoles/Xbox%20One/Xbox%20One%20-%20one%20year%20on/front_square-970-80.jpg"/>
+					<a href="#">-->
+						<img src="files/images/{{pointer}}"/>
 					</a>
 				</li>
-				<li>
-					<div class="image_title">
-						<a href="#">Controller</a>
-					</div>
-					<a href="#">
-						<img src="http://static4.gamespot.com/uploads/scale_medium/mig/6/2/2/3/2286223-XboxOneController_98825_screen.jpg"/>
-					</a>
-				</li>
-				<li>
-					<div class="image_title">
-						<a href="#">Game</a>
-					</div>
-					<a href="#">
-						<img src="http://thecodeplayer.com/uploads/media/00kih8g.jpg"/>
-					</a>
-				</li>
-
 
 			</ul>
 		</div>
@@ -49,8 +32,8 @@
 				</div>
 				<div class="info">
 					<h4 class="text-center">Description</h4>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti atque, tenetur quam aspernatur corporis at explicabo nulla dolore necessitatibus doloremque exercitationem sequi dolorem architecto perferendis quas aperiam debitis dolor soluta!</p>
-					<a href="" class="btn">Link</a>
+					<p>{{listing.description}}</p>
+					<a href="/profile?_id={{listing.userPointer._id}}" class="btn">Link</a>
 				</div>
 			</div>
 		</div>
@@ -72,11 +55,11 @@
 					<div class="list-block">
 						<ul class="text-center legend">
 							<li>
-								<h3>$214</h3>
+								<h3>{{listing.price | currency}}</h3>
 								<strong>Listed Price</strong>
 							</li>
 							<li>
-								<h3>$300</h3>
+								<h3>{{listing.ppvPointer.ppv | currency}}</h3>
 								<strong>PPV Price</strong>
 							</li>
 						</ul>
@@ -84,7 +67,7 @@
 					<div class="chart-block clearfix">
 
 						<div class="pull-right">
-							<div class="change text-center"><i class="fa fa-plus"></i> 86.00</div>
+							<div class="change text-center">{{(listing.price - listing.ppvPointer.ppv) | custCurrency}}</div>
 						</div>
 					</div>
 				</div>

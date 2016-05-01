@@ -51,8 +51,8 @@
                 Leave Review
             </button>
             <h2 ng-show="loaded && !noreviews">Average Rating: {{total | number : 2}}/5</h2>
-            <h2 ng-show="loaded && noreviews">No Reviews! A blank slate.</h2>
-            <div class="row panel panel-default" ng-repeat="r in ratings">
+            <h2 style="color:white" ng-show="loaded && noreviews">No Reviews! A blank slate.</h2>
+            <div style="color:black" class="row panel panel-default" ng-repeat="r in ratings">
                 <div class="col-md-3"><h2>{{r.userPointer.firstName}} {{r.userPointer.lastName}}</h2></div>
                 <div class="col-md-2"><h2>{{r.rating}}/5</h2></div>
                 <div class="col-md-7" ng-show="r.userPointer._id != currentUser._id" ><h3>{{r.review}} </h3></div>

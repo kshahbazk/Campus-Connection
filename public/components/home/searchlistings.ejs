@@ -60,12 +60,12 @@
         <div ng-repeat="ad in ads" class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
             <div class="card">
                 <div class="thumbnail">
-                    <img ng-show="ad.imagePointer" width="360" height="270" src="files/images/{{ad.imagePointer}}" alt="thumbnail">
+                    <img ng-show="ad.imagePointer" width="360" height="270" src="files/images/{{ad.imagePointer[0]}}" alt="thumbnail">
                     <a href="#" class="thumb-cover"></a>
                     <div class="details">
 
                         <div class="numbers">
-                            <b class="downloads"><i class="fa fa-area-chart"></i> {{ad.ppvPointer.ppv | currency}}</b>
+                            <b class="downloads"><i class="fa fa-clock-o"></i>{{ad.createdAt | custDate}}</b>
 
                         </div>
                         <div class="clearfix"></div>
@@ -78,7 +78,7 @@
                 <div class="card-info">
                     <a href="#">
                         <h3>{{ad.title}}
-                            <div class="time pull-right">{{ad.price | currency}}</div>
+                            <div ng-style="((ad.delta = ad.price - ad.ppvPointer.ppv) < 0) ? {color: 'green'}:{color: 'red'}" class="time pull-right">{{ad.price | currency}} {{ad.delta | custDelta}}</div>
                         </h3>
                         <div class="circle-red"><i class="fa fa-circle-o"></i></div>
                         <p>{{qualityOptions[ad.quality - 1].text}} Condition</p>

@@ -101,5 +101,66 @@ app.directive('currencyFormatter', ['$filter', function ($filter) {
         }
     };
 }]);
+//Filter for currency to add the up arrow for positive, and down for negative
+app.filter("custCurrency", function(){
+    return function(input, symbol, precision) {
+        // Ensure that we are working with a number
+        if(isNaN(input)) {
+            return input;
+        } else {
+
+            // Check if optional parameters are passed, if not, use the defaults
+            if(input <= 0)
+                return "↓" + (symbol || '$') + (-input).toFixed(precision || 2);
+            else
+                return "↑" + (symbol || '$') + input.toFixed(precision || 2);
+        }
+    }
+})
+//Delta only measuring actual dollars with arrows
+app.filter("custDelta", function(){
+    return function(input) {
+        // Ensure that we are working with a number
+        if(isNaN(input)) {
+            return input;
+        } else {
+
+            if(input <= 0)
+                return Math.floor(-input) + "↓"
+            else
+                return Math.floor(input) + "↑"
+        }
+    }
+})
+//Uses binary search on array, then applies the format, checking if the value is between 1 and max.
+//I really hope this was worth it, Atif. this was a pain to implement.
+// don't pass in the current time to the millisecond; index out of bounds. checking is pretty expensive with lots of values.
+var changearray = [{number: 1, max: 1000, format:"ms"},{number: 1000, max: 60, format:"s"},{number: 60000, max: 60,format:"m"},{number: 3600000, max: 24, format:"h"}, {number: 86400000, max: 7, format:"d"}, {number:604800000, max: 4,format:"w"},{number:2.630e+9, max: 12, format:"M"},{number:3.154e+10, max: Infinity, format:"Y"}]
+app.filter("custDate", function(){
+    return function(input) {
+        // Ensure that we are working with a number
+        var toCompare = Date.now();
+        var dateDelta = (toCompare - new Date(input))
+        var i = 3;
+        var swing = 2;
+        do
+        {
+            var div = dateDelta/changearray[i].number
+            if(div < 0.8)//too small
+            {
+                i -= swing;
+            }
+            else if(div > changearray[i].max)//too big
+            {
+                i += swing;
+            }
+            else
+            {
+                return Math.floor(div * 10)/10 + changearray[i].format;
+            }
+            swing = Math.ceil(swing/2);//will return 1 when swing would divide to 0.5
+        }while(true)
+    }
+})
 
 
