@@ -31,13 +31,10 @@ fs.readdir('server/models',function(err,files){//files is a string array of the 
 
 var dbRouter = express.Router();
 //dbRouter.dbmodels = dbmodels;
-var retrieveModel = function(modelName, body)//Scalability issue? What should be done here?
-{//alternatives that are searchable leave copies.
- //hmm. make array containing names of all properties in dbmodels, sort, then binary search?
-    //nlogn on reloading files, but log n on operation.
-    //turns out none of that's necessary; objects are HASHES!
-    if(dbmodels.hasOwnProperty(modelName))
-        return dbmodels[modelName]
+var retrieveModel = function(modelName, body)
+{
+    if(dbmodels.hasOwnProperty(modelName.capitalize()))
+        return dbmodels[modelName.capitalize()];
     return null // model not found
 }
 
@@ -145,6 +142,7 @@ dbRouter.post("/:_model", function(req,res, next){//Really want to include login
     var ret_model = retrieveModel(req.params._model);
     if(ret_model == null)
     {
+				//console.log("returned invalid request")
         return next({error : "Invalid Request"});
     }
     if(req.body.ownerId == null && req.user != null)//needed to resolve an issue with register
@@ -158,7 +156,7 @@ dbRouter.post("/:_model", function(req,res, next){//Really want to include login
             console.log("Job did not save correctly.");
             return next(err)
         };
-        console.log(job._id);
+        //console.log(job._id);
         res.json(200, job);
     })
 });

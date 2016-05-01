@@ -7,7 +7,7 @@ var app = require('../../server');
 
 describe('Testing User Routes', function() {
 
-	it.skip("registers a temp user successfully", function(done) {
+	it("registers a temp user successfully", function(done) {
 		var tu = {
 			username: "enriquepadilla",
 			password: "testing",
@@ -25,16 +25,16 @@ describe('Testing User Routes', function() {
 					throw err;
 				}
 				assert.equal(res.status, 200);
-				assert.equal(res.body.msg, "An email has been sent to you. Please check it to verify your account.");
+				assert.equal(res.body.message, "An email has been sent to you. Please check it to verify your account.");
 				done();
 			});
 	});
 
 	it("does not allow to have same email as a temp user", function(done) {
 		var tu = {
-			username: "john",
+			username: "enriqueenrique",
 			password: "testing",
-			email: "john.franklin@sjsu.edu",
+			email: "enrique.padilla@sjsu.edu",
 			firstName: "John",
 			lastName: "Franklin",
 			location: "San Jose State University"
@@ -48,7 +48,53 @@ describe('Testing User Routes', function() {
 					throw err;
 				}
 				assert.equal(res.status, 400);
-				assert.equal(res.body.msg, "You have already signed up. Please check your email to verify your account.");
+				assert.equal(res.body.message, "You have already signed up. Please check your email to verify your account.");
+				done();
+			});
+	});
+
+	it("does not allow to have same email as a current user", function(done) {
+		var tu = {
+			username: "testing",
+			password: "testing",
+			email: "john.franklin@sjsu.edu",
+			firstName: "Enrique",
+			lastName: "Padilla",
+			location: "San Jose State University"
+		};
+		request(app)
+			.post('/user/register')
+			.send(tu)
+			// end handles the response
+			.end(function(err, res) {
+				if (err) {
+					throw err;
+				}
+				assert.equal(res.status, 400);
+			//assert.equal(res.body.message, "Email already exists");
+				done();
+			});
+	});
+
+	it("does not allow to have same username as a current user", function(done) {
+		var tu = {
+			username: "john",
+			password: "testing",
+			email: "enrique.padilla@sjsu.edu",
+			firstName: "john",
+			lastName: "franklin",
+			location: "San Jose State University"
+		};
+		request(app)
+			.post('/user/register')
+			.send(tu)
+			// end handles the response
+			.end(function(err, res) {
+				if (err) {
+					throw err;
+				}
+				assert.equal(res.status, 400);
+				//assert.equal(res.body.message, "Username already exists");
 				done();
 			});
 	});
@@ -71,7 +117,7 @@ describe('Testing User Routes', function() {
 					throw err;
 				}
 				assert.equal(res.status, 400);
-				assert.equal(res.body.msg, "Email must end with edu");
+				assert.equal(res.body.message, "Email must end with edu");
 				done();
 			});
 	});

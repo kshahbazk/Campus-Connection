@@ -23,7 +23,7 @@ conditionalRender = function(res,directory,filetoreturn,data){
 conditionalRenderWholeDir = function(res, url,data){
 	var temp = url.slice(url.lastIndexOf("/"))
 	//console.log(directory);
-	console.log(url);
+	//console.log(url);
 	if(temp == "js" || temp == "css")//the file extension; prevents files from loading index.ejs instead of the javascript files
 		res.sendFile(url, data)
 
@@ -53,7 +53,7 @@ var server = app.listen(80, function () {
 	var host = server.address().address;
 	var port = server.address().port;
 
-	console.log('Example app listening at http://%s:%s', host, port);
+	//console.log('Example app listening at http://%s:%s', host, port);
 });
 
 module.exports = app;
