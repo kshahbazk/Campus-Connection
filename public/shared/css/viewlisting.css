@@ -3,9 +3,10 @@
     margin: 0;
     padding: 0;
 }
-body {
+.view-listing{
     background: white;
     font-family: arial, verdana, tahoma;
+    color: black;
 }
 
 /*Time to apply widths for accordian to work
@@ -241,12 +242,11 @@ img {
     font-size: .6em;
 }
 
-}
 
 /* Product Card */
 @import url(//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css);
 
-body {padding-top:50px;}
+.view-listing {margin-top:100px; padding-top:20px;}
 
 .box {
     border-radius: 3px;
