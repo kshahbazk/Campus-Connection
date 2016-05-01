@@ -110,7 +110,7 @@ angular.module('MyApp').controller("modalController",function($scope, $uibModalI
         var noUser = false
         if (!$scope.rev.userPointer) {
             noUser = true;
-            $scope.rev.userPointer = oldScope.currentUser._id
+            $scope.rev.userPointer = localStorage._id
         }
 
         if (!$scope.rev.recipientPointer) {
@@ -127,7 +127,7 @@ angular.module('MyApp').controller("modalController",function($scope, $uibModalI
                 _id: oldScope.currentUser._id
             };
             console.log("update works?")
-        });
+        })
 
 
         $uibModalInstance.dismiss();

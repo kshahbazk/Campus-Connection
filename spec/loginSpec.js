@@ -27,12 +27,12 @@ describe("register", function(){
     });
     beforeEach(inject(function($rootScope, $state, $httpBackend, $controller) {
         httpBackend = $httpBackend;
-        //console.log(httpBackend)
+        ////console.log(httpBackend)
         scope = $rootScope.$new();
         oldScope = $rootScope.$new();
         scope.username = "johnfranklin42@gmail.com"
         scope.password = "..."
-        //console.log(scope)
+        ////console.log(scope)
         state = $state
         spyOn(state, "go");
         controller = $controller('login', {
@@ -45,7 +45,7 @@ describe("register", function(){
     }));
 
     it("Logs the user in", function(){
-        //console.log(state)
+        ////console.log(state)
         scope.logIn();
         httpBackend.whenPOST('/user/login')
             .respond({data:{ _id: "56e88563217a5c6b0c35c5d9",

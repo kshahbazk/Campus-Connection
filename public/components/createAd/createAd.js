@@ -19,7 +19,7 @@ angular.module('MyApp').controller('createAd', function($scope, $state, $statePa
     else//create
     {//Weird bug. not showing changes to amazonRoutes for git
         $scope.ad = new Ad();
-        console.log($scope.ad)
+        //console.log($scope.ad)
     }
     //don't call it createAd in the function. seems like initialize, not persist to DB
     $scope.getAmazonResults = function(str)
@@ -33,7 +33,7 @@ angular.module('MyApp').controller('createAd', function($scope, $state, $statePa
 
     $scope.persistAd = function() {
         //JOHN: productId isn't defined. how about querying the Product Table to see if the name lines up?
-        console.log($scope.ad.imagedata);
+        //console.log($scope.ad.imagedata);
         //$scope.ad.attributes.image= new Parse.File("photo.png", $scope.ad.imagedata)
         Product.query({name: $scope.ad.productName}).$promise.then(function(elems){
 
@@ -49,7 +49,7 @@ angular.module('MyApp').controller('createAd', function($scope, $state, $statePa
                 //I guess future modifications will be based on server code or something.
                 product.$save(
                     function(response) {
-                        console.log($scope.ad)
+                        console.log("in product save: "+ $scope.ad)
 
                         $scope.persistAdParse();
                     });

@@ -1,6 +1,8 @@
 /**
  * Created by johnfranklin on 10/15/15.
  */
+//while this provided a quick fix for getting a spec result with Jasmine and removing the log statements, this was monkeypatching so it's being removed.
+//console.log = function() {}
 var app = angular.module('MyApp',["ui.router", "ngResource", 'ui.bootstrap' ])
 .config(function($stateProvider, $urlRouterProvider, $locationProvider) {
 
