@@ -6,7 +6,7 @@ var assert = chai.assert;
 var mongoose = require("mongoose");
 var app = require('../../server');
 
-describe('Testing DB Routes', function() {
+describe.skip('Testing DB Routes', function() {
 	//thom
 	var id = "571402779caebb3d274b619f";
 
