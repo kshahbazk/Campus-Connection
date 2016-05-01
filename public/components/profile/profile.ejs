@@ -50,13 +50,13 @@
             <button ng-show="loaded && !isCurrentUser" class="btn btn-success btn-md btn-block" data-target=".bs-example-modal-lg" data-toggle="modal" type="button" ng-click="loadReview(blank)">
                 Leave Review
             </button>
-            <h2 style="color: black" ng-show="loaded && !noreviews">Average Rating: {{total | number : 2}}/5</h2>
-            <h2 style="color: black" ng-show="loaded && noreviews">No Reviews! A blank slate.</h2>
-            <div class="row panel panel-default" ng-repeat="r in ratings">
-                <div class="col-md-3"><h2 style="color: black;">{{r.userPointer.firstName}} {{r.userPointer.lastName}}</h2></div>
-                <div class="col-md-2"><h2 style="color: black;">{{r.rating}}/5</h2></div>
-                <div class="col-md-7" ng-show="r.userPointer._id != currentUser._id" ><h3 style="color: black;">{{r.review}} </h3></div>
-                <div class="col-md-4" ng-show="r.userPointer._id == currentUser._id" ><h3 style="color: black;">{{r.review}} </h3></div>
+            <h2 ng-show="loaded && !noreviews">Average Rating: {{total | number : 2}}/5</h2>
+            <h2 style="color:white" ng-show="loaded && noreviews">No Reviews! A blank slate.</h2>
+            <div style="color:black" class="row panel panel-default" ng-repeat="r in ratings">
+                <div class="col-md-3"><h2>{{r.userPointer.firstName}} {{r.userPointer.lastName}}</h2></div>
+                <div class="col-md-2"><h2>{{r.rating}}/5</h2></div>
+                <div class="col-md-7" ng-show="r.userPointer._id != currentUser._id" ><h3>{{r.review}} </h3></div>
+                <div class="col-md-4" ng-show="r.userPointer._id == currentUser._id" ><h3>{{r.review}} </h3></div>
                 <div class="col-md-3" ng-show="r.userPointer._id == currentUser._id" ><button class="btn btn-success btn-md" ng-click="loadReview(r)" style="margin-top:30px"type="button" >
                             Edit Review
                         </button></div>

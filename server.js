@@ -53,7 +53,16 @@ var server = app.listen(80, function () {
 	var host = server.address().address;
 	var port = server.address().port;
 
-	//console.log('Example app listening at http://%s:%s', host, port);
+	console.log('Example app listening at http://%s:%s', host, port);
+}).on('error', function(err){
+	console.log("Serving at 80 failed. will need sudo to match production, but that's OK")
+	var server = app.listen(8080, function () {
+		var host = server.address().address;
+		var port = server.address().port;
+
+		console.log('Example app listening at http://%s:%s', host, port);
+	});
 });
+
 
 module.exports = app;

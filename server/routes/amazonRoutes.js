@@ -7,14 +7,20 @@ var OperationHelper = require('apac').OperationHelper
 var util = require('util')
 var weightindex = [20,10,10,10,40];
 var process = require("process");
-var opHelper = new OperationHelper({
-        awsId:     process.env.AWSAccessKeyId,
-        awsSecret: process.env.AWSSecretKey,
-        assocId:   'campusco0e9-20',
-        // xml2jsOptions: an extra, optional, parameter for if you want to pass additional options for the xml2js module. (see https://github.com/Leonidas-from-XIV/node-xml2js#options)
-        version:   '2013-08-01'
-    }
-)
+try {
+    var opHelper = new OperationHelper({
+            awsId: process.env.AWSAccessKeyId,
+            awsSecret: process.env.AWSSecretKey,
+            assocId: 'campusco0e9-20',
+            // xml2jsOptions: an extra, optional, parameter for if you want to pass additional options for the xml2js module. (see https://github.com/Leonidas-from-XIV/node-xml2js#options)
+            version: '2013-08-01'
+        }
+    )
+}
+catch(e)
+{
+    console.log("Amazon setup failed. No environmental variables? Oh well")
+}
 var Product = require('../models/product')
 //console.log(util.inspect(Product, {showHidden: false, depth: null}));
 var PpvCache = require('../models/ppvcache')
@@ -81,28 +87,33 @@ router.get('/amazonLookup/:text',function(req, res, next) {
         amazonQuery.SearchIndex = 'Blended';
         amazonQuery.Keywords = req.params.text
     }
-    opHelper.execute('ItemSearch', amazonQuery, function (err, results) { // you can add a third parameter for the raw xml response, "results" here are currently parsed using xml2js
-            //Array of all items from the search.
-            if(results.ItemSearchResponse) {
-                //console.log(util.inspect(results, {showHidden: false, depth: null}));
-                var titles = results.ItemSearchResponse.Items[0].Item
-                if (titles) {
-                    for (var i = 0; i < titles.length; i++) {
-                        if(titles[i].ItemAttributes && titles[i].ItemAttributes[0].Title)
-                            titles[i] = titles[i].ItemAttributes[0].Title[0];
-                        else
-                            titles[i] = "";//???
+        if(opHelper) {
+            opHelper.execute('ItemSearch', amazonQuery, function (err, results) { // you can add a third parameter for the raw xml response, "results" here are currently parsed using xml2js
+                //Array of all items from the search.
+                if (results.ItemSearchResponse) {
+                    //console.log(util.inspect(results, {showHidden: false, depth: null}));
+                    var titles = results.ItemSearchResponse.Items[0].Item
+                    if (titles) {
+                        for (var i = 0; i < titles.length; i++) {
+                            if (titles[i].ItemAttributes && titles[i].ItemAttributes[0].Title)
+                                titles[i] = titles[i].ItemAttributes[0].Title[0];
+                            else
+                                titles[i] = "";//???
+                        }
+                        res.json(titles);//send an array of all titles.
                     }
-                    res.json(titles);//send an array of all titles.
+                    else {
+                        console.log(util.inspect(titles, {showHidden: false, depth: null}));
+                        res.json([]);
+                    }
                 }
-                else {
-                    console.log(util.inspect(titles, {showHidden: false, depth: null}));
-                    res.json([]);
-                }
-            }
-            else//???
-                console.log(util.inspect(results, {showHidden: false, depth: null}))
-        });
+                else//???
+                    console.log(util.inspect(results, {showHidden: false, depth: null}))
+            });
+        }
+        else{
+            res.json(["Amazon search lookup not supported without environmental variables."])
+        }
     })
 router.get('/getPPV',function(req, res, next) {
     console.log(req.body)
@@ -112,23 +123,27 @@ router.get('/getPPV',function(req, res, next) {
         console.log("in inner callback")
         if(!elem)
         {
-            opHelper.execute('ItemSearch', {
-                'SearchIndex': 'Blended',
-                'Keywords': req.query.productName,
-                'ResponseGroup': 'ItemAttributes,Offers',
-                'ItemPage': 1
-            },
-            function(err, results)
-            {
-                if(results.ItemSearchResponse && results.ItemSearchResponse.Items && results.ItemSearchResponse.Items[0].Item) {
-                    var x = results.ItemSearchResponse.Items[0];
-                    populateFromAmazon(x.Item[0], req.query.location, res, req.query.quality)
-                }
-                else{
-                    console.log(util.inspect(results, {showHidden: false, depth: null}))
-                    console.log(util.inspect(results.Items, {showHidden: false, depth: null}))
-                }
-            })
+            if(opHelper) {
+                opHelper.execute('ItemSearch', {
+                        'SearchIndex': 'Blended',
+                        'Keywords': req.query.productName,
+                        'ResponseGroup': 'ItemAttributes,Offers',
+                        'ItemPage': 1
+                    },
+                    function (err, results) {
+                        if (results.ItemSearchResponse && results.ItemSearchResponse.Items && results.ItemSearchResponse.Items[0].Item) {
+                            var x = results.ItemSearchResponse.Items[0];
+                            populateFromAmazon(x.Item[0], req.query.location, res, req.query.quality)
+                        }
+                        else {
+                            console.log(util.inspect(results, {showHidden: false, depth: null}))
+                            console.log(util.inspect(results.Items, {showHidden: false, depth: null}))
+                        }
+                    })
+            }
+            else{
+                res.json({productName:"You need to have environmental variables to use non cached values.", ppv:420.69})
+            }
         }
         else{
 

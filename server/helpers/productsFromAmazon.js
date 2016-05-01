@@ -15,14 +15,21 @@ var PpvCache = require('../models/ppvcache')
 var weightindex = [20,10,10,10,40];
 var uniarr = ["San Jose State University","Santa Clara University"]// would be replaced with a query to the university table when we expand.
 var OperationHelper = require('apac').OperationHelper
-var opHelper = new OperationHelper({
-        awsId:     process.env.AWSAccessKeyId,
-        awsSecret: process.env.AWSSecretKey,
-        assocId:   'campusco0e9-20',
-        // xml2jsOptions: an extra, optional, parameter for if you want to pass additional options for the xml2js module. (see https://github.com/Leonidas-from-XIV/node-xml2js#options)
-        version:   '2013-08-01'
-    }
-)
+try {
+    var opHelper = new OperationHelper({
+            awsId: process.env.AWSAccessKeyId,
+            awsSecret: process.env.AWSSecretKey,
+            assocId: 'campusco0e9-20',
+            // xml2jsOptions: an extra, optional, parameter for if you want to pass additional options for the xml2js module. (see https://github.com/Leonidas-from-XIV/node-xml2js#options)
+            version: '2013-08-01'
+        }
+    )
+}
+catch(e)
+{
+    console.log("Amazon setup failed. No environmental variables? Oh well")
+}
+
 //
 var populateFromAmazon = function(x)
 {
