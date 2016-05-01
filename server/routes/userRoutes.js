@@ -1,4 +1,5 @@
 var express = require('express');
+var async = require('async');
 var mongoose = require('mongoose');
 var passport = require('passport');
 var jwt = require('express-jwt');
@@ -36,21 +37,18 @@ nev.generateTempUserModel(User);
 
 
 
-router.post('/register', function(req, res){
-	if(!req.body.username ||
-		!req.body.password ||
-		!req.body.email ||
-		!req.body.firstName ||
-		!req.body.lastName){
-		 return res.status(400).json({message: 'Please fill out all fields'});
+router.post('/register', function(req, res) {
+	if (!req.body.username || !req.body.password || !req.body.email || !req.body.firstName || !req.body.lastName) {
+		return res.status(400).json({message: 'Please fill out all fields'});
 	}
 
 	var user = new User();
 	//Check if email ends with .edu
 	if (req.body.email.slice(req.body.email.length - 3) != "edu") {
-		  return res.status(400).json({message: 'Email must end with edu'});
+		return res.status(400).json({message: 'Email must end with edu'});
 	}
 
+	//check if email or username exists
 
 	user.username = req.body.username;
 	user.email = req.body.email;
@@ -59,59 +57,57 @@ router.post('/register', function(req, res){
 	user.lastName = req.body.lastName;
 	user.location = req.body.location;
 
+	User.findOne({$or: [{username: user.username}, {email: user.email}]}, function (err, userFound) {
+		if (!err) return err;
+		if (userFound) {
+			if (user.username == userFound.username)
+				return res.status(400).json({message: 'Username already exists'});
+			else
+				return res.status(400).json({message: 'Email already exists'});
+		}
+	});
+
 
 	user.setPassword(req.body.password);
 
-	nev.createTempUser(user, function(err, newTempUser) {
+	nev.createTempUser(user, function (err, newTempUser) {
 		if (err) {
-			 return res.status(404).send('ERROR: creating temp user FAILED');
+			return res.status(404).send('ERROR: creating temp user FAILED');
 		}
 
 		// new user created
 		if (newTempUser) {
 			var URL = newTempUser[nev.options.URLFieldName];
-			console.log("going to send email");
-			nev.sendVerificationEmail(newTempUser.email, URL, function(err, info) {
+			//console.log("going to send email");
+			nev.sendVerificationEmail(newTempUser.email, URL, function (err, info) {
 				if (err) {
 					return res.status(404).send('ERROR: sending verification email FAILED');
 				}
 				else {
-
-					console.log("Sent email");
+					//console.log("Sent email");
 					return res.status(200).json({
-						msg: 'An email has been sent to you. Please check it to verify your account.',
+						message: 'An email has been sent to you. Please check it to verify your account.',
 						info: info
 					});
 				}
 			});
 			// user already exists in temporary collection!
 		} else {
-			 res.json({
+			res.status(400).json({
 				message: 'You have already signed up. Please check your email to verify your account.'
 			});
 		}
 	});
 });
 
-router.post('/login', function(req, res, next){
-	//console.log(req.body);
-	if(!req.body.username || !req.body.password){
-		return res.status(400).json({message: 'Please fill out all fields'});
-	}
-
-	passport.authenticate('local', function(err, user, info){
-		if(err){
-			return next(err); }
-
-		if(user){
-			console.log({_id: user._id, firstName: user.firstName, lastName: user.lastName, email: user.email, location: user.location});
-			return res.json({_id: user._id, firstName: user.firstName, lastName: user.lastName, email: user.email, location: user.location, token: user.generateJWT()});
-		} else {
-			console.log(info);
-			return res.status(400).json({message: 'Invalid Username or Password.'});
+	router.post('/login',
+	passport.authenticate('local'),
+	function(req, res){
+		if(req.user){
+			user = req.user;
+			res.send({_id: user._id, firstName: user.firstName, lastName: user.lastName, email: user.email, location: user.location, token: user.generateJWT()});
 		}
-	})(req, res, next);
-});
+	});
 
 router.get('/email-verification/:URL', function(req, res) {
 	var url = req.params.URL;
@@ -124,7 +120,7 @@ router.get('/email-verification/:URL', function(req, res) {
 				}
 				console.log("User Verified");
 				res.json({
-					msg: 'CONFIRMED!',
+					message: 'CONFIRMED!',
 					info: info
 				});
 			});
