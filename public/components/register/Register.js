@@ -44,7 +44,7 @@ angular.module('MyApp').controller('Register', function($scope, $state, $http, $
             function(error) {
                 // Show the error message somewhere and let the user try again.
                 console.log(error);
-                alert(error.data);
+                alert(error.data.message);
             }
         );
         console.log($scope.user);

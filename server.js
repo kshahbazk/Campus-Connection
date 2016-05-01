@@ -31,9 +31,6 @@ conditionalRenderWholeDir = function(res, url,data){
 		res.render('index.ejs', data);
 };
 
-app.get('/', function(req,res){
-    res.redirect(200, "LandingPage");
-});
 
 /*
 These calls prevent the server from retrieving index.ejs when it wants a javascript or a css file.
