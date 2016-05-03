@@ -1,13 +1,13 @@
 
 angular.module('MyApp').controller('createAd', function($scope, $state, $stateParams, $timeout, $http, Ad, Product, File, Ppvcache){
-    $scope.qualityOptions = [{text: "Broken", value: 1},{text: "Bad", value: 2},{text: "Average", value: 3},{text: "Good", value: 4},{text: "New", value: 5}];
+    $scope.qualityOptions = [{text: "Refurbished", value: 1, style:{color:"#CC0000"}},{text: "Used", value: 2, style:{color:"#CC6600"}},{text: "Slightly Used", value: 3, style:{color:"#666600"}},{text: "Like New", value: 4, style:{color:"#009933"}},{text: "New", value: 5, style:{color:"#00CC00"}}];
     if($stateParams._id)//update
     {
 
         Ad.get({_id: $stateParams._id, $populate:"userPointer ppvPointer"}).$promise.then(function(elem){
 
                 $scope.ad = elem
-                console.log(elem)
+                //console.log(elem)
             },
             function (user, error) {
                 // Show the error message somewhere and let the user try again.
@@ -25,8 +25,8 @@ angular.module('MyApp').controller('createAd', function($scope, $state, $statePa
     $scope.getAmazonResults = function(str)
     {
         return $http.get("web/amazonLookup/" + str, {}).then(function (response) {
-            console.log("Are you there?")
-            console.log(response.data)
+            //console.log("Are you there?")
+            //console.log(response.data)
             return response.data
         })
     }
@@ -71,11 +71,18 @@ angular.module('MyApp').controller('createAd', function($scope, $state, $statePa
         $scope.ad.userPointer = localStorage._id;
         if($scope.ad.ppvPointer)//always populated if it exists, so no risk of
             $scope.ad.ppvPointer = $scope.ad.ppvPointer._id;
-        console.log($scope.ad)
-
+        //console.log($scope.ad)
+        $scope.ad.searchArray = [];
+        if($scope.ad.title)
+            Array.prototype.push.apply($scope.ad.searchArray, $scope.ad.title.toLowerCase().split(" "))
+        if($scope.ad.description)
+            Array.prototype.push.apply($scope.ad.searchArray, $scope.ad.description.toLowerCase().split(" "))
+        if($scope.ad.productName)
+            Array.prototype.push.apply($scope.ad.searchArray, $scope.ad.productName.toLowerCase().split(" "))
+        //console.log($scope.ad.searchArray);
         $scope.ad.$save(
         function(ad) {
-               console.log($scope.ad)
+               //console.log($scope.ad)
                $state.go("viewListing",{_id: $scope.ad._id})
             }
         );
@@ -84,13 +91,13 @@ angular.module('MyApp').controller('createAd', function($scope, $state, $statePa
 
 
     }
-    $scope.ad.imagePointer = [];
-    $scope.ad.fileNames = [];
+
     $scope.saveFile = function(files) {
+        $scope.ad.imagePointer = [];
         if (files.length > 0) {
-            console.log(files)
-            console.log(files[0])
-            console.log(files[0].name)
+            //console.log(files)
+            //console.log(files[0])
+            //console.log(files[0].name)
             var name = files[0].name;
             for(var i = 0; i < files.length; i++) {
                 (function(i) {
@@ -102,12 +109,12 @@ angular.module('MyApp').controller('createAd', function($scope, $state, $statePa
                         f.fileType = files[i].type;
                         var x = reader.result.indexOf(",")
                         f.encoding = reader.result.slice(reader.result.indexOf(";") + 1, x)
-                        console.log(f.encoding);
+                        //console.log(f.encoding);
 
                         f.fileContent = reader.result.slice(x + 1);
                         f.$save(function (ret, ret2) {//callback doesn't work if you describe the function as new function(...), only function(...)
-                            $scope.ad.imagePointer.add(ret._id);
-                            console.log($scope.ad.imagePointer);
+                            $scope.ad.imagePointer.push(ret._id);
+                            //console.log($scope.ad.imagePointer);
                         });
                         //window.location.assign("/profile");
                     };

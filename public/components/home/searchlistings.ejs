@@ -37,10 +37,10 @@
     <!-- Search -->
 
     <div class="col-md-10 col-md-offset-2">
-        <form action="" class="search-form">
+        <form class="search-form" ng-submit="search(query)">
             <div class="form-group has-feedback">
                 <label for="search" class="sr-only">Search</label>
-                <input type="text" class="form-control" name="search" id="search" placeholder="search">
+                <input type="text" class="form-control" name="search" id="search" ng-model="query" placeholder="search">
                 <span class="glyphicon glyphicon-search form-control-feedback"></span>
             </div>
         </form>
@@ -57,10 +57,10 @@
 
     <div class="row bootstrap snippets">
 
-        <div ng-repeat="ad in ads" class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+        <div ng-repeat="ad in ads | orderBy:'-createdAt' | limitTo:3:(number)" class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
             <div class="card">
                 <div class="thumbnail">
-                    <img ng-show="ad.imagePointer" width="360" height="270" src="files/images/{{ad.imagePointer[0]}}" alt="thumbnail">
+                    <img ng-show="ad.imagePointer" src="files/images/{{ad.imagePointer[0]}}" alt="thumbnail">
                     <a href="#" class="thumb-cover"></a>
                     <div class="details">
 
@@ -71,17 +71,17 @@
                         <div class="clearfix"></div>
                     </div>
                     <b class="actions">
-                        <a class="btn btn-neutral btn-round btn-fill" href="viewListing?_id={{ad._id}}">{{ad.description}}</a>
+                        <a class="btn btn-neutral btn-round btn-fill" href="viewListing?_id={{ad._id}}">Learn More</a>
 
                     </b>
                 </div>
                 <div class="card-info">
                     <a href="#">
                         <h3>{{ad.title}}
-                            <div ng-style="((ad.delta = ad.price - ad.ppvPointer.ppv) < 0) ? {color: 'green'}:{color: 'red'}" class="time pull-right">{{ad.price | currency}} {{ad.delta | custDelta}}</div>
+                            <div ng-style="((ad.delta = ad.price - (ad.ppvPointer.ppv || ad.price)) <= 0) ? {color: 'green'}:{color: 'red'}" class="time pull-right">{{ad.price | currency}} {{ad.delta | custDelta}}</div>
                         </h3>
-                        <div class="circle-red"><i class="fa fa-circle-o"></i></div>
-                        <p>{{qualityOptions[ad.quality - 1].text}} Condition</p>
+                        <div ng-style="qualityOptions[ad.quality - 1].style"><i class="fa fa-circle-o"></i></div>
+                        <p>{{qualityOptions[ad.quality - 1].text}}</p>
                     </a>
                 </div>
             </div>
@@ -100,20 +100,20 @@
             <li>
                 <a href="#">&laquo;</a>
             </li>
-            <li class="active">
-                <a href="#">1</a>
+            <li ng-class="number==0?'active':''">
+                <a ng-click="number=0">1</a>
             </li>
-            <li>
-                <a href="#">2</a>
+            <li ng-class="number==3?'active':''">
+                <a ng-click="number=3">2</a>
             </li>
-            <li>
-                <a href="#">3</a>
+            <li ng-class="number==6?'active':''">
+                <a ng-click="number=6">3</a>
             </li>
-            <li>
-                <a href="#">4</a>
+            <li ng-class="number==9?'active':''">
+                <a ng-click="number=9">4</a>
             </li>
-            <li>
-                <a href="#">5</a>
+            <li ng-class="number==12?'active':''">
+                <a ng-click="number=12">5</a>
             </li>
             <li>
                 <a href="#">&raquo;</a>
