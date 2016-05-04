@@ -20,9 +20,6 @@ object ScalaAnalyticsEngine {
     //User defined function to use to convert initail DataFrame fields from string to int
     val toInt    = udf[Int, String]( _.toInt)
 
-    //User defined function to use to convert initail DataFrame fields from string to int
-    val addColumn = udf[Column a , Column b]=>(a+b)
-
     // initiliaze all spark contexts
     val conf = new SparkConf().setAppName("ScalaAnalyticsEngine")
     val spark = new SparkContext(conf)
