@@ -17,9 +17,6 @@ object ScalaAnalyticsEngine {
 
   def main(args: Array[String]) {
 
-    //User defined function to use to convert initail DataFrame fields from string to int
-    val toInt    = udf[Int, String]( _.toInt)
-
     // initiliaze all spark contexts
     val conf = new SparkConf().setAppName("ScalaAnalyticsEngine")
     val spark = new SparkContext(conf)
