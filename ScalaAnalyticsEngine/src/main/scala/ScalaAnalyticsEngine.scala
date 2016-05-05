@@ -1,5 +1,3 @@
-import org.apache.spark.sql._
-import sqlContext._
 import com.mongodb.casbah.{WriteConcern => MongodbWriteConcern}
 import com.stratio.datasource.mongodb._
 import com.stratio.datasource.mongodb.config._
@@ -10,6 +8,8 @@ import com.stratio.datasource.mongodb.writer._
 import com.stratio.datasource.mongodb.config._
 import org.apache.spark.sql.SQLContext
 import com.stratio.datasource.util.Config._
+import org.apache.spark.{SparkConf, SparkContext}
+import org.apache.spark.sql._
 
 /** The Big Data engine behind the PPVCache */
 
