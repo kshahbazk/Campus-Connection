@@ -80,18 +80,37 @@ angular.module('MyApp').controller('createAd', function($scope, $state, $statePa
         if($scope.ad.productName)
             Array.prototype.push.apply($scope.ad.searchArray, $scope.ad.productName.toLowerCase().split(" "))
         //console.log($scope.ad.searchArray);
-        $scope.ad.$save(
-        function(ad) {
-               //console.log($scope.ad)
-               $state.go("viewListing",{_id: $scope.ad._id})
-            }
-        );
+        if(!$scope.ad.ppvPointer)//still not defined for some reason
+        {
+            var ppv = new Ppvcache();
+            ppv.location = localStorage.location;
+            ppv.productName = $scope.ad.productName;
+            ppv.weight = 0;//weight = 0 rounds out disappears the actual value in calculation with spark.
+            ppv.quality = $scope.ad.quality;
+            ppv.ppv = $scope.ad.price
+            ppv.$save(
+                function(ppvud) {
+                    $scope.ad.ppvPointer = ppvud._id
+                    $scope.finalSave()
+                })
+        }
+        else {
+            $scope.finalSave()
+        }
 
         //In the future, we might have a search bar that includes the different options. not there right now, so...
 
 
     }
-
+    $scope.finalSave = function()
+    {
+        $scope.ad.$save(
+            function (ad) {
+                //console.log($scope.ad)
+                $state.go("viewListing", {_id: $scope.ad._id})
+            }
+        );
+    }
     $scope.saveFile = function(files) {
         $scope.ad.imagePointer = [];
         if (files.length > 0) {

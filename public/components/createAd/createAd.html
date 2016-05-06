@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Ad Page</title>
+	
+	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="jumbotron-narrow.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+	
+	 <!--CSS -->
+	 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <link href="../../shared/css/create_ad.css" rel="stylesheet">
+	<script src="create.js"></script>
+	<script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js" integrity="sha256-DI6NdAhhFRnO2k51mumYeDShet3I8AKCQf/tf7ARNhI=" crossorigin="anonymous"></script>
+
+  </head>
+ 
+<body>
+
+<div class="jumbotron jumbotron-sm">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-lg-12">
+                <h1 class="h1">
+                    Post AD <small> show your stuff to the campus</small></h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="well well-sm">
+                <form>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="name">
+                                Title</label>
+                            <input type="text" class="form-control" id="name" placeholder="Enter name" required="required" />
+                        </div>
+						
+                        <div class="form-group">
+						<label for="name">
+                            Price</label>
+                            	<div class="input-group number-spinner">
+										<span class="input-group-btn">
+											<button class="btn btn-default" data-dir="dwn" type="button"><span class="glyphicon glyphicon-minus"></span></button>
+										</span>
+										<input type="text" class="form-control text-center" value="1">
+										<span class="input-group-btn">
+											<button class="btn btn-default" data-dir="up" type="button"><span class="glyphicon glyphicon-plus"></span></button>
+										</span>
+								</div>
+                        </div>
+						
+                        <div class="form-group">
+                            <label for="subject">
+                                Condition</label>
+                            <select id="subject" name="subject" class="form-control" required="required">
+                                <option value="na" selected="">Choose One:</option>
+                                <option value="service">New</option>
+                                <option value="suggestions">Used</option>
+                                <option value="product">Slightly Used</option>
+                            </select>
+                        </div>
+						
+						
+						
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="name">
+                                Description</label>
+                            <textarea name="message" id="message" class="form-control" rows="9" cols="25" required="required"
+                                placeholder="Message"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-primary pull-right" id="btnContactUs">
+                            Submit</button>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+	
+	</div>
+	<div class="container">
+	<div class="row">
+        <div class="col-lg-6 col-lg-offset-3 text-center">
+      <div class="panel panel-default">
+        <div class="panel-heading"><strong>Upload Files</strong></div>
+        <div class="panel-body">
+
+          <!-- Standar Form -->
+          <h4>Select files from your computer</h4>
+          <form action="" method="post" enctype="multipart/form-data" id="js-upload-form">
+            <div class="form-inline">
+              <div class="form-group">
+                <input type="file" name="files[]" id="js-upload-files" multiple>
+              </div>
+              <button type="submit" class="btn btn-sm btn-primary" id="js-upload-submit">Upload files</button>
+            </div>
+          </form>
+
+          <!-- Drop Zone -->
+          <h4>Or drag and drop files below</h4>
+          <div class="upload-drop-zone" id="drop-zone">
+            Just drag and drop files here
+          </div>
+
+          
+
+          <!-- Upload Finished -->
+          <div class="js-upload-finished">
+            <h3>Processed files</h3>
+            <div class="list-group">
+              <a href="#" class="list-group-item list-group-item-success"><span class="badge alert-success pull-right">Success</span>image-01.jpg</a>
+              <a href="#" class="list-group-item list-group-item-success"><span class="badge alert-success pull-right">Success</span>image-02.jpg</a>
+            </div>
+          </div>
+        </div>
+      </div>
+	  </div>
+	 </div>
+    </div> <!-- /container -->
+
+</div>
+ 
+
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>

@@ -1,0 +1,33 @@
+.jumbotron {
+background: #404040;
+color: #FFF;
+border-radius: 0px;
+}
+.jumbotron-sm { padding-top: 24px;
+padding-bottom: 24px; }
+.jumbotron small {
+color: #FFF;
+}
+.h1 small {
+font-size: 24px;
+}
+
+/* layout.css Style */
+.upload-drop-zone {
+  height: 200px;
+  border-width: 2px;
+  margin-bottom: 20px;
+}
+
+/* skin.css Style*/
+.upload-drop-zone {
+  color: #ccc;
+  border-style: dashed;
+  border-color: #ccc;
+  line-height: 200px;
+  text-align: center
+}
+.upload-drop-zone.drop {
+  color: #222;
+  border-color: #222;
+}

@@ -1,0 +1,56 @@
+@import url('http://fonts.googleapis.com/css?family=Open+Sans:400,700');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+	background-color: #efefef;
+}
+
+body{
+	font:14px/1.5 Arial, Helvetica, sans-serif;
+	margin:0;
+}
+
+
+header{
+    box-sizing: border-box;
+	text-align: center;
+    width: 100%;
+    padding: 25px 40px;
+    background-color: #333333;
+    overflow: hidden;
+}
+
+
+header h1{
+    float: center;
+	font: normal 24px/1.5 'Open Sans', sans-serif;
+	
+	color: #ECECF6;
+    text-shadow: -1px -1px 1px #FFFFFF, 1px 1px 1px #000000;
+}
+
+
+
+
+
+@media (max-width: 1000px) {
+
+
+    header h1{
+        float: none;
+    }
+
+    
+
+}
+
+.main-content{
+	padding: 72px;
+    margin-bottom: 75px;
+}
+
