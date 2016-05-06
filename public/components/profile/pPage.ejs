@@ -1,0 +1,163 @@
+<style>body{margin-top:20px;background-color: #F5F7FA;color:black}</style>
+<div class="container">
+	<div class="pPage-topBar" style="background-color:black">
+		<img class="pPage-topBar-embed" src="files/images/{{user.backdropPointer}}" alt="cover">
+	</div>
+
+	<div class="pPage-topBar pPage-topBar-sm">
+			<div class="row">
+				<div class="col-md-6 col-xs-8">
+				  <div class="media">
+					<div class="media-left" >
+					  <a class="kit-avatar kit-avatar-64 no-padding border-white hidden-xs" style="background-color: black;" href="#">
+						<img alt="cover" src="files/images/{{user.avatarPointer}}">
+					  </a>
+					</div>
+					<div class="media-body">
+					  <h2 class="display-name media-heading text-red hidden-xs">{{user.firstName}} {{user.lastName}}</h2>
+					  <h3 class="display-name media-heading text-red visible-xs">{{user.firstName}} {{user.lastName}}</h3>
+					  <p class="text-muted"><span class="mr-2x">{{user.location}}</span><br><span><a href="mailto:{{user.email}}"><i class="fa fa-envelope-o hidden-xs"></i> {{user.email}}</a></span></p>
+					</div><!-- /.pull -->
+				  </div>
+				</div><!-- /.cols -->
+
+				<div class="col-md-2 col-md-4 col-md-push-4 text-right">
+
+				  <a class="btn btn-default"  data-placement="left" title="" aria-label="comment" data-original-title="comment"> <i class="fa fa-pencil fa-fw"></i> Leave Review</a>
+
+				</div><!-- /.cols -->
+
+				<div class="col-md-4 col-xs-12 col-md-pull-2 text-center">
+				  <div class="row">
+					<div class="col-xs-4">
+					  <div class="p-1x">
+						<span class="headline"><strong>{{ads.length}}</strong></span>
+						<p>Ads</p>
+					  </div>
+					</div><!-- /.cols -->
+					<div class="col-xs-4">
+					  <div class="p-1x">
+						<span class="headline"><strong>{{ratings.length}}</strong></span>
+						<p>Reviews</p>
+					  </div>
+					</div><!-- /.cols -->
+				  </div><!-- /.row -->
+				</div><!-- /.cols -->
+
+			</div><!-- /.row -->
+	</div>
+
+	<div class="feedback-ads-area">
+				<ul class="feedback-ads">
+					<li class="feedback-ads-line"></li>
+					<li class="feedback-ads-group">
+					  <a href="#" class="btn btn-default">{{now | date:"yyyy/MM/dd"}}</a>
+					</li>
+				</ul>
+
+				<ul class="feedback-ads">
+					<li class="feedback-ads-line" style="height:600px;">
+					</li>
+
+					<li class="feedback-ads-item feedback-ads-poster">
+					  <div class="feedback-ads-badge">
+						<a class="border-teal" rel="tooltip" title="" data-container="body" href="#" data-original-title="What will you do?"></a>
+					  </div>
+					  <div class="feedback-ads-panel panel fade in panel-default panel-fill" data-fill-color="true" data-init-panel="true">
+						<div class="panel-body">
+						  <ul class="nav nav-tabs nav-contrast-red">
+							<li class="active"><a data-toggle="tab" href="#" aria-expanded="true">Post Comment</a></li>
+						  </ul>
+						  <div class="tab-content pt-1x">
+							<textarea name="feedback-adsPost" rows="6" class="form-control autogrow no-border no-resize" placeholder="Keep this or just do modal" style="overflow: hidden; min-height: 6em; height: 52px;"></textarea><div class="autogrow-textarea-mirror" style="display: none; word-wrap: break-word; white-space: normal; padding: 6px 12px; width: 461px; font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 20px;">.<br>.</div>
+						  </div>
+						</div><!-- /.panel-body -->
+						<div class="panel-footer">
+						  <div class="btn-group">
+							<button type="button" class="btn btn-link"><i class="fa fa-user"></i></button>
+						  </div>
+						  <div class="pull-right">
+							<button type="submit" class="btn btn-success">Post</button>
+						  </div>
+						</div><!-- /.panel-footer -->
+					  </div><!-- /.feedback-ads-panel.panel -->
+					</li>
+
+					<li class="feedback-ads-item" ng-repeat="r in ratings">
+					  <div class="feedback-ads-badge">
+						<a class="border-orange" rel="tooltip" title="" data-container="body" href="#" data-original-title="Post"></a>
+					  </div>
+					  <div class="feedback-ads-panel panel fade in panel-default panel-fill" data-fill-color="true" data-init-panel="true">
+						<div class="panel-body">
+						  <div class="media mb-2x">
+							<div class="media-left">
+							  <a href="#" class="feedback-ads-avatar kit-avatar kit-avatar-42">
+								<img class="media-object" src="files/images/{{r.userPointer.avatarPointer}}" alt="">
+							  </a>
+							</div><!-- /.media-left -->
+							<div class="media-body">
+							  <p class="media-heading"><strong>{{r.userPointer.firstName}} {{r.userPointer.lastName}}</strong> <br><small class="text-muted">{{r.createdAt | custDateDetailed}}</small></p>
+							</div><!-- /.media-body -->
+						  </div><!-- /.media -->
+
+						  <p>{{r.review}}</p>
+						</div><!-- /.panel-body -->
+
+						<div class="panel-body feedback-ads-resume">
+						  <div class="pull-right" data-toggle="tooltip" title="" data-original-title="in this post">
+							 <a href="#" class="btn btn-bordered btn-default btn-sm">{{r.rating}}</a>
+						  </div>
+
+						  <a href="#" class="btn btn-bordered btn-default btn-sm"><span class="fa fa-share fa-fw"></span> </a>
+						</div><!-- /.panel-body -->
+					`	<!-- this shouldn't be part of this page. no way to implement threaded comments
+						<div class="panel-footer feedback-ads-livelines">
+						  <form action="#">
+							<a class="kit-avatar kit-avatar-28 no-border pull-left" href="#">
+							  <img class="media-object" src="../../img/wl.png">
+							</a>
+							<div class="input-group input-group-in no-border">
+							  <input class="form-control" placeholder="write comment...">
+							  <div class="input-group-btn">
+								<button type="submit" class="btn"><i class="fa fa-chevron-circle-right"></i></button>
+							  </div>
+							</div>
+						  </form>
+						  -->
+						</div><!-- /.panel-footer -->
+					  <!-- /.feedback-ads-panel.panel -->
+					</li>
+
+					<li class="feedback-ads-item" ng-repeat="ad in ads">
+					  <div class="feedback-ads-badge">
+						<a class="border-red" rel="tooltip" title="" data-container="body" href="#" data-original-title="photo"></a>
+					  </div>
+					  <div class="feedback-ads-panel panel fade in panel-default panel-fill" data-fill-color="true" data-init-panel="true">
+						<div class="panel-body">
+						  <div class="media mb-1x">
+							<div class="media-left">
+							  <a href="#" class="feedback-ads-avatar kit-avatar kit-avatar-42">
+								<img src="files/images/{{user.avatarPointer}}" alt="">
+							  </a>
+							</div>
+							<div class="media-body">
+
+							  <p class="media-heading"><strong>{{user.firstName}} {{user.lastName}}</strong><br><small class="text-muted">{{ad.createdAt | custDateDetailed}}</small></p>
+							</div><!-- /.media-body -->
+						  </div><!-- /.media -->
+
+						  <p>{{ad.title}}<br> {{ad.productName}} on sale {{qualityOptions[ad.quality].text.toLowerCase()}} for {{ad.price | currency}}.</p>
+						</div><!-- /.panel-body -->
+
+						<a href="/viewListing?_id={{ad._id}}" class="embed-responsive embed-responsive-16by9" style="background-color: black">
+						  <img src="files/images/{{ad.imagePointer[0]}}" class="embed-responsive-item">
+						</a>
+
+						<div class="panel-body feedback-ads-liveliness">
+
+						</div><!-- /.feedback-ads-liveliness -->
+					  </div><!-- /.feedback-ads-panel -->
+					</li>
+				</ul>
+	</div>
+</div>

@@ -6,6 +6,7 @@
   },
   "dependencies": {
     "apac": "^1.0.0",
+    "async": "^1.5.2",
     "bower": "^1.7.7",
     "chai": "^3.5.0",
     "cookie-parser": "^1.4.1",

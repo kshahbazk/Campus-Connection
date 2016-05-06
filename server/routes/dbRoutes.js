@@ -18,7 +18,6 @@ fs.readdir('server/models',function(err,files){//files is a string array of the 
         var name = file.slice(0, file.length - 3)//removes .js
         try
         {
-
             dbmodels[name.capitalize()] = db.model(name.capitalize());
         }
         catch(e) {
@@ -94,11 +93,21 @@ dbRouter.get("/:_model", function(req,res, next){
         toSort = req.query.$sort;
         delete req.query.$sort;
     }
+    var toLimit;
+    if(req.query.$limit)//String
+    {
+        toLimit = parseInt(req.query.$limit);
+        delete req.query.$limit;
+        if(toLimit == NaN)//?? something went wrong
+            delete toLimit;
+    }
     var query = ret_model.find(req.query)
     if(toPopulate)
         query = query.populate(toPopulate)//Keep it a single string.
     if(toSort)
         query = query.sort(toSort)//Keep it a single string.
+    if(toLimit)
+        query = query.limit(toLimit)//Keep it a single string.
     query.exec(function(err, elements){
         if(err){
             console.log(err);
@@ -121,6 +130,18 @@ if(ret_model == null)
     {
         toPopulate = req.query.$populate;
         delete req.query.$populate
+    }
+    //No sorting or limiting to do here, but it should behave as if these commands aren't there.
+    if(req.query.$sort)//String
+    {
+        //toSort = req.query.$sort;
+        delete req.query.$sort;
+    }
+    //var toLimit;
+    if(req.query.$limit)//String
+    {
+        //toLimit = req.query.$limit;
+        delete req.query.$limit;
     }
     var query = ret_model.findOne({_id : req.params._id})
     if(toPopulate)

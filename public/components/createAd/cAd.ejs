@@ -1,0 +1,79 @@
+<link rel="stylesheet" href="shared/css/page.css">
+<div class="main-content">
+
+    <!-- You only need this form and the form-basic.css -->
+
+    <form class="form-createAd" ng-Submit="persistAd()">
+
+        <div class="form-title-row">
+            <h1>Post Ad</h1>
+        </div>
+
+        <div class="form-row">
+            <label>
+                <span>Title</span>
+                <input type="text" name="name" ng-model="ad.title">
+            </label>
+        </div>
+        <div class="form-row">
+            <label>
+                <span>Product</span>
+                <input placeholder="" ng-model="ad.productName" uib-typeahead="product for product in getAmazonResults($viewValue)" typeahead-editable="false" typeahead-wait-ms="200" typeahead-min-length="3" typeahead-loading="loadingLocations" type="text" ng-blur="findPPV()" required>
+                <i ng-show="loadingLocations" style="color: black" class="glyphicon glyphicon-refresh"></i>
+            </label>
+        </div>
+        <div class="form-row">
+            <label>
+                <span>Condition</span>
+                <select ng-model="ad.quality" ng-options="x.value as x.text for x in qualityOptions" id='sel1' ng-change="findPPV()" required>
+                    <option value="">Select Quality</option>
+                </select>
+            </label>
+        </div>
+        <div class="form-row">
+            <label><span>PPV Suggestions</span></label>
+            <div class="form-radio-buttons">
+
+                <div>
+                    <label>
+                        <input type="radio" name="radio" >
+                        <span>{{ad.ppvPointer.ppv | currency}}</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <label>
+                <span>Price</span>
+                <input type="text" name="price" ng-model="ad.price">
+            </label>
+        </div>
+
+
+
+        <div class="form-row">
+            <label>
+                <span>Description</span>
+                <textarea name="textarea" ng-model="ad.description"></textarea>
+            </label>
+        </div>
+
+
+        <div class="form-row">
+            <label>
+                <span>Image</span>
+                <input name="image" type="file" class="file" onchange="angular.element(this).scope().saveFile(this.files)" multiple data-show-preview="true">
+            </label>
+
+        </div>
+
+
+
+
+        <div class="form-row">
+            <button type="submit">Submit Form</button>
+        </div>
+
+    </form>
+
+</div>

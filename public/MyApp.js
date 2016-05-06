@@ -13,7 +13,7 @@ var app = angular.module('MyApp',["ui.router", "ngResource", 'ui.bootstrap' ])
         // HOME STATES AND NESTED VIEWS ========================================
         .state('profile', {
             url: '/profile?_id',
-            templateUrl: 'components/profile/profile.ejs',
+            templateUrl: 'components/profile/pPage.ejs',
             controller: 'profile',
             title: 'User Profiles'
 
@@ -29,7 +29,7 @@ var app = angular.module('MyApp',["ui.router", "ngResource", 'ui.bootstrap' ])
             title: 'View a Listing'
         }).state('createAd', {
             url: '/createAd?_id',
-            templateUrl: 'components/createAd/AdCreate.ejs',
+            templateUrl: 'components/createAd/cAd.ejs',
             controller: 'createAd',
             title: 'Make Your Ad'
         }).state('login', {
@@ -159,6 +159,35 @@ app.filter("custDate", function(){
             else
             {
                 return Math.floor(div * 10)/10 + changearray[i].format;
+            }
+            swing = Math.ceil(swing/2);//will return 1 when swing would divide to 0.5
+        }while(true)
+    }
+})
+//Another filter; this one provides more detail.
+var changearray2 = [{number: 1, max: 1000, format:"millisecond"},{number: 1000, max: 60, format:"second"},{number: 60000, max: 60,format:"minutes"},{number: 3600000, max: 24, format:"hour"}, {number: 86400000, max: 7, format:"day"}, {number:604800000, max: 4,format:"week"},{number:2.630e+9, max: 12, format:"month"},{number:3.154e+10, max: Infinity, format:"year"}]
+app.filter("custDateDetailed", function(){
+    return function(input) {
+        // Ensure that we are working with a number
+        var toCompare = Date.now();
+        var dateDelta = (toCompare - new Date(input))
+        var i = 3;
+        var swing = 2;
+        do
+        {
+            var div = dateDelta/changearray2[i].number
+            if(div < 0.8)//too small
+            {
+                i -= swing;
+            }
+            else if(div > changearray2[i].max)//too big
+            {
+                i += swing;
+            }
+            else
+            {
+                var value = Math.floor(div * 10)/10;
+                return value + " " + changearray2[i].format + ( value != 1 ? "s ago" : " ago");
             }
             swing = Math.ceil(swing/2);//will return 1 when swing would divide to 0.5
         }while(true)

@@ -6,7 +6,7 @@
             Product:
         </div>
         <!--Hm. actually, it should never reference productPointer; if the user changes the name the want to change the product associated with it.-->
-        <input class="form-control" placeholder="" ng-model="ad.productName" uib-typeahead="product for product in getAmazonResults(ad.productName)" typeahead-wait-ms="200" typeahead-min-length="3" typeahead-loading="loadingLocations" type="text" ng-blur="findPPV()" required>
+        <input class="form-control" placeholder="" ng-model="ad.productName" uib-typeahead="product for product in getAmazonResults($viewValue)" typeahead-editable="false" typeahead-wait-ms="200" typeahead-min-length="3" typeahead-loading="loadingLocations" type="text" ng-blur="findPPV()" required>
         <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
     </div>
     <div class="input-group">

@@ -9,6 +9,8 @@ var UserSchema = new mongoose.Schema({
 	email: {type: String, required: true, unique: true},
 	verified: {type:Boolean, default: false},
 	location: String,
+	avatarPointer: {type: mongoose.Schema.Types.ObjectId, ref: 'File'},
+	backdropPointer: {type: mongoose.Schema.Types.ObjectId, ref: 'File'},
 	firstName: {type: String, required: true},
 	lastName: {type: String, required: true},
 	createdAt: {type: Date, required: true, default: Date.now},
