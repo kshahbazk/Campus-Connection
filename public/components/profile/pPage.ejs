@@ -1,7 +1,7 @@
 <style>body{margin-top:20px;background-color: #F5F7FA;color:black}</style>
 <div class="container">
 	<div class="pPage-topBar" style="background-color:black">
-		<img class="pPage-topBar-embed" src="files/images/{{user.backdropPointer}}" alt="cover">
+		<img class="pPage-topBar-embed" src="files/images/{{user.backdropPointer || '5733bcac1f5ea09a0ed7e42d'}}" alt="cover">
 	</div>
 
 	<div class="pPage-topBar pPage-topBar-sm">
@@ -9,8 +9,8 @@
 				<div class="col-md-6 col-xs-8">
 				  <div class="media">
 					<div class="media-left" >
-					  <a class="kit-avatar kit-avatar-64 no-padding border-white hidden-xs" style="background-color: black;" href="#">
-						<img alt="cover" src="files/images/{{user.avatarPointer}}">
+					  <a class="kit-avatar kit-avatar-64 no-padding border-white hidden-xs" href="#">
+						<img alt="cover" src="files/images/{{user.avatarPointer || '5733be211f5ea09a0ed7e430'}}">
 					  </a>
 					</div>
 					<div class="media-body">
@@ -23,7 +23,7 @@
 
 				<div class="col-md-2 col-md-4 col-md-push-4 text-right">
 
-				  <a class="btn btn-default"  data-placement="left" title="" aria-label="comment" data-original-title="comment"> <i class="fa fa-pencil fa-fw"></i> Leave Review</a>
+				  <a class="btn btn-default"  data-placement="left" title="" aria-label="comment" data-original-title="comment"> <i class="fa fa-pencil fa-fw"></i> Edit</a>
 
 				</div><!-- /.cols -->
 
@@ -41,6 +41,12 @@
 						<p>Reviews</p>
 					  </div>
 					</div><!-- /.cols -->
+						<div class="col-xs-4" ng-show="ads && ads.length > 0">
+						  <div class="p-1x">
+							  <span class="headline"><strong>{{total | number : 2}}/5</strong></span>
+							  <p>Rating</p>
+						  </div>
+					  </div>
 				  </div><!-- /.row -->
 				</div><!-- /.cols -->
 
@@ -51,12 +57,12 @@
 				<ul class="feedback-ads">
 					<li class="feedback-ads-line"></li>
 					<li class="feedback-ads-group">
-					  <a href="#" class="btn btn-default">{{now | date:"yyyy/MM/dd"}}</a>
+					  <a href="#" class="btn btn-default">{{now | date:"MM/dd/yyyy"}}</a>
 					</li>
 				</ul>
 
 				<ul class="feedback-ads">
-					<li class="feedback-ads-line" style="height:600px;">
+					<li class="feedback-ads-line" style="height:{{550 * ads.length/2 + 150 * ratings.length/2 + 200}}px">
 					</li>
 
 					<li class="feedback-ads-item feedback-ads-poster">
@@ -92,7 +98,7 @@
 						  <div class="media mb-2x">
 							<div class="media-left">
 							  <a href="#" class="feedback-ads-avatar kit-avatar kit-avatar-42">
-								<img class="media-object" src="files/images/{{r.userPointer.avatarPointer}}" alt="">
+								<img class="media-object" src="files/images/{{r.userPointer.avatarPointer || '5733be211f5ea09a0ed7e430'}}" alt="">
 							  </a>
 							</div><!-- /.media-left -->
 							<div class="media-body">
@@ -137,7 +143,7 @@
 						  <div class="media mb-1x">
 							<div class="media-left">
 							  <a href="#" class="feedback-ads-avatar kit-avatar kit-avatar-42">
-								<img src="files/images/{{user.avatarPointer}}" alt="">
+								<img src="files/images/{{user.avatarPointer || '5733be211f5ea09a0ed7e430'}}" alt="">
 							  </a>
 							</div>
 							<div class="media-body">

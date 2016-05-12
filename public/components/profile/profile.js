@@ -41,12 +41,14 @@ angular.module('MyApp').controller("profile", function($scope, $state, $statePar
     var toUse = {$populate:"userPointer ppvPointer", $sort: "-createdAt", $limit: 20};
     var profileTemp = {$populate: "universityPointer", }
     if($stateParams._id) {
-        toUse.userPointer = profileTemp._id = $stateParams._id;
+        toUse.userPointer = $stateParams._id;
+        profileTemp._id = $stateParams._id;
     }
     else
     {
         $scope.isCurrentUser = true;
-        toUse.userPointer = profileTemp._id = localStorage._id;
+        toUse.userPointer = localStorage._id;
+        profileTemp._id = localStorage._id;
         if (!localStorage.token)
             $state.go("LandingPage")
     }
@@ -79,6 +81,7 @@ angular.module('MyApp').controller("profile", function($scope, $state, $statePar
         $scope.rev = review;
         if(!$scope.rev.recipientPointer) {
             $scope.ratings.push($scope.rev);
+
         }
 
         $scope.modalInstance = $uibModal.open({

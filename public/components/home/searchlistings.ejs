@@ -57,7 +57,7 @@
 
     <div class="row bootstrap snippets">
 
-        <div ng-repeat="ad in ads | orderBy:'-createdAt' | limitTo:3:(number)" class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+        <div ng-repeat="ad in ads | orderBy:'-createdAt' | limitTo:15:(number)" class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
             <div class="card">
                 <div class="thumbnail">
                     <img ng-show="ad.imagePointer" src="files/images/{{ad.imagePointer[0]}}" alt="thumbnail">
@@ -103,17 +103,17 @@
             <li ng-class="number==0?'active':''">
                 <a ng-click="number=0">1</a>
             </li>
-            <li ng-class="number==3?'active':''">
-                <a ng-click="number=3">2</a>
+            <li ng-class="number==15?'active':''">
+                <a ng-click="number=15">2</a>
             </li>
-            <li ng-class="number==6?'active':''">
-                <a ng-click="number=6">3</a>
+            <li ng-class="number==30?'active':''">
+                <a ng-click="number=30">3</a>
             </li>
-            <li ng-class="number==9?'active':''">
-                <a ng-click="number=9">4</a>
+            <li ng-class="number==45?'active':''">
+                <a ng-click="number=45">4</a>
             </li>
-            <li ng-class="number==12?'active':''">
-                <a ng-click="number=12">5</a>
+            <li ng-class="number==60?'active':''">
+                <a ng-click="number=60">5</a>
             </li>
             <li>
                 <a href="#">&raquo;</a>
