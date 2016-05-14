@@ -38,8 +38,8 @@
 				<div class="info">
 					<h4 class="text-center">Description</h4>
 					<p>{{listing.description}}</p>
-					<a href="/profile?_id={{listing.userPointer._id}}" class="btn">Profile</a>
-					<a href="/createAd?_id={{listing._id}}" class="btn">Edit</a>
+					<a href="/profile?_id={{listing.userPointer._id}}" ng-show="!isCurrentUser" class="btn">Profile</a>
+					<a href="/createAd?_id={{listing._id}}" ng-show="isCurrentUser" class="btn">Edit</a>
 				</div>
 			</div>
 		</div>

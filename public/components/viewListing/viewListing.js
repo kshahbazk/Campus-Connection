@@ -10,6 +10,7 @@ angular.module("MyApp").controller("viewListing", function($scope, $stateParams,
         Ad.get({_id: $stateParams._id, $populate:"userPointer ppvPointer"}).$promise.then(function(elem){
 
             $scope.listing = elem;//Is this all I need?
+            $scope.isCurrentUser = ($scope.listing & $scope.listing.userPointer && ($scope.listing.userPointer._id == localStorage._id))
             console.log($scope.listing)
             console.log($scope.user)
             Ad.query({$populate:"userPointer ppvPointer", $sort: "-createdAt", $limit: 4, searchArray: {$in: $scope.listing.searchArray}}).$promise.then(function(elems){
