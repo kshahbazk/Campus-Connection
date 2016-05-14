@@ -8,7 +8,7 @@ angular.module('MyApp').controller("profile", function($scope, $state, $statePar
 
 
         $scope.blank = new Feedback();
-        Feedback.query({recipientPointer: $scope.user._id, $populate:"userPointer"}).$promise.then(function(elems){
+        Feedback.query({recipientPointer: $scope.user._id, $sort: "-createdAt", $populate:"userPointer"}).$promise.then(function(elems){
 
 
                 $scope.total = 0.0;
@@ -74,19 +74,32 @@ angular.module('MyApp').controller("profile", function($scope, $state, $statePar
         $scope.ads = elems;
         //)
     })
+    $scope.showProfile = function()
+    {
+        $scope.modalInstance = $uibModal.open({
+            animation: true,
+            templateUrl: 'components/profile/editModal.ejs',
+            controller: "profileEditModalController",
+            resolve: {
+                oldScope: function () {
+                    return $scope;
+                }
 
+            }
+        });
+    }
     $scope.loadReview = function(review)
     {
 
         $scope.rev = review;
         if(!$scope.rev.recipientPointer) {
-            $scope.ratings.push($scope.rev);
+            $scope.ratings.unshift($scope.rev);
 
         }
 
         $scope.modalInstance = $uibModal.open({
             animation: true,
-            templateUrl: 'myModalContent.html',
+            templateUrl: 'components/profile/commentModal.ejs',
             controller: "modalController",
             resolve: {
                 oldScope: function () {
@@ -99,13 +112,13 @@ angular.module('MyApp').controller("profile", function($scope, $state, $statePar
         $scope.modalInstance.result.then(function(){
             // closed
             if(!$scope.rev.recipientPointer) {
-                $scope.ratings.pop();
+                $scope.ratings.shift();
             }
            // console.log($scope.ratings)
         }, function(){
             // dismissed
             if(!$scope.rev.recipientPointer) {
-                $scope.ratings.pop();
+                $scope.ratings.shift();
             }
             else if(!$scope.rev.recipientPointer._id) {
 
@@ -120,6 +133,10 @@ angular.module('MyApp').controller("profile", function($scope, $state, $statePar
 })
 angular.module('MyApp').controller("modalController",function($scope, $uibModalInstance, oldScope){
     $scope.rev = oldScope.rev;
+    $scope.rev.createdAt = Date.now();
+    $scope.close = function(){
+        $uibModalInstance.close();
+    }
     $scope.submit = function() {
         var noUser = false
         if (!$scope.rev.userPointer) {
@@ -139,6 +156,7 @@ angular.module('MyApp').controller("modalController",function($scope, $uibModalI
                 firstName: oldScope.currentUser.firstName,
                 lastName: oldScope.currentUser.lastName,
                 _id: oldScope.currentUser._id
+
             };
             console.log("update works?")
         })
@@ -146,5 +164,51 @@ angular.module('MyApp').controller("modalController",function($scope, $uibModalI
 
         $uibModalInstance.dismiss();
 
+    }
+})
+angular.module('MyApp').controller("profileEditModalController",function($scope, $uibModalInstance, File, oldScope){
+    $scope.currentUser = oldScope.user;
+    $scope.submit = function(){
+        $scope.currentUser.$save(function(ret){}
+        )
+        $uibModalInstance.dismiss();
+    }
+    $scope.close = function(){
+        $uibModalInstance.close();
+    }
+    $scope.saveFile = function(files, isAvatar) {
+
+        if (files.length > 0) {
+            //console.log(files)
+            //console.log(files[0])
+            //console.log(files[0].name)
+            var name = files[0].name;
+            for(var i = 0; i < files.length; i++) {
+                (function(i) {
+                    var reader = new FileReader();
+                    reader.onloadend = function () {
+                        //console.log($scope.user.email);
+                        var f = new File();
+                        f.fileName = files[i].name.slice(0, files[i].name.lastIndexOf("."))
+                        f.fileType = files[i].type;
+                        var x = reader.result.indexOf(",")
+                        f.encoding = reader.result.slice(reader.result.indexOf(";") + 1, x)
+                        //console.log(f.encoding);
+
+                        f.fileContent = reader.result.slice(x + 1);
+                        f.$save(function (ret, ret2) {//callback doesn't work if you describe the function as new function(...), only function(...)
+                            if(isAvatar)
+                                $scope.currentUser.avatarPointer = ret._id
+                            else
+                                $scope.currentUser.backdropPointer = ret._id
+                            //console.log($scope.ad.imagePointer);
+                        });
+                        //window.location.assign("/profile");
+                    };
+
+                    reader.readAsDataURL(files[i]);
+                })(i)
+            }
+        }
     }
 })

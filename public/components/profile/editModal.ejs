@@ -1,41 +1,40 @@
-<div class="modal-dialog">
+
 	<div class="modal-content">
 		<div class="modal-header">
-			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+			<button type="button" class="close" ng-click="close()"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
 			<h3 class="modal-title" id="lineModalLabel">Edit</h3>
 		</div>
+		<form>
 		<div class="modal-body">
 			
             <!-- content goes here -->
-			<form>
+
               <div class="form-group">
                 <label for="exampleInputFile">Profile Picture</label>
-                <input type="file" id="exampleInputFile">
-                <p class="help-block">Please upload profile picture</p>
+				  <input name="image" type="file" class="file" onchange="angular.element(this).scope().saveFile(this.files, true)" data-show-preview="true">
+
+				  <p class="help-block" ng-hide="currentUser && currentUser.avatarPointer">Please upload profile picture</p>
               </div>
 			  <div class="form-group">
                 <label for="exampleInputFile">Cover Picture</label>
-                <input type="file" id="exampleInputFile">
-                <p class="help-block">Please upload cover picture</p>
+                <input name="image" type="file" class="file" onchange="angular.element(this).scope().saveFile(this.files, false)" data-show-preview="true">
+                <p class="help-block" ng-show="currentUser" ng-hide="currentUser && currentUser.backdropPointer" >Please upload cover picture</p>
               </div>
-              
-              <button type="submit" class="btn btn-default">Submit</button>
-            </form>
+
 
 		</div>
 		<div class="modal-footer">
 			<div class="btn-group btn-group-justified" role="group" aria-label="group button">
 				<div class="btn-group" role="group">
-					<button type="button" class="btn btn-default" data-dismiss="modal"  role="button">Close</button>
+					<button type="button" class="btn btn-default" ng-click="close()" role="button">Close</button>
 				</div>
 				<div class="btn-group btn-delete hidden" role="group">
-					<button type="button" id="delImage" class="btn btn-default btn-hover-red" data-dismiss="modal"  role="button">Cancel</button>
+					<button type="button" id="delImage" class="btn btn-default btn-hover-red" role="button">Cancel</button>
 				</div>
 				<div class="btn-group" role="group">
-					<button type="button" id="saveImage" class="btn btn-default btn-hover-green" data-action="save" role="button">Save</button>
+					<button type="submit" id="saveImage" ng-click="submit()" class="btn btn-default btn-hover-green" data-action="save" ng-click="submit()" role="button">Save</button>
 				</div>
 			</div>
 		</div>
+		</form>
 	</div>
-  </div>
-</div>

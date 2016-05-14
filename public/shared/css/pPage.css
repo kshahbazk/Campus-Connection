@@ -173,9 +173,6 @@ a.kit-avatar {
 .panel-default.panel-fill, .panel-default.panel-fill>.panel-heading {
     background-color: #fff;
 }
-.fade.in {
-    opacity: 1;
-}
 .panel {
     border: none;
     box-shadow: 0 1px 3px -1px rgba(22,24,27,.26);
