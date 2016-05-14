@@ -165,7 +165,7 @@ app.filter("custDate", function(){
     }
 })
 //Another filter; this one provides more detail.
-var changearray2 = [{number: 1, max: 1000, format:"millisecond"},{number: 1000, max: 60, format:"second"},{number: 60000, max: 60,format:"minutes"},{number: 3600000, max: 24, format:"hour"}, {number: 86400000, max: 7, format:"day"}, {number:604800000, max: 4,format:"week"},{number:2.630e+9, max: 12, format:"month"},{number:3.154e+10, max: Infinity, format:"year"}]
+var changearray2 = [{number: 1, max: 1000, format:"millisecond"},{number: 1000, max: 60, format:"second"},{number: 60000, max: 60,format:"minute"},{number: 3600000, max: 24, format:"hour"}, {number: 86400000, max: 7, format:"day"}, {number:604800000, max: 4,format:"week"},{number:2.630e+9, max: 12, format:"month"},{number:3.154e+10, max: Infinity, format:"year"}]
 app.filter("custDateDetailed", function(){
     return function(input) {
         // Ensure that we are working with a number
