@@ -119,10 +119,7 @@ router.get('/email-verification/:URL', function(req, res) {
 					return res.status(404).send('ERROR: sending confirmation email FAILED');
 				}
 				console.log("User Verified");
-				res.json({
-					message: 'CONFIRMED!',
-					info: info
-				});
+				res.redirect("/LandingPage")
 			});
 		} else {
 			return res.status(404).send('ERROR: confirming temp user FAILED');
