@@ -35,17 +35,25 @@ object ScalaAnalyticsEngine {
     val mongoRDD = sqlContext.fromMongoDB(readConfig)
     /** Use the PPV caluclation algorithm on ads Dataframe **/
     val orderbyPPVpointer = mongoRDD.groupBy("ppvPointer").agg("price" -> "avg")
-    // Rename values so they match the ppvcaches
-    val ppvCache = orderbyPPVpointer.withColumnRenamed("ppvPointer","_id").withColumnRenamed("avg(price)","ppv")
-    // Drop any rows with a null PPV pointer
-    val noNull = ppvCache.na.drop()
+    // Now get the PPV cache
+    val ppvMongoConfig = MongodbConfigBuilder(Map(Host -> List("campusconnection.us:27017"), 
+        Credentials -> List(com.stratio.datasource.mongodb.config.MongodbCredentials(user, database, password.toCharArray)), 
+        Database -> "campusconnection", Collection ->"ppvcaches", SamplingRatio -> 1.0, WriteConcern -> "normal"))
+    val readConfig = ppvMongoConfig.build()
+    val ppvRDD = sqlContext.fromMongoDB(readConfig)
+    // Do a join of new ppv values and ppc cache
+    val joined = orderbyPPVpointer.join(ppvRDD, orderbyPPVpointer("ppvPointer")===ppvRDD("_id"))
+    // Drop ppv pointer and old ppv value
+    val dropPPVandPPVPointer = joined.drop("ppvPointer").drop("ppv")
+    // Update ppv and drop __v
+    val ppvCache = dropPPVandPPVPointer.withColumnRenamed("avg(price)","ppv").drop("__v")
     /** Prepare Dataframe to be written into MongoDB **/
-    val saveConfig = MongodbConfigBuilder(Map(Host -> List("campusconnection.us:27017"),
-     Credentials -> List(com.stratio.datasource.mongodb.config.MongodbCredentials(user, database, password.toCharArray)),
-      Database -> "campusconnection", Collection ->"ppvcaches", SamplingRatio -> 1.0, WriteConcern -> "normal", SplitSize -> 8,
-       SplitKey -> "_id"))
-    // Write our non-null Dataframe into MongoDB
-    noNull.saveToMongodb(saveConfig.build)
+    val saveConfig = MongodbConfigBuilder(Map(Host -> List("campusconnection.us:27017"), 
+        Credentials -> List(com.stratio.datasource.mongodb.config.MongodbCredentials(user, database, password.toCharArray)), 
+        Database -> "campusconnection", Collection ->"ppvcaches", SamplingRatio -> 1.0, WriteConcern -> "normal", SplitSize -> 8,
+        SplitKey -> "_id"))    
+    // Write our ppvCache Dataframe into MongoDB
+    ppvCache.saveToMongodb(saveConfig.build)
     // Close the Spark Context when we are done.
     spark.stop()
   }
