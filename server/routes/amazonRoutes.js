@@ -131,6 +131,7 @@ router.get('/getPPV',function(req, res, next) {
                         'ItemPage': 1
                     },
                     function (err, results) {
+                        var isWaiting = true;
                         if (results.ItemSearchResponse && results.ItemSearchResponse.Items && results.ItemSearchResponse.Items[0].Item) {
                             var x = results.ItemSearchResponse.Items[0];
                             populateFromAmazon(x.Item[0], req.query.location, res, req.query.quality)
