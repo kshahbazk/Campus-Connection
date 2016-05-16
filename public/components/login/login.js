@@ -35,7 +35,11 @@ angular.module('MyApp').controller('login', function($scope,$state, $http,$uibMo
             $uibModalInstance.close();
         }, function errorCallback(response) {
             console.log(response);
-            alert(response.data.message);
+            console.log(response.status)
+            if(response.status != 401)
+                alert(response.data.message);
+            else
+                alert("Username or password do not match.\nYou should verify your account if you haven't already. \nCheck your .edu email.")
             // called asynchronously if an error occurs
             // or server returns response with an error status.
         })

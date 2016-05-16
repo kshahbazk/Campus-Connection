@@ -12,7 +12,7 @@ var AdSchema = new mongoose.Schema({
     productName: String,
     userPointer: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
     imagePointer: [{type: mongoose.Schema.Types.ObjectId, ref: 'File'}],//From now on this could refer to multiple files...
-    ppvPointer:{type: mongoose.Schema.Types.ObjectId, ref: 'Ppvcache'},
+    ppvPointer:{type: String, ref: 'Ppvcache'},
     searchArray: [String],
     category: String,
     createdAt: {type: Date, required: true, default: Date.now}

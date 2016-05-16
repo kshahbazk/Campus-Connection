@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 
 var PpvCacheSchema = new mongoose.Schema({
+    _id: {type: String, default: (new mongoose.Types.ObjectId()).toString()},//AAAARRRGH! most frustrating thing ever.
     productName: String,
     quality: Number,
     location: String,
@@ -10,7 +11,7 @@ var PpvCacheSchema = new mongoose.Schema({
     createdAt: {type: Date, required: true, default: Date.now}
 });
 PpvCacheSchema.pre('save', function(next){
-    this.ppvkey = this.get('_id').toString();
+    this.ppvkey = this.get('_id')
     next();
 })
 module.exports =  mongoose.model('Ppvcache', PpvCacheSchema);

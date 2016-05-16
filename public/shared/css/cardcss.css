@@ -70,7 +70,7 @@ body{
 }
 .card .thumb-cover {
     padding: 15px 20px;
-    height: 96%;
+    height: 100%;
     top: 0;
     position: absolute;
     opacity: 0;
@@ -80,7 +80,7 @@ body{
     z-index: 3;
     content: "";
     left: 0;
-    border-radius: 12px;
+    border-radius: 12px 12px 0px 0px;
 }
 .card .actions {
     position: absolute;
