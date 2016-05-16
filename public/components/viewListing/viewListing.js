@@ -3,6 +3,7 @@
  */
 
 angular.module("MyApp").controller("viewListing", function($scope, $stateParams, $state, Ad, Feedback){
+    console.log(localStorage);
     $scope.qualityOptions = [{text: "Refurbished", value: 1, style:{color:"#CC0000"}},{text: "Used", value: 2, style:{color:"#CC6600"}},{text: "Slightly Used", value: 3, style:{color:"#666600"}},{text: "Like New", value: 4, style:{color:"#009933"}},{text: "New", value: 5, style:{color:"#00CC00"}}];
 
     if($stateParams._id) {
@@ -10,7 +11,7 @@ angular.module("MyApp").controller("viewListing", function($scope, $stateParams,
         Ad.get({_id: $stateParams._id, $populate:"userPointer ppvPointer"}).$promise.then(function(elem){
 
             $scope.listing = elem;//Is this all I need?
-            $scope.isCurrentUser = ($scope.listing & $scope.listing.userPointer && ($scope.listing.userPointer._id == localStorage._id))
+            $scope.isCurrentUser = ($scope.listing && $scope.listing.userPointer && ($scope.listing.userPointer._id == localStorage._id))
             console.log($scope.listing)
             console.log($scope.user)
             Ad.query({$populate:"userPointer ppvPointer", $sort: "-createdAt", $limit: 4, searchArray: {$in: $scope.listing.searchArray}}).$promise.then(function(elems){
