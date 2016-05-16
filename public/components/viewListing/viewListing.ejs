@@ -16,13 +16,8 @@
 		<div class="accordian" ng-show="listing.imagePointer">
 			<ul>
 				<li ng-repeat="pointer in listing.imagePointer">
-					<!--<div class="image_title">
-						<a href="#">??? what do you want here Atif? I don't have filenames!</a>
-					</div>
-					<a href="#">-->
-						<img src="files/images/{{pointer}}"/>
-					</a>
-				</li>
+				    <img style="height: background-size: cover; background-repeat:no-repeat; background-image: url('files/images/{{pointer}}')">
+                </li>
 
 			</ul>
 		</div>
@@ -88,8 +83,8 @@
 			<h2>Related Items</h2>
 				<div ng-repeat="ad in ads | limitTo:3:1" class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
 					<div class="card">
-						<div class="thumbnail" style="text-align: left;">
-							<img ng-show="ad.imagePointer" src="files/images/{{ad.imagePointer[0]}}" alt="thumbnail">
+						<div class="thumbnail" style="background-size: cover; background-image: url('files/images/{{ad.imagePointer[0]}}');text-align: left;" >
+
 							<a href="#" class="thumb-cover"></a>
 							<div class="details">
 
