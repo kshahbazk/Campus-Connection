@@ -59,7 +59,7 @@
 
         <div ng-repeat="ad in ads | orderBy:'-createdAt' | limitTo:15:(number)" class="col-xs-12 col-sm-6 col-md-4 col-lg-4" style="height: 425px">
             <div class="card">
-                <div class="thumbnail" style="background-size: cover; background-repeat:no-repeat; background-image: url('files/images/{{ad.imagePointer[0]}}')">
+                <div class="thumbnail" style="background-size: cover; background-position: top center;  background-repeat:no-repeat; background-image: url('files/images/{{ad.imagePointer[0]}}')">
                     <a href="#" class="thumb-cover"></a>
                     <div class="details">
 

@@ -16,7 +16,7 @@
 		<div class="accordian" ng-show="listing.imagePointer">
 			<ul>
 				<li ng-repeat="pointer in listing.imagePointer">
-				    <img style="background-size: cover; background-repeat:no-repeat; background-image: url('files/images/{{pointer}}')">
+				    <img style="background-size: cover; background-position: center top; background-repeat:no-repeat; background-image: url('files/images/{{pointer}}')">
                 </li>
 
 			</ul>
@@ -83,7 +83,7 @@
 			<h2>Related Items</h2>
 				<div ng-repeat="ad in ads | limitTo:3:1" class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
 					<div class="card">
-						<div class="thumbnail" style="background-size: cover; background-repeat:no-repeat; background-image: url('files/images/{{ad.imagePointer[0]}}');text-align: left;" >
+						<div class="thumbnail" style="background-size: cover; background-position: center top; background-repeat:no-repeat; background-image: url('files/images/{{ad.imagePointer[0]}}');text-align: left;" >
 
 							<a href="#" class="thumb-cover"></a>
 							<div class="details">
