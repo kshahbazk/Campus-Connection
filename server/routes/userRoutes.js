@@ -85,7 +85,7 @@ router.post('/register', function(req, res) {
 				}
 				else {
 					//console.log("Sent email");
-					return res.status(200).json({
+					return res.status(400).json({
 						message: 'An email has been sent to you. Please check it to verify your account.',
 						info: info
 					});
