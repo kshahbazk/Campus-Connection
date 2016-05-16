@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 
 var PpvCacheSchema = new mongoose.Schema({
+    _id: {type: String, default: mongoose.Types.ObjectId().toString()},//AAAARRRGH! most frustrating thing ever.
     productName: String,
     quality: Number,
     location: String,
