@@ -39,8 +39,8 @@ object ScalaAnalyticsEngine {
     val ppvMongoConfig = MongodbConfigBuilder(Map(Host -> List("campusconnection.us:27017"), 
         Credentials -> List(com.stratio.datasource.mongodb.config.MongodbCredentials(user, database, password.toCharArray)), 
         Database -> "campusconnection", Collection ->"ppvcaches", SamplingRatio -> 1.0, WriteConcern -> "normal"))
-    val readConfig = ppvMongoConfig.build()
-    val ppvRDD = sqlContext.fromMongoDB(readConfig)
+    val readConfigPPV = ppvMongoConfig.build()
+    val ppvRDD = sqlContext.fromMongoDB(readConfigPPV)
     // Do a join of new ppv values and ppc cache
     val joined = orderbyPPVpointer.join(ppvRDD, orderbyPPVpointer("ppvPointer")===ppvRDD("_id"))
     // Drop ppv pointer and old ppv value
